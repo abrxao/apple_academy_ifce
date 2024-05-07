@@ -10,36 +10,32 @@ import SwiftUI
 
 
 struct EventCardView: View {
-    @State private var events: [EventCardModel] = []
+    @State private var userEventsRepo = UserEventsRepo()
     
     var body: some View {
         
         VStack(spacing: 12) {
-            ForEach(events, id: \.id) { event in // Iterate over items
+            Button("teste"){
+                Task{
+                    try await userEventsRepo.addEvent(
+                        event:EventCardModel(
+                            id:nil,
+                            title: "title",
+                            subtitle: "subtitle",
+                            imageURL:"https://sportsjob.com.br/wp-content/uploads/2020/11/futebol.jpg"
+                        ))
+                }
+            }
+            ForEach(userEventsRepo.events, id: \.id) { event in // Iterate over items
                 EventCard(event: event) // Render each item using ListItemView
             }
         }
         .padding()
-        .task{
-            await fetchEvents()
+        .task {
+            await userEventsRepo.fetchEvents()
         }
     }
 
-    func fetchEvents() async {
-        guard let url = URL(string: "http://localhost:3001/events") else {
-            print("Invalid URL")
-            return
-        }
-        do {
-            let (data, _) = try await URLSession.shared.data(from: url)
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            let decodedData = try decoder.decode([EventCardModel].self, from: data)
-            self.events = decodedData
-        } catch {
-            print(error)
-        }
-    }
 }
 
 struct EventCard: View {

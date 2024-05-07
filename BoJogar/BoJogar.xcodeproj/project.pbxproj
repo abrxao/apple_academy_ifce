@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		221BC0C42BE57063001CAAF4 /* Skeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221BC0C32BE57063001CAAF4 /* Skeleton.swift */; };
+		227AE5D02BEAA7C0002403AC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227AE5CF2BEAA7C0002403AC /* ContentView.swift */; };
 		22926CDB2BE15AEB007AA20B /* BoJogarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926CDA2BE15AEB007AA20B /* BoJogarApp.swift */; };
-		22926CDD2BE15AEB007AA20B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926CDC2BE15AEB007AA20B /* ContentView.swift */; };
+		22926CDD2BE15AEB007AA20B /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926CDC2BE15AEB007AA20B /* UserView.swift */; };
 		22926CDF2BE15AEC007AA20B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22926CDE2BE15AEC007AA20B /* Assets.xcassets */; };
 		22926CE22BE15AEC007AA20B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22926CE12BE15AEC007AA20B /* Preview Assets.xcassets */; };
 		22926CEA2BE15B7E007AA20B /* LocalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926CE92BE15B7E007AA20B /* LocalCard.swift */; };
@@ -23,9 +24,10 @@
 
 /* Begin PBXFileReference section */
 		221BC0C32BE57063001CAAF4 /* Skeleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skeleton.swift; sourceTree = "<group>"; };
+		227AE5CF2BEAA7C0002403AC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		22926CD72BE15AEB007AA20B /* BoJogar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoJogar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22926CDA2BE15AEB007AA20B /* BoJogarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoJogarApp.swift; sourceTree = "<group>"; };
-		22926CDC2BE15AEB007AA20B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		22926CDC2BE15AEB007AA20B /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		22926CDE2BE15AEC007AA20B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22926CE12BE15AEC007AA20B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		22926CE92BE15B7E007AA20B /* LocalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCard.swift; sourceTree = "<group>"; };
@@ -79,7 +81,8 @@
 				22926CEB2BE15C05007AA20B /* models */,
 				22926CE82BE15B2F007AA20B /* components */,
 				22926CDA2BE15AEB007AA20B /* BoJogarApp.swift */,
-				22926CDC2BE15AEB007AA20B /* ContentView.swift */,
+				22926CDC2BE15AEB007AA20B /* UserView.swift */,
+				227AE5CF2BEAA7C0002403AC /* ContentView.swift */,
 				22926CDE2BE15AEC007AA20B /* Assets.xcassets */,
 				22926CE02BE15AEC007AA20B /* Preview Content */,
 			);
@@ -189,7 +192,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22926CDD2BE15AEB007AA20B /* ContentView.swift in Sources */,
+				22926CDD2BE15AEB007AA20B /* UserView.swift in Sources */,
+				227AE5D02BEAA7C0002403AC /* ContentView.swift in Sources */,
 				22926CF42BE18094007AA20B /* EventCard.swift in Sources */,
 				22926CEA2BE15B7E007AA20B /* LocalCard.swift in Sources */,
 				221BC0C42BE57063001CAAF4 /* Skeleton.swift in Sources */,
