@@ -8,10 +8,11 @@ import Foundation
 import SwiftUI
 
 struct EventCardModel: Codable {
-    let id: UUID
-    let title: String
-    let subtitle: String
-    let imageURL: String
+    let id = UUID()
+    var title: String
+
+    var subtitle: String
+    var imageURL: String
 }
 
 

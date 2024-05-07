@@ -18,6 +18,7 @@
 		22926CF42BE18094007AA20B /* EventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926CF32BE18094007AA20B /* EventCard.swift */; };
 		22926CFA2BE187B0007AA20B /* EventCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926CF92BE187B0007AA20B /* EventCardModel.swift */; };
 		22926CFC2BE1881E007AA20B /* LocalCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926CFB2BE1881E007AA20B /* LocalCardModel.swift */; };
+		22DDB8A02BEA9B0D00262E1E /* UserEventsRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DDB89F2BEA9B0D00262E1E /* UserEventsRepo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		22926CF32BE18094007AA20B /* EventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCard.swift; sourceTree = "<group>"; };
 		22926CF92BE187B0007AA20B /* EventCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCardModel.swift; sourceTree = "<group>"; };
 		22926CFB2BE1881E007AA20B /* LocalCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCardModel.swift; sourceTree = "<group>"; };
+		22DDB89F2BEA9B0D00262E1E /* UserEventsRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEventsRepo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +51,7 @@
 		221BC0C92BE57990001CAAF4 /* repository */ = {
 			isa = PBXGroup;
 			children = (
+				22DDB89F2BEA9B0D00262E1E /* UserEventsRepo.swift */,
 			);
 			name = repository;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 				22926CEA2BE15B7E007AA20B /* LocalCard.swift in Sources */,
 				221BC0C42BE57063001CAAF4 /* Skeleton.swift in Sources */,
 				22926CDB2BE15AEB007AA20B /* BoJogarApp.swift in Sources */,
+				22DDB8A02BEA9B0D00262E1E /* UserEventsRepo.swift in Sources */,
 				22926CFA2BE187B0007AA20B /* EventCardModel.swift in Sources */,
 				22926CFC2BE1881E007AA20B /* LocalCardModel.swift in Sources */,
 				22926CEF2BE16C3A007AA20B /* ImageURL.swift in Sources */,

@@ -36,5 +36,4 @@ struct SkeletonView_Previews: PreviewProvider {
     static var previews: some View {
         SkeletonView(width: 100, height: 100)
     }
-}
-
+} 
