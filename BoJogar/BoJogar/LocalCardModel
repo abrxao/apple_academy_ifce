@@ -1,0 +1,25 @@
+//
+//  EventCardModel.swift
+//  BoJogar
+//
+//  Created by found on 30/04/24.
+//
+
+import Foundation
+import SwiftUI
+
+struct LocalCardModel: Hashable { // Conforming to Hashable protocol
+    let id = UUID() // Adding an id property
+    let title: String
+    let imageURL: String
+}
+
+
+struct EventCardModel: Hashable { // Conforming to Hashable protocol
+    let id = UUID() // Adding an id property
+    let title: String
+    let description: String
+    let text: String
+    let imageURL: String
+}
+

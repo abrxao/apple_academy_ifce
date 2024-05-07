@@ -1,0 +1,54 @@
+{
+  "posts": [
+    { "id": 1, "title": "Post 1" }
+  ],
+  "locals": [
+      {   "id":1,
+          "title": "Praça Raquel de Queiroz",
+          "imageURL": "https://images.adsttc.com/media/images/62d5/5386/2467/e401/65b8/80a3/slideshow/parque-rachel-de-queiroz-architectus-s-s_8.jpg?1658147766"
+      },
+      {   "id":2,
+          "title": "Praça Raquel de Queiroz",
+          "imageURL": "https://images.adsttc.com/media/images/62d5/5386/2467/e401/65b8/80a3/slideshow/parque-rachel-de-queiroz-architectus-s-s_8.jpg?1658147766"
+      },
+      {   "id":3,
+          "title": "Praça Raquel de Queiroz",
+          "imageURL": "https://images.adsttc.com/media/images/62d5/5386/2467/e401/65b8/80a3/slideshow/parque-rachel-de-queiroz-architectus-s-s_8.jpg?1658147766"
+      },
+      {   "id":4,
+          "title": "Praça Raquel de Queiroz",
+          "imageURL": "https://images.adsttc.com/media/images/62d5/5386/2467/e401/65b8/80a3/slideshow/parque-rachel-de-queiroz-architectus-s-s_8.jpg?1658147766"
+      }
+  ],
+  "events": [
+      {
+          "id":1,
+          "title": "Corrida remover",
+          "subtitle": "Beira Mar às 16:00",
+          "imageURL": "https://blog.columbiasportswear.com.br/wp-content/uploads/2023/01/S21_EscapeAscent_TK_UTAH-5361.jpg"
+      },
+      {
+          "id":2,
+          "title": "Corrida",
+          "subtitle": "Beira Mar às 16:00",
+          "imageURL": "https://blog.columbiasportswear.com.br/wp-content/uploads/2023/01/S21_EscapeAscent_TK_UTAH-5361.jpg"
+      },
+      {
+          "id":3,
+          "title": "Corrida",
+          "subtitle": "Beira Mar às 16:00",
+          "imageURL": "https://blog.columbiasportswear.com.br/wp-content/uploads/2023/01/S21_EscapeAscent_TK_UTAH-5361.jpg"
+      },
+      {
+          "id":4,
+          "title": "Corrida",
+          "subtitle": "Beira Mar às 16:00",
+          "imageURL": "https://blog.columbiasportswear.com.br/wp-content/uploads/2023/01/S21_EscapeAscent_TK_UTAH-5361.jpg"
+      },
+      {
+          "title": "Corrida",
+          "subtitle": "Beira Mar às 16:00",
+          "imageURL": "https://blog.columbiasportswear.com.br/wp-content/uploads/2023/01/S21_EscapeAscent_TK_UTAH-5361.jpg"
+      }
+  ]
+}

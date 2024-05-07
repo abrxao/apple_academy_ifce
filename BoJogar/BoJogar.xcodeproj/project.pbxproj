@@ -1,0 +1,429 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		221BC0C42BE57063001CAAF4 /* Skeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221BC0C32BE57063001CAAF4 /* Skeleton.swift */; };
+		22926CDB2BE15AEB007AA20B /* BoJogarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926CDA2BE15AEB007AA20B /* BoJogarApp.swift */; };
+		22926CDD2BE15AEB007AA20B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926CDC2BE15AEB007AA20B /* ContentView.swift */; };
+		22926CDF2BE15AEC007AA20B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22926CDE2BE15AEC007AA20B /* Assets.xcassets */; };
+		22926CE22BE15AEC007AA20B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22926CE12BE15AEC007AA20B /* Preview Assets.xcassets */; };
+		22926CEA2BE15B7E007AA20B /* LocalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926CE92BE15B7E007AA20B /* LocalCard.swift */; };
+		22926CEF2BE16C3A007AA20B /* ImageURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926CEE2BE16C3A007AA20B /* ImageURL.swift */; };
+		22926CF12BE175D9007AA20B /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926CF02BE175D9007AA20B /* Badge.swift */; };
+		22926CF42BE18094007AA20B /* EventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926CF32BE18094007AA20B /* EventCard.swift */; };
+		22926CFA2BE187B0007AA20B /* EventCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926CF92BE187B0007AA20B /* EventCardModel.swift */; };
+		22926CFC2BE1881E007AA20B /* LocalCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926CFB2BE1881E007AA20B /* LocalCardModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		221BC0C32BE57063001CAAF4 /* Skeleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skeleton.swift; sourceTree = "<group>"; };
+		22926CD72BE15AEB007AA20B /* BoJogar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoJogar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		22926CDA2BE15AEB007AA20B /* BoJogarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoJogarApp.swift; sourceTree = "<group>"; };
+		22926CDC2BE15AEB007AA20B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		22926CDE2BE15AEC007AA20B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		22926CE12BE15AEC007AA20B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		22926CE92BE15B7E007AA20B /* LocalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCard.swift; sourceTree = "<group>"; };
+		22926CEE2BE16C3A007AA20B /* ImageURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageURL.swift; sourceTree = "<group>"; };
+		22926CF02BE175D9007AA20B /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
+		22926CF32BE18094007AA20B /* EventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCard.swift; sourceTree = "<group>"; };
+		22926CF92BE187B0007AA20B /* EventCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCardModel.swift; sourceTree = "<group>"; };
+		22926CFB2BE1881E007AA20B /* LocalCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCardModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		22926CD42BE15AEB007AA20B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		221BC0C92BE57990001CAAF4 /* repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = repository;
+			sourceTree = "<group>";
+		};
+		22926CCE2BE15AEB007AA20B = {
+			isa = PBXGroup;
+			children = (
+				22926CD92BE15AEB007AA20B /* BoJogar */,
+				22926CD82BE15AEB007AA20B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		22926CD82BE15AEB007AA20B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				22926CD72BE15AEB007AA20B /* BoJogar.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		22926CD92BE15AEB007AA20B /* BoJogar */ = {
+			isa = PBXGroup;
+			children = (
+				221BC0C92BE57990001CAAF4 /* repository */,
+				22926CEB2BE15C05007AA20B /* models */,
+				22926CE82BE15B2F007AA20B /* components */,
+				22926CDA2BE15AEB007AA20B /* BoJogarApp.swift */,
+				22926CDC2BE15AEB007AA20B /* ContentView.swift */,
+				22926CDE2BE15AEC007AA20B /* Assets.xcassets */,
+				22926CE02BE15AEC007AA20B /* Preview Content */,
+			);
+			path = BoJogar;
+			sourceTree = "<group>";
+		};
+		22926CE02BE15AEC007AA20B /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				22926CE12BE15AEC007AA20B /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		22926CE82BE15B2F007AA20B /* components */ = {
+			isa = PBXGroup;
+			children = (
+				22926CE92BE15B7E007AA20B /* LocalCard.swift */,
+				22926CEE2BE16C3A007AA20B /* ImageURL.swift */,
+				22926CF02BE175D9007AA20B /* Badge.swift */,
+				22926CF32BE18094007AA20B /* EventCard.swift */,
+				221BC0C32BE57063001CAAF4 /* Skeleton.swift */,
+			);
+			name = components;
+			sourceTree = "<group>";
+		};
+		22926CEB2BE15C05007AA20B /* models */ = {
+			isa = PBXGroup;
+			children = (
+				22926CFB2BE1881E007AA20B /* LocalCardModel.swift */,
+				22926CF92BE187B0007AA20B /* EventCardModel.swift */,
+			);
+			name = models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		22926CD62BE15AEB007AA20B /* BoJogar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22926CE52BE15AEC007AA20B /* Build configuration list for PBXNativeTarget "BoJogar" */;
+			buildPhases = (
+				22926CD32BE15AEB007AA20B /* Sources */,
+				22926CD42BE15AEB007AA20B /* Frameworks */,
+				22926CD52BE15AEB007AA20B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				221BC0C72BE573EB001CAAF4 /* PBXTargetDependency */,
+			);
+			name = BoJogar;
+			productName = BoJogar;
+			productReference = 22926CD72BE15AEB007AA20B /* BoJogar.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		22926CCF2BE15AEB007AA20B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					22926CD62BE15AEB007AA20B = {
+						CreatedOnToolsVersion = 15.2;
+					};
+				};
+			};
+			buildConfigurationList = 22926CD22BE15AEB007AA20B /* Build configuration list for PBXProject "BoJogar" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 22926CCE2BE15AEB007AA20B;
+			packageReferences = (
+				221BC0C52BE57344001CAAF4 /* XCRemoteSwiftPackageReference "swiftui-lint" */,
+			);
+			productRefGroup = 22926CD82BE15AEB007AA20B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				22926CD62BE15AEB007AA20B /* BoJogar */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		22926CD52BE15AEB007AA20B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22926CE22BE15AEC007AA20B /* Preview Assets.xcassets in Resources */,
+				22926CDF2BE15AEC007AA20B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		22926CD32BE15AEB007AA20B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22926CDD2BE15AEB007AA20B /* ContentView.swift in Sources */,
+				22926CF42BE18094007AA20B /* EventCard.swift in Sources */,
+				22926CEA2BE15B7E007AA20B /* LocalCard.swift in Sources */,
+				221BC0C42BE57063001CAAF4 /* Skeleton.swift in Sources */,
+				22926CDB2BE15AEB007AA20B /* BoJogarApp.swift in Sources */,
+				22926CFA2BE187B0007AA20B /* EventCardModel.swift in Sources */,
+				22926CFC2BE1881E007AA20B /* LocalCardModel.swift in Sources */,
+				22926CEF2BE16C3A007AA20B /* ImageURL.swift in Sources */,
+				22926CF12BE175D9007AA20B /* Badge.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		221BC0C72BE573EB001CAAF4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 221BC0C62BE573EB001CAAF4 /* SwiftUILintPlugin */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		22926CE32BE15AEC007AA20B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		22926CE42BE15AEC007AA20B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		22926CE62BE15AEC007AA20B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BoJogar/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = if.BoJogar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		22926CE72BE15AEC007AA20B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BoJogar/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = if.BoJogar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		22926CD22BE15AEB007AA20B /* Build configuration list for PBXProject "BoJogar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22926CE32BE15AEC007AA20B /* Debug */,
+				22926CE42BE15AEC007AA20B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22926CE52BE15AEC007AA20B /* Build configuration list for PBXNativeTarget "BoJogar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22926CE62BE15AEC007AA20B /* Debug */,
+				22926CE72BE15AEC007AA20B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		221BC0C52BE57344001CAAF4 /* XCRemoteSwiftPackageReference "swiftui-lint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mateusrodriguesxyz/swiftui-lint";
+			requirement = {
+				branch = beta;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		221BC0C62BE573EB001CAAF4 /* SwiftUILintPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 221BC0C52BE57344001CAAF4 /* XCRemoteSwiftPackageReference "swiftui-lint" */;
+			productName = "plugin:SwiftUILintPlugin";
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 22926CCF2BE15AEB007AA20B /* Project object */;
+}
