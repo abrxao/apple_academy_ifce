@@ -14,17 +14,20 @@ struct ContentView: View {
         TabView( ) {
             UserView()
                 .tabItem {
-                Image(systemName: "house")
-            }.tag(1)
+                    Image(systemName: "house")
+            }
+            EventView()
+                .tabItem { 
+                    Image(systemName: "plus")
+            }
+            PerfilView()
+                .tabItem {
+                    Image(systemName: "person")
+            }
             Text("Tab Content 2")
-                .tabItem { Image(systemName: "plus")
-            }.tag(2)
-            Text("Tab Content 1")
-                .tabItem { Image(systemName: "heart")
-            }.tag(3)
-            Text("Tab Content 2")
-                .tabItem { Image(systemName: "heart")
-            }.tag(4)
+                .tabItem {
+                    Image(systemName: "heart")
+            }
         }
     }
 }

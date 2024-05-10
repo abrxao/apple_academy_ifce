@@ -15,8 +15,8 @@ struct UserEventsRepo {
 }
 
 extension UserEventsRepo {
-    mutating func fetchEvents() async {
-        guard let url = URL(string: "http://localhost:3001/users/\(self.userId)") else {
+    mutating func getUserEvents() async {
+        guard let url = URL(string: "http://localhost:3001/users/\(self.userId)/events_details") else {
             print("erro1")
             return
         }
@@ -40,7 +40,7 @@ extension UserEventsRepo {
         do {
             let (_, response) = try await URLSession.shared.data(for: request)
             if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
-                print("Event with ID \(id) deleted successfully.")
+                
                 self.deleteEventLocal(withId: id)
                 // Optionally, you can update your local events array or UI here
             } else {

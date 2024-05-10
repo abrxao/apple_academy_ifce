@@ -10,18 +10,29 @@ import SwiftUI
 
 
 struct EventCardView: View {
-    @State private var userEventsRepo = UserEventsRepo("1")
+    @State private var userEventsRepo = UserEventsRepo(userId: "1")
     
     var body: some View {
         
         VStack(spacing: 12) {
+            
             ForEach(userEventsRepo.events, id: \.id) { event in // Iterate over items
                 EventCard(event: event) // Render each item using ListItemView
             }
         }
         .padding()
         .task {
-            await userEventsRepo.fetchEvents()
+            await userEventsRepo.getUserEvents()
+        }
+        .onAppear {
+            // Schedule a timer to refresh every 2.5 seconds
+            let timer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { _ in
+                Task {
+                    await userEventsRepo.getUserEvents()
+                }
+            }
+            // Invalidate the timer when the view disappears
+            _ = timer
         }
     }
 

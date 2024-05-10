@@ -9,9 +9,24 @@
         "firstName": "John",
         "lastName": "Doe",
         "bio": "Enthusiastic event planner and attendee."
-      },
-      "events": ["101", "102"],
-      "subscribedEvents": ["101"]
+      }
+    }
+  ],
+  "locals": [
+    {
+      "id": "1",
+      "title": "Praça Raquel de Queiroz",
+      "imageURL": "https://images.adsttc.com/media/images/62d5/5386/2467/e401/65b8/80a3/slideshow/parque-rachel-de-queiroz-architectus-s-s_8.jpg?1658147766"
+    },
+    {
+      "id": "2",
+      "title": "Praça Raquel de Queiroz",
+      "imageURL": "https://images.adsttc.com/media/images/62d5/5386/2467/e401/65b8/80a3/slideshow/parque-rachel-de-queiroz-architectus-s-s_8.jpg?1658147766"
+    },
+    {
+      "title": "Praça Raquel de Queiroz",
+      "imageURL": "https://images.adsttc.com/media/images/62d5/5386/2467/e401/65b8/80a3/slideshow/parque-rachel-de-queiroz-architectus-s-s_8.jpg?1658147766",
+      "id": "v2VZDwF"
     }
   ],
   "events": [
@@ -23,7 +38,10 @@
       "description": "Meetup for tech enthusiasts to share knowledge and network.",
       "startDate": "2024-06-15T09:00:00",
       "endDate": "2024-06-15T12:00:00",
-      "subscribers": ["2", "3"]
+      "subscribers": [
+        "2",
+        "3"
+      ]
     },
     {
       "id": "102",
@@ -33,7 +51,23 @@
       "description": "Meetup for tech enthusiasts to share knowledge and network.",
       "startDate": "2024-06-15T09:00:00",
       "endDate": "2024-06-15T12:00:00",
-      "subscribers": ["3", "1"]
+      "subscribers": [
+        "3",
+        "1"
+      ]
+    },
+    {
+      "creatorId": "3",
+      "title": "Futebol",
+      "imageURL": "https://sportsjob.com.br/wp-content/uploads/2020/11/futebol.jpg",
+      "description": "Meetup for tech enthusiasts to share knowledge and network.",
+      "startDate": "2024-06-15T09:00:00",
+      "endDate": "2024-06-15T12:00:00",
+      "subscribers": [
+        "2",
+        "1"
+      ],
+      "id": "14JmhWY"
     }
   ]
 }

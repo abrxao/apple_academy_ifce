@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		221BC0C42BE57063001CAAF4 /* Skeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221BC0C32BE57063001CAAF4 /* Skeleton.swift */; };
+		2222508A2BEEAB2D0037C15A /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222250892BEEAB2D0037C15A /* EventView.swift */; };
+		2239763D2BEEBA8700E66847 /* PerfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2239763C2BEEBA8700E66847 /* PerfilView.swift */; };
 		227AE5D02BEAA7C0002403AC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227AE5CF2BEAA7C0002403AC /* ContentView.swift */; };
 		22926CDB2BE15AEB007AA20B /* BoJogarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926CDA2BE15AEB007AA20B /* BoJogarApp.swift */; };
 		22926CDD2BE15AEB007AA20B /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926CDC2BE15AEB007AA20B /* UserView.swift */; };
@@ -24,6 +26,8 @@
 
 /* Begin PBXFileReference section */
 		221BC0C32BE57063001CAAF4 /* Skeleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skeleton.swift; sourceTree = "<group>"; };
+		222250892BEEAB2D0037C15A /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
+		2239763C2BEEBA8700E66847 /* PerfilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilView.swift; sourceTree = "<group>"; };
 		227AE5CF2BEAA7C0002403AC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		22926CD72BE15AEB007AA20B /* BoJogar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoJogar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22926CDA2BE15AEB007AA20B /* BoJogarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoJogarApp.swift; sourceTree = "<group>"; };
@@ -83,6 +87,8 @@
 				22926CDA2BE15AEB007AA20B /* BoJogarApp.swift */,
 				22926CDC2BE15AEB007AA20B /* UserView.swift */,
 				227AE5CF2BEAA7C0002403AC /* ContentView.swift */,
+				222250892BEEAB2D0037C15A /* EventView.swift */,
+				2239763C2BEEBA8700E66847 /* PerfilView.swift */,
 				22926CDE2BE15AEC007AA20B /* Assets.xcassets */,
 				22926CE02BE15AEC007AA20B /* Preview Content */,
 			);
@@ -195,9 +201,11 @@
 				22926CDD2BE15AEB007AA20B /* UserView.swift in Sources */,
 				227AE5D02BEAA7C0002403AC /* ContentView.swift in Sources */,
 				22926CF42BE18094007AA20B /* EventCard.swift in Sources */,
+				2239763D2BEEBA8700E66847 /* PerfilView.swift in Sources */,
 				22926CEA2BE15B7E007AA20B /* LocalCard.swift in Sources */,
 				221BC0C42BE57063001CAAF4 /* Skeleton.swift in Sources */,
 				22926CDB2BE15AEB007AA20B /* BoJogarApp.swift in Sources */,
+				2222508A2BEEAB2D0037C15A /* EventView.swift in Sources */,
 				22DDB8A02BEA9B0D00262E1E /* UserEventsRepo.swift in Sources */,
 				22926CFA2BE187B0007AA20B /* EventCardModel.swift in Sources */,
 				22926CFC2BE1881E007AA20B /* LocalCardModel.swift in Sources */,

@@ -10,23 +10,23 @@ import SwiftUI
 
 // ListView.swift
 struct LocalCardView: View {
-    @State private var locals: [LocalCardModel] = [] 
+    @State private var locals: [LocalCardModel] = []
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) { // Use ScrollView with horizontal orientation
             HStack(spacing: 10) { // Use LazyHStack for efficiency
                 ForEach(locals, id: \.id) { local in // Iterate over items
                     LocalCard(local: local) // Render each item using ListItemView
-                }
+                }                    
             }
-            .padding(.vertical, 5) // Add horizontal padding
+            .padding(.vertical, 5)// Add horizontal padding
         }
         .task{
-            await fetchLocals()
+            await getLocals()
         }
     }
     // Função async para pegar os dados dos locais do banco de dados
-    func fetchLocals() async {
+    func getLocals() async {
         guard let url = URL(string: "http://localhost:3001/locals") else {
             print("Invalid URL")
             return
