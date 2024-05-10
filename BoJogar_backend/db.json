@@ -9,7 +9,9 @@
         "firstName": "John",
         "lastName": "Doe",
         "bio": "Enthusiastic event planner and attendee."
-      }
+      },
+      "events": ["101", "102"],
+      "subscribedEvents": ["101"]
     }
   ],
   "events": [
@@ -23,7 +25,7 @@
       "subscribers": ["2", "3"]
     },
     {
-      "id": "101",
+      "id": "102",
       "creatorId": "2",
       "title": "Tech Meetup teste",
       "description": "Meetup for tech enthusiasts to share knowledge and network.",

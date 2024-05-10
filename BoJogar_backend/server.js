@@ -7,14 +7,20 @@ const middlewares = jsonServer.defaults();
 server.use(middlewares);
 
 // Add custom routes before JSON Server router
-server.get("/events-by-subscriber/:userId", (req, res) => {
-  const userId = req.params.userId;
-  const db = router.db; // Get lowdb database
-  const events = db
-    .get("events")
-    .filter((event) => event.subscribers.includes(userId))
-    .value();
-  res.jsonp(events);
+server.post("/users/:id/events_details", (req, res) => {
+  const userEventsIds = router.db
+    .get("users")
+    .value()
+    .filter((user) => user.id === req.params.id)[0].events; // Assuming the resource name is 'useEvents'
+
+  const events = router.db.get("events").value(); // Assuming the resource name is 'events'
+
+  // Filter the data based on the array of IDs
+  const filteredData = events.filter((item) =>
+    userEventsIds.includes(item.id.toString())
+  );
+
+  res.jsonp(filteredData);
 });
 
 // Use default json-server routes
