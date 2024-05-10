@@ -9,9 +9,13 @@ import SwiftUI
 
 struct EventCardModel: Codable {
     let id: Optional<String>
+    var creatorId: String
     var title: String
-    var subtitle: String
+    var description: String
+    var startDate: String
+    var endDate: String
     var imageURL: String
+    var subscribers: Optional<[String]>
 }
 
 

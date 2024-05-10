@@ -2,9 +2,13 @@ import Foundation
 
 struct UserEventsRepo {
     var events: [EventCardModel]
-    init() {
+    var userId: String
+    
+    init(userId: String) {
         self.events = []
+        self.userId = userId
     }
+    
     mutating func deleteEventLocal(withId id: String) {
         events.removeAll { $0.id == id }
     }
@@ -12,7 +16,7 @@ struct UserEventsRepo {
 
 extension UserEventsRepo {
     mutating func fetchEvents() async {
-        guard let url = URL(string: "http://localhost:3001/events") else {
+        guard let url = URL(string: "http://localhost:3001/users/\(self.userId)") else {
             print("erro1")
             return
         }

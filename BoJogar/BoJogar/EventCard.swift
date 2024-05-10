@@ -10,22 +10,11 @@ import SwiftUI
 
 
 struct EventCardView: View {
-    @State private var userEventsRepo = UserEventsRepo()
+    @State private var userEventsRepo = UserEventsRepo("1")
     
     var body: some View {
         
         VStack(spacing: 12) {
-            Button("teste"){
-                Task{
-                    try await userEventsRepo.addEvent(
-                        event:EventCardModel(
-                            id:nil,
-                            title: "title",
-                            subtitle: "subtitle",
-                            imageURL:"https://sportsjob.com.br/wp-content/uploads/2020/11/futebol.jpg"
-                        ))
-                }
-            }
             ForEach(userEventsRepo.events, id: \.id) { event in // Iterate over items
                 EventCard(event: event) // Render each item using ListItemView
             }
@@ -49,7 +38,9 @@ struct EventCard: View {
             
             VStack(alignment: .leading) {
                 Text(event.title)
-                Text(event.subtitle)
+                Text(event.description)
+                    .font(.caption)
+                    .foregroundStyle(.gray)
                 Spacer()
             }
             .padding(12)
