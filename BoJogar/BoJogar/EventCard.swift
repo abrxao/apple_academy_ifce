@@ -11,11 +11,10 @@ import SwiftUI
 
 struct EventCardView: View {
     @State private var userEventsRepo = UserEventsRepo(userId: "1")
-    
     var body: some View {
         
         VStack(spacing: 12) {
-            
+           
             ForEach(userEventsRepo.events, id: \.id) { event in // Iterate over items
                 EventCard(event: event) // Render each item using ListItemView
             }
@@ -24,6 +23,7 @@ struct EventCardView: View {
         .task {
             await userEventsRepo.getUserEvents()
         }
+        
         
     }
 

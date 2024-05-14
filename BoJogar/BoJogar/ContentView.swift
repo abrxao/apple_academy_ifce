@@ -17,7 +17,6 @@ struct ContentView: View {
                     .tabItem {
                         Label("Home", systemImage: "house")
                     }
-                    
                 EventView()
                     .badge(2)
                     .tabItem {
