@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct LocalCardModel: Codable {
-    let id = UUID()
+    let id: Optional<String>
     var title: String // Change to var to allow mutation
     var imageURL: String
 

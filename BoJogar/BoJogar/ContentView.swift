@@ -12,23 +12,33 @@ struct ContentView: View {
     var body: some View {
         
         TabView( ) {
-            UserView()
-                .tabItem {
-                    Image(systemName: "house")
+            Group{
+                UserView()
+                    .tabItem {
+                        Label("Home", systemImage: "house")
+                    }
+                    
+                EventView()
+                    .badge(2)
+                    .tabItem {
+                        Label("Received", systemImage: "house")
+                    }
+                
+                PerfilView()
+                    .tabItem {
+                        Label("Received", systemImage: "house")
+                    }
+                Text("Tab Content 2")
+                    .tabItem {
+                        Label("Received", systemImage: "house")
+                    }
             }
-            EventView()
-                .tabItem { 
-                    Image(systemName: "plus")
-            }
-            PerfilView()
-                .tabItem {
-                    Image(systemName: "person")
-            }
-            Text("Tab Content 2")
-                .tabItem {
-                    Image(systemName: "heart")
-            }
+            .toolbarBackground(.black, for: .tabBar)
+            .toolbarBackground(.visible, for: .tabBar)
+            .accentColor(Color("redSecondary"))
+            
         }
+        
     }
 }
 

@@ -14,6 +14,7 @@ struct EventView: View{
     var body: some View{
         HStack(){
             Text("View do Luiz")
+            Text("View do Luiz")
         }
     }
 }

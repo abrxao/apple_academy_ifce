@@ -24,16 +24,7 @@ struct EventCardView: View {
         .task {
             await userEventsRepo.getUserEvents()
         }
-        .onAppear {
-            // Schedule a timer to refresh every 2.5 seconds
-            let timer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { _ in
-                Task {
-                    await userEventsRepo.getUserEvents()
-                }
-            }
-            // Invalidate the timer when the view disappears
-            _ = timer
-        }
+        
     }
 
 }
@@ -55,6 +46,7 @@ struct EventCard: View {
                 Spacer()
             }
             .padding(12)
+            .backgroundStyle(Color("redSecondary"))
             
             Spacer()
         }

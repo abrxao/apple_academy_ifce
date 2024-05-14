@@ -14,6 +14,7 @@ struct PerfilView: View{
     var body: some View{
         HStack(){
             Text("View do Carla")
+            Text("View do Carla")
         }
     }
 }
