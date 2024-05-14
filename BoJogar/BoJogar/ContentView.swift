@@ -22,22 +22,23 @@ struct ContentView: View {
                     .badge(2)
                     .tabItem {
                         Label("Received", systemImage: "house")
+                            
                     }
                 
-                PerfilView()
+                EventsPerLocal()
                     .tabItem {
-                        Label("Received", systemImage: "house")
+                        Label("Eventos", systemImage: "calendar")
                     }
                 Text("Tab Content 2")
                     .tabItem {
-                        Label("Received", systemImage: "house")
+                        Label("Read", systemImage: "house")
                     }
             }
-            .toolbarBackground(.black, for: .tabBar)
+            .toolbarBackground(.gray950, for: .tabBar)
             .toolbarBackground(.visible, for: .tabBar)
-            .accentColor(Color("redSecondary"))
-            
         }
+        .accentColor(.redSecondary)
+        
         
     }
 }

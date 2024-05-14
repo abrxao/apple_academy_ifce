@@ -12,7 +12,7 @@ struct LocalCardModel: Codable {
     let id: Optional<String>
     var title: String // Change to var to allow mutation
     var imageURL: String
-
+    var mapsURL: Optional<String>
 }
 
 

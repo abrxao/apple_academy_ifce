@@ -12,7 +12,7 @@ struct UserView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             Spacer()
-                .frame(height: 8)
+                .frame(height: 4)
             
             Badge(text: "Locais Proximos")
             
@@ -21,11 +21,11 @@ struct UserView: View {
                 .scrollClipDisabled(true)
             
             Spacer()
-                .frame(height: 48)
+                .frame(height: 40)
             Badge(text: "Eventos Confirmados")
             
             Spacer()
-                .frame(height: 24)
+                .frame(height: 12)
             EventCardView()
             
         }

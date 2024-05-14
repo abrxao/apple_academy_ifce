@@ -52,13 +52,16 @@ struct LocalCard: View {
                  // Clip the image to the frame
 
             Text(local.title)
+                .foregroundStyle(.white)
                 .padding(.horizontal,8)
                 .padding(.vertical,6)
+            Spacer()
+                .frame(height: 12)
         
         }
         .frame(width: 174)// Set fixed width for each item
          // Add padding to each item
-        .background(Color.white) // Add background color to each item
+        .background(.redSecondary) // Add background color to each item
         .cornerRadius(10) // Add corner radius to each item
         .shadow(radius: 2, y: 2.0) // Add shadow to each item
     }

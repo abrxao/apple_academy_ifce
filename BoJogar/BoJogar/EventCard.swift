@@ -36,21 +36,25 @@ struct EventCard: View {
         HStack {
             ImageURL(url: URL(string: event.imageURL)!,
                      width: 124,
-                     heigth: 124)
+                     height: 124)
             
             VStack(alignment: .leading) {
                 Text(event.title)
+                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    .foregroundStyle(.white)
+                Spacer()
+                    .frame(height: 6)
                 Text(event.description)
                     .font(.caption)
-                    .foregroundStyle(.gray)
+                    .foregroundStyle(.gray200)
                 Spacer()
             }
             .padding(12)
-            .backgroundStyle(Color("redSecondary"))
+            
             
             Spacer()
         }
-        .background(Color.white)
+        .background(.redSecondary)
         .cornerRadius(12)
         .shadow(radius: 2, y: 3.0)
     }
