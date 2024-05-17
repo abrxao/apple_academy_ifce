@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct LocalRepo {
     var events: [EventCardModel]

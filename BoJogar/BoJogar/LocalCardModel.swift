@@ -8,11 +8,15 @@
 import Foundation
 import SwiftUI
 
-struct LocalCardModel: Codable {
-    let id: Optional<String>
+struct LocalCardModel: Codable, Identifiable, Hashable {
+    let id: String
     var title: String // Change to var to allow mutation
     var imageURL: String
-    var mapsURL: Optional<String>
+    //var mapsURL: Optional<String>
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(title)
+        hasher.combine(imageURL)
+    }
 }
-
-

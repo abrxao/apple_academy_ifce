@@ -11,13 +11,21 @@ import SwiftUI
  
 
 struct EventsPerLocal: View {
-    @State private var localRepo = LocalRepo(localID: "v2VZDwF")
+    
+    @State private var localRepo: LocalRepo
+    
+    init(localID: String) {
+        self._localRepo = State(initialValue: LocalRepo(localID: localID))
+    }
+    
     var body: some View{
+        
         ScrollView(showsIndicators: false) {
             if (localRepo.localData != nil){
-                ImageURL(url: URL(string: localRepo.localData?.imageURL ?? "")!,
-                         width: .infinity,
-                         height: 250)
+                ImageURL(url: URL(string: localRepo.localData?.imageURL ?? "")!, width: CFloat(UIScreen.main.bounds.width))
+                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                    .aspectRatio(16/9,contentMode: .fit)
+                    .clipped()
                 VStack(alignment:.leading){
                     Text(localRepo.localData?.title ?? "Evento")
                         .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
@@ -54,25 +62,23 @@ struct EventsPerLocal: View {
                 
                 Badge(text:"Eventos cadastrados")
                 VStack(spacing: 12) {
-                    
                     ForEach(localRepo.events, id: \.id) { event in // Iterate over items
                         EventCard(event: event) // Render each item using ListItemView
                     }
                 }
                 .padding()
                
+            } else {
+                ProgressView()
             }
+            
         }
-        .task{
+        .task {
             await localRepo.getLocal()
             await localRepo.getLocalEvents()
-            
         }
         
         
     }
-}
-
-#Preview {
-    EventsPerLocal()
+        
 }

@@ -31,7 +31,7 @@ server.get("/locals/:id/events_details", (req, res) => {
   const events = router.db.get("events").value(); // Assuming the resource name is 'events'
   // Filter the data based on the array of IDs
   const localEvents = events.filter((event) =>
-    event.subscribers.includes(localId) || localId === event.localID
+    localId === event.localID
   );
 
   res.status(200).json(localEvents);

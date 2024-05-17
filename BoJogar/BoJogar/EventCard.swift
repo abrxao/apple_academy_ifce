@@ -13,10 +13,19 @@ struct EventCardView: View {
     @State private var userEventsRepo = UserEventsRepo(userId: "1")
     var body: some View {
         
+        
         VStack(spacing: 12) {
-           
-            ForEach(userEventsRepo.events, id: \.id) { event in // Iterate over items
-                EventCard(event: event) // Render each item using ListItemView
+            if(userEventsRepo.events.isEmpty){
+                Badge(text: "Sem eventos ainda")
+            }else{
+                Badge(text: "Eventos Confirmados")
+                
+                Spacer()
+                    .frame(height: 12)
+                
+                ForEach(userEventsRepo.events, id: \.id) { event in // Iterate over items
+                    EventCard(event: event) // Render each item using ListItemView
+                }
             }
         }
         .padding()
@@ -34,9 +43,10 @@ struct EventCard: View {
     
     var body: some View {
         HStack {
-            ImageURL(url: URL(string: event.imageURL)!,
-                     width: 124,
-                     height: 124)
+            ImageURL(url: URL(string: event.imageURL)!)
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 124, height: 124)
+                .clipped()
             
             VStack(alignment: .leading) {
                 Text(event.title)

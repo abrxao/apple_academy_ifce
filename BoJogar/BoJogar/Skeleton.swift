@@ -18,7 +18,7 @@ struct SkeletonView: View {
     var body: some View {
         RoundedRectangle(cornerRadius: 0)
             .fill(Color.gray)
-            .frame(width: width, height: height)
+            .frame(maxWidth: width, maxHeight: height)
             .opacity(opacity)
             .onAppear {
                 animateOpacity()

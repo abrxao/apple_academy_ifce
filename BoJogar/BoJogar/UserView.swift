@@ -22,10 +22,7 @@ struct UserView: View {
             
             Spacer()
                 .frame(height: 40)
-            Badge(text: "Eventos Confirmados")
-        
-            Spacer()
-                .frame(height: 12)
+            
             EventCardView()
             
         }
@@ -33,5 +30,7 @@ struct UserView: View {
 }
 
 #Preview {
-    UserView()
+    NavigationStack {
+        UserView()
+    }
 }
