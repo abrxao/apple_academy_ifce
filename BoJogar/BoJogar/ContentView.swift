@@ -10,7 +10,6 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        
         TabView {
             Group {
                 NavigationStack {
@@ -38,6 +37,7 @@ struct ContentView: View {
         
         
     }
+    
 }
 
 #Preview {
