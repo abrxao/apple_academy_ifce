@@ -22,6 +22,7 @@ struct ContentView: View {
                 EventView()
                     .badge(2)
                     .tabItem {
+                        
                         Label("Received", systemImage: "house")
                             
                     }

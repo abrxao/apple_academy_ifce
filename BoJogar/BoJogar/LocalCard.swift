@@ -65,7 +65,7 @@ struct LocalCard: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            ImageURL(url: URL(string: local.imageURL)!)
+            ImageURL(url: URL(string: local.imageURL)!, skeletonHeight: 164)
                 .aspectRatio(51/58, contentMode: .fit)
                 // Clip the image to the frame
             

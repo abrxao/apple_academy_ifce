@@ -22,7 +22,7 @@ struct EventsPerLocal: View {
         
         ScrollView(showsIndicators: false) {
             if (localRepo.localData != nil){
-                ImageURL(url: URL(string: localRepo.localData?.imageURL ?? "")!, width: CFloat(UIScreen.main.bounds.width))
+                ImageURL(url: URL(string: localRepo.localData?.imageURL ?? "")!, skeletonWidth: UIScreen.main.bounds.width)
                     .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
                     .aspectRatio(16/9,contentMode: .fit)
                     .clipped()

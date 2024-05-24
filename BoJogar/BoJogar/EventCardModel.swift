@@ -7,8 +7,8 @@
 import Foundation
 import SwiftUI
 
-struct EventCardModel: Codable {
-    var id: String?
+struct EventCardModel:  Codable, Identifiable, Hashable  {
+    var id: String
     var creatorId: String
     var title: String
     var description: String
@@ -16,7 +16,13 @@ struct EventCardModel: Codable {
     var endDate: String
     var imageURL: String
     var localID: String
-    var subscribers: [String]?
+    var subscribers: [String]
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(title)
+        hasher.combine(creatorId)
+    }
 }
 
 

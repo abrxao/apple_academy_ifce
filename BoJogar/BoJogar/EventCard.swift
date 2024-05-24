@@ -11,9 +11,8 @@ import SwiftUI
 
 struct EventCardView: View {
     @State private var userEventsRepo = UserEventsRepo(userId: "1")
+    @State private var selectedEvent: EventCardModel?
     var body: some View {
-        
-        
         VStack(spacing: 12) {
             if(userEventsRepo.events.isEmpty){
                 Badge(text: "Sem eventos ainda")
@@ -24,10 +23,22 @@ struct EventCardView: View {
                     .frame(height: 12)
                 
                 ForEach(userEventsRepo.events, id: \.id) { event in // Iterate over items
-                    EventCard(event: event) // Render each item using ListItemView
+                    Button {
+                       selectedEvent = event
+                    } label: {
+                        EventCard(event: event)
+                    }
                 }
             }
         }
+        .navigationDestination(item: $selectedEvent, destination: { item in
+            EventSelected(event: item)
+        })
+        .navigationTitle("Início")
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarHidden(true)
+//        .navigationDestination(isPresented: $selectedLocal) {
+//        } // cmd option { } sobe e desce linhas
         .padding()
         .task {
             await userEventsRepo.getUserEvents()

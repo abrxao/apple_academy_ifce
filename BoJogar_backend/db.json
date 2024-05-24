@@ -4,12 +4,73 @@
       "id": "1",
       "username": "john_doe",
       "email": "john@example.com",
-      "profile": {
-        "userId": "1",
-        "firstName": "John",
-        "lastName": "Doe",
-        "bio": "Enthusiastic event planner and attendee."
-      }
+      "firstName": "John",
+      "lastName": "Doe",
+      "bio": "Enthusiastic event planner and attendee.",
+      "imageURL": "https://cdn.icon-icons.com/icons2/2643/PNG/512/male_man_people_person_avatar_white_tone_icon_159363.png"
+    },
+    {
+      "id": "2",
+      "username": "john_doe",
+      "email": "john@example.com",
+      "firstName": "John",
+      "lastName": "Doe",
+      "bio": "Enthusiastic event planner and attendee.",
+      "imageURL": "https://www.w3schools.com/howto/img_avatar.png"
+    },
+    {
+      "id": "3",
+      "username": "john_doe",
+      "email": "john@example.com",
+      "firstName": "John",
+      "lastName": "Doe",
+      "bio": "Enthusiastic event planner and attendee.",
+      "imageURL": "https://cdn.icon-icons.com/icons2/2643/PNG/512/male_man_people_person_avatar_white_tone_icon_159363.png"
+    },
+    {
+      "id": "4",
+      "username": "john_doe",
+      "email": "john@example.com",
+      "firstName": "John",
+      "lastName": "Doe",
+      "bio": "Enthusiastic event planner and attendee.",
+      "imageURL": "https://www.w3schools.com/howto/img_avatar.png"
+    },
+    {
+      "id": "5",
+      "username": "john_doe",
+      "email": "john@example.com",
+      "firstName": "John",
+      "lastName": "Doe",
+      "bio": "Enthusiastic event planner and attendee.",
+      "imageURL": "https://www.w3schools.com/howto/img_avatar.png"
+    },
+    {
+      "id": "6",
+      "username": "john_doe",
+      "email": "john@example.com",
+      "firstName": "John",
+      "lastName": "Doe",
+      "bio": "Enthusiastic event planner and attendee.",
+      "imageURL": "https://www.w3schools.com/howto/img_avatar.png"
+    },
+    {
+      "id": "7",
+      "username": "john_doe",
+      "email": "john@example.com",
+      "firstName": "John",
+      "lastName": "Doe",
+      "bio": "Enthusiastic event planner and attendee.",
+      "imageURL": "https://www.w3schools.com/howto/img_avatar.png"
+    },
+    {
+      "id": "8",
+      "username": "john_doe",
+      "email": "john@example.com",
+      "firstName": "John",
+      "lastName": "Doe",
+      "bio": "Enthusiastic event planner and attendee.",
+      "imageURL": "https://www.w3schools.com/howto/img_avatar.png"
     }
   ],
   "locals": [
@@ -32,7 +93,7 @@
   "events": [
     {
       "id": "101",
-      "creatorId": "2",
+      "creatorId": "1",
       "title": "Tech Meetup",
       "imageURL": "https://sportsjob.com.br/wp-content/uploads/2020/11/futebol.jpg",
       "description": "Meetup for tech enthusiasts to share knowledge and network.",
@@ -40,8 +101,11 @@
       "endDate": "2024-06-15T12:00:00",
       "localID": "v2VZDwF",
       "subscribers": [
-        "2",
-        "3"
+        "4",
+        "5",
+        "6",
+        "7",
+        "2"
       ]
     },
     {
