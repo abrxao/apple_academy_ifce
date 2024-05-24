@@ -3,7 +3,6 @@ import jsonServer from "json-server";
 const server = jsonServer.create();
 const router = jsonServer.router("db.json"); // Assuming "db.json" is your data file
 const middlewares = jsonServer.defaults();
-jsonServer;
 
 // Use default middleware (logger, static, cors, and no-cache)
 server.use(middlewares);
@@ -11,7 +10,7 @@ server.use(middlewares);
 // Custom routes
 server.use(jsonServer.bodyParser);
 
-// Get user's events
+// Get user's events //METODOS DE REQUISIÇÃO - GET - POST - PUT - PATCH - DELETE
 server.get("/users/:id/events_details", (req, res) => {
   const userId = req.params.id; // Parse the ID as an integer
 
@@ -72,14 +71,38 @@ server.post("/events/:id/toggleSubscription", (req, res) => {
     // User already subscribed, remove them
     subscribers.splice(index, 1);
   }
-
   // Update the event in the database
   router.db.get("events").find({ id: eventId }).assign({ subscribers }).write();
 
   res.send(subscribers);
 });
-
 // Use default json-server routes
+
+server.post("/events/:id/remove_sub", (req, res) => {
+  const eventId = req.params.id;
+  const userId = req.body.userId;
+  const events = router.db.get("events").value();
+  const event = events.find((event) => event.id === eventId);
+
+  if (!event) {
+    return res.status(404).send({ error: "Event not found" });
+  }
+
+  const subscribers = event.subscribers;
+  const index = subscribers.indexOf(userId);
+
+  if (index === -1) {
+    // User not subscribed, add them
+    return res.status(404).send({ error: "User not inscribed" });
+  } else {
+    // User already subscribed, remove them
+    subscribers.splice(index, 1);
+  }
+  // Update the event in the database
+  router.db.get("events").find({ id: eventId }).assign({ subscribers }).write();
+
+  res.send(subscribers);
+});
 server.use(router);
 
 // Start server

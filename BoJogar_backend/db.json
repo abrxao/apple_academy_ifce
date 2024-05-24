@@ -104,8 +104,7 @@
         "4",
         "5",
         "6",
-        "7",
-        "2"
+        "7"
       ]
     },
     {
@@ -117,9 +116,7 @@
       "startDate": "2024-06-15T09:00:00",
       "endDate": "2024-06-15T12:00:00",
       "localID": "v2VZDwF",
-      "subscribers": [
-        "3"
-      ]
+      "subscribers": []
     },
     {
       "creatorId": "3",
