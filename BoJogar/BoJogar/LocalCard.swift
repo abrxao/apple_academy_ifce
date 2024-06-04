@@ -44,7 +44,7 @@ struct LocalCardView: View {
     }
     // Função async para pegar os dados dos locais do banco de dados
     func getLocals() async {
-        guard let url = URL(string: "http://localhost:3001/locals") else {
+        guard let url = URL(string: "\(API_BASE_URL)/locals") else {
             print("Invalid URL")
             return
         }

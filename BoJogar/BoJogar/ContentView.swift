@@ -9,7 +9,9 @@ import Foundation
 import SwiftUI
 
 struct ContentView: View {
+
     var body: some View {
+        
         TabView {
             Group {
                 NavigationStack {
@@ -18,14 +20,13 @@ struct ContentView: View {
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
-                
-                EventView()
-                    .badge(2)
-                    .tabItem {
+                NavigationStack {
+                    NearbyEventsView()
+                }
+                .tabItem {
+                    Label("Eventos", systemImage: "sportscourt")
                         
-                        Label("Received", systemImage: "house")
-                            
-                    }
+                }
                 Text("Tab Content 2")
                     .tabItem {
                         Label("Read", systemImage: "house")

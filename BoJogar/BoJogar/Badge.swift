@@ -10,7 +10,7 @@ struct Badge: View {
             .padding(.horizontal, 8)
             .padding(.vertical, 4)
             .foregroundStyle(.white)
-            .background(.redSecondary) // Fixed the background syntax
+            .background(variation == "gray" ? .gray700 : .redSecondary) // Fixed the background syntax
             .cornerRadius(8)
             .shadow(radius: 2, y: 2.0)
     }

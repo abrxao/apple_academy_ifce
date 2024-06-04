@@ -23,7 +23,7 @@ struct UserView: View {
             Spacer()
                 .frame(height: 40)
             
-            EventCardView()
+            EventUserCardView()
             
         }
     }

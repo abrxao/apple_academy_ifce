@@ -16,13 +16,13 @@ struct UserEventsRepo {
 
 extension UserEventsRepo {
     mutating func getUserEvents() async {
-        guard let url = URL(string: "http://localhost:3001/users/\(self.userId)/events_details") else {
-            print("erro1")
-            return
-        }
+        let url = URL(string: "\(API_BASE_URL)/users/\(self.userId)/events_details")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("true", forHTTPHeaderField: "ngrok-skip-browser-warning")
         do {
             
-            let (data, _) = try await URLSession.shared.data(from: url)
+            let (data, _) = try await URLSession.shared.data(for:request)
             
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -35,10 +35,10 @@ extension UserEventsRepo {
     }
     
     mutating func deleteEvent(withId id: String) async {
-        let url = URL(string: "http://localhost:3001/events/\(id)")!
+        let url = URL(string: "\(API_BASE_URL)/events/\(id)")!
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
-
+        request.setValue("true", forHTTPHeaderField: "ngrok-skip-browser-warning")
         do {
             let (_, response) = try await URLSession.shared.data(for: request)
             if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
@@ -54,11 +54,11 @@ extension UserEventsRepo {
     }
     
     mutating func addEvent(event: EventCardModel) async throws {
-            let url = URL(string: "http://localhost:3001/events")!
+            let url = URL(string: "\(API_BASE_URL)/events")!
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            
+            request.setValue("true", forHTTPHeaderField: "ngrok-skip-browser-warning")
             let encoder = JSONEncoder()
             
             do {

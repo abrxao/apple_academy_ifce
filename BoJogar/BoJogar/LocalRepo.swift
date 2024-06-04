@@ -26,12 +26,13 @@ struct LocalRepo {
 extension LocalRepo {
     
     mutating func getLocal() async {
-        guard let url = URL(string: "http://localhost:3001/locals/\(self.localID)") else {
-            print("Invalid URL")
-            return
-        }
+        
+        let url = URL(string: "\(API_BASE_URL)/locals/\(self.localID)")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("true", forHTTPHeaderField: "ngrok-skip-browser-warning")
         do {
-            let (data, _) = try await URLSession.shared.data(from: url)
+            let (data, _) = try await URLSession.shared.data(for: request)
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             let decodedData = try decoder.decode(LocalCardModel.self, from: data)
@@ -43,12 +44,12 @@ extension LocalRepo {
     
     mutating func getLocalEvents() async {
 
-        guard let url = URL(string: "http://localhost:3001/locals/\(self.localID)/events_details") else {
-            print("erro1")
-            return
-        }
+        let url = URL(string: "\(API_BASE_URL)/locals/\(self.localID)/events_details")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("true", forHTTPHeaderField: "ngrok-skip-browser-warning")
         do {
-            let (data, _) = try await URLSession.shared.data(from: url)
+            let (data, _) = try await URLSession.shared.data(for: request)
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             let decodedData = try decoder.decode([EventCardModel].self, from: data)
