@@ -13,7 +13,7 @@ import SwiftUI
 struct EventsPerLocal: View {
     
     @State private var localRepo: LocalRepo
-    
+    @State private var selectedEvent: EventCardModel?
     init(localID: String) {
         self._localRepo = State(initialValue: LocalRepo(localID: localID))
     }
@@ -68,7 +68,11 @@ struct EventsPerLocal: View {
                     Badge(text:"Eventos cadastrados")
                     VStack(spacing: 12) {
                         ForEach(localRepo.events, id: \.id) { event in // Iterate over items
-                            EventUserCard(event: event) // Render each item using ListItemView
+                            Button {
+                               selectedEvent = event
+                            } label: {
+                                EventUserCard(event: event)
+                            }
                         }
                     }
                     .padding()
@@ -106,6 +110,10 @@ struct EventsPerLocal: View {
             }
             
         }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationDestination(item: $selectedEvent, destination: { event in
+            EventSelected(event: event)
+        })
         .task {
             await localRepo.getLocal()
             await localRepo.getLocalEvents()

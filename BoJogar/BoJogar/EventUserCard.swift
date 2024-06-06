@@ -35,6 +35,7 @@ struct EventUserCardView: View {
             EventSelected(event: event)
         })
         .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("Voltar")
         .navigationBarHidden(true)
         .padding()
         .task {
@@ -58,11 +59,15 @@ struct EventUserCard: View {
             
             VStack(alignment: .leading) {
                 Text(event.title)
+                    .multilineTextAlignment(.leading)
+                    .lineLimit(1)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     .foregroundStyle(.white)
                 Spacer()
                     .frame(height: 6)
                 Text(event.description)
+                    .multilineTextAlignment(.leading)
+                    .lineLimit(3, reservesSpace: true)
                     .font(.caption)
                     .foregroundStyle(.gray200)
                 Spacer()

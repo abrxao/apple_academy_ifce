@@ -32,7 +32,7 @@
 		22926CF42BE18094007AA20B /* EventUserCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926CF32BE18094007AA20B /* EventUserCard.swift */; };
 		22926CFA2BE187B0007AA20B /* EventCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926CF92BE187B0007AA20B /* EventCardModel.swift */; };
 		22926CFC2BE1881E007AA20B /* LocalCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926CFB2BE1881E007AA20B /* LocalCardModel.swift */; };
-		22DDB8A02BEA9B0D00262E1E /* UserEventsRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DDB89F2BEA9B0D00262E1E /* UserEventsRepo.swift */; };
+		22DDB8A02BEA9B0D00262E1E /* 	.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DDB89F2BEA9B0D00262E1E /* 	.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,7 +62,7 @@
 		22926CF32BE18094007AA20B /* EventUserCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventUserCard.swift; sourceTree = "<group>"; };
 		22926CF92BE187B0007AA20B /* EventCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCardModel.swift; sourceTree = "<group>"; };
 		22926CFB2BE1881E007AA20B /* LocalCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCardModel.swift; sourceTree = "<group>"; };
-		22DDB89F2BEA9B0D00262E1E /* UserEventsRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEventsRepo.swift; sourceTree = "<group>"; };
+		22DDB89F2BEA9B0D00262E1E /* 	.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "\t.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +79,7 @@
 		221BC0C92BE57990001CAAF4 /* repository */ = {
 			isa = PBXGroup;
 			children = (
-				22DDB89F2BEA9B0D00262E1E /* UserEventsRepo.swift */,
+				22DDB89F2BEA9B0D00262E1E /* 	.swift */,
 				2221F8F92BF3DC630038D5EB /* LocalRepo.swift */,
 				22708B652BFFC3E00015004C /* EventRepo.swift */,
 			);
@@ -242,7 +242,7 @@
 				22926CDB2BE15AEB007AA20B /* BoJogarApp.swift in Sources */,
 				2222508A2BEEAB2D0037C15A /* EventView.swift in Sources */,
 				22708B602BFFBD860015004C /* AvatarEventUser.swift in Sources */,
-				22DDB8A02BEA9B0D00262E1E /* UserEventsRepo.swift in Sources */,
+				22DDB8A02BEA9B0D00262E1E /* 	.swift in Sources */,
 				22412E392BFD0BA900B269CC /* EventSelected.swift in Sources */,
 				22926CFA2BE187B0007AA20B /* EventCardModel.swift in Sources */,
 				2221F8F62BF3D9D20038D5EB /* EventsPerLocal.swift in Sources */,
@@ -396,6 +396,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BoJogar/Preview Content\"";
+				DEVELOPMENT_TEAM = 7K7H6UNSH5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -425,6 +426,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BoJogar/Preview Content\"";
+				DEVELOPMENT_TEAM = 7K7H6UNSH5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
