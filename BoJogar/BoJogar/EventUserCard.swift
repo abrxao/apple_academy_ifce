@@ -51,34 +51,41 @@ struct EventUserCard: View {
     let event: EventCardModel
     
     var body: some View {
-        HStack {
-            ImageURL(url: URL(string: event.imageURL)!)
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 124, height: 124)
-                .clipped()
-            
-            VStack(alignment: .leading) {
-                Text(event.title)
-                    .multilineTextAlignment(.leading)
-                    .lineLimit(1)
-                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                    .foregroundStyle(.white)
-                Spacer()
-                    .frame(height: 6)
-                Text(event.description)
-                    .multilineTextAlignment(.leading)
-                    .lineLimit(3, reservesSpace: true)
-                    .font(.caption)
-                    .foregroundStyle(.gray200)
-                Spacer()
+        ZStack(alignment:.bottomTrailing){
+            HStack {
+                ImageURL(url: URL(string: event.imageURL)!)
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 124, height: 124)
+                    .clipped()
+                
+                VStack(alignment: .leading) {
+                    Text(event.title)
+                        .multilineTextAlignment(.leading)
+                        .lineLimit(1)
+                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                        .foregroundStyle(.white)
+                    Spacer()
+                        .frame(height: 6)
+                    Text(event.description)
+                        .multilineTextAlignment(.leading)
+                        .lineLimit(3, reservesSpace: true)
+                        .font(.caption)
+                        .foregroundStyle(.gray200)
+                    Spacer()
+                }
+                .padding(12)
+                
+                
+                Spacer() 
             }
-            .padding(12)
-            
-            
-            Spacer()
+            .background(.redSecondary)
+            .cornerRadius(12)
+            .shadow(radius: 2, y: 3.0)
+            if event.creatorId == USER_ID_TESTE {
+                Badge(text: "Seu Evento")
+                    .font(.caption)
+                    .padding(4)
+            }
         }
-        .background(.redSecondary)
-        .cornerRadius(12)
-        .shadow(radius: 2, y: 3.0)
     }
 }

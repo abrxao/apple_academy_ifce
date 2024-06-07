@@ -7,6 +7,7 @@
 
 import Foundation
 
-let API_BASE_URL = "https://5930-2804-214-884f-282c-d99-16ff-2a2e-f2fa.ngrok-free.app"
+let API_BASE_URL = "https://f357-2804-389-7111-bedf-a73a-4ad8-5a90-5a73.ngrok-free.app"
 
-let USER_ID_TESTE = "5"
+let USER_ID_TESTE = "1"
+ 

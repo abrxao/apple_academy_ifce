@@ -183,7 +183,7 @@ struct EventSelected: View {
     private func refreshSubscribersPeriodically() async {
         while !Task.isCancelled {
             await eventRepo.getSubscribersDetails()
-            try? await Task.sleep(for: .seconds(5))
+            try? await Task.sleep(for: .seconds(2))
         }
     }
 }
