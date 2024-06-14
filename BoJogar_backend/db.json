@@ -2,75 +2,93 @@
   "users": [
     {
       "id": "1",
-      "username": "john_doe",
-      "email": "john@example.com",
-      "firstName": "John",
-      "lastName": "Doe",
-      "bio": "Enthusiastic event planner and attendee.",
-      "imageURL": "https://cdn.icon-icons.com/icons2/2643/PNG/512/male_man_people_person_avatar_white_tone_icon_159363.png"
+      "username": "alice_smith",
+      "email": "alice@example.com",
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "bio": "Avid traveler and beach sports enthusiast.",
+      "imageURL": "https://www.w3schools.com/w3images/avatar6.png"
     },
     {
       "id": "2",
-      "username": "john_doe",
-      "email": "john@example.com",
-      "firstName": "John",
-      "lastName": "Doe",
-      "bio": "Enthusiastic event planner and attendee.",
+      "username": "bob_jones",
+      "email": "bob@example.com",
+      "firstName": "Bob",
+      "lastName": "Jones",
+      "bio": "Tech meetup organizer and sports lover.",
       "imageURL": "https://www.w3schools.com/howto/img_avatar.png"
     },
     {
       "id": "3",
-      "username": "john_doe",
-      "email": "john@example.com",
-      "firstName": "John",
-      "lastName": "Doe",
-      "bio": "Enthusiastic event planner and attendee.",
-      "imageURL": "https://cdn.icon-icons.com/icons2/2643/PNG/512/male_man_people_person_avatar_white_tone_icon_159363.png"
+      "username": "carol_lee",
+      "email": "carol@example.com",
+      "firstName": "Carol",
+      "lastName": "Lee",
+      "bio": "Beach volleyball player and surf instructor.",
+      "imageURL": "https://www.w3schools.com/w3images/avatar2.png"
     },
     {
       "id": "4",
-      "username": "john_doe",
-      "email": "john@example.com",
-      "firstName": "John",
-      "lastName": "Doe",
-      "bio": "Enthusiastic event planner and attendee.",
-      "imageURL": "https://www.w3schools.com/howto/img_avatar.png"
+      "username": "david_martin",
+      "email": "david@example.com",
+      "firstName": "David",
+      "lastName": "Martin",
+      "bio": "Stand-up paddle enthusiast and event organizer.",
+      "imageURL": "https://www.w3schools.com/howto/img_avatar2.png"
     },
     {
       "id": "5",
-      "username": "john_doe",
-      "email": "john@example.com",
-      "firstName": "John",
-      "lastName": "Doe",
-      "bio": "Enthusiastic event planner and attendee.",
-      "imageURL": "https://www.w3schools.com/howto/img_avatar.png"
+      "username": "emily_clark",
+      "email": "emily@example.com",
+      "firstName": "Emily",
+      "lastName": "Clark",
+      "bio": "Runner and beach tennis player.",
+      "imageURL": "https://www.w3schools.com/w3images/avatar5.png"
     },
     {
       "id": "6",
-      "username": "john_doe",
-      "email": "john@example.com",
-      "firstName": "John",
-      "lastName": "Doe",
-      "bio": "Enthusiastic event planner and attendee.",
+      "username": "frank_thomas",
+      "email": "frank@example.com",
+      "firstName": "Frank",
+      "lastName": "Thomas",
+      "bio": "Cyclist and football fan.",
       "imageURL": "https://www.w3schools.com/howto/img_avatar.png"
     },
     {
       "id": "7",
-      "username": "john_doe",
-      "email": "john@example.com",
-      "firstName": "John",
-      "lastName": "Doe",
+      "username": "grace_harris",
+      "email": "grace@example.com",
+      "firstName": "Grace",
+      "lastName": "Harris",
+      "bio": "Event planner and beach sports lover.",
+      "imageURL": "https://www.w3schools.com/w3images/avatar2.png"
+    },
+    {
+      "id": "8",
+      "username": "henry_wilson",
+      "email": "henry@example.com",
+      "firstName": "Henry",
+      "lastName": "Wilson",
       "bio": "Enthusiastic event planner and attendee.",
       "imageURL": "https://www.w3schools.com/howto/img_avatar.png"
     },
     {
-      "id": "8",
-      "username": "john_doe",
-      "email": "john@example.com",
-      "firstName": "John",
-      "lastName": "Doe",
-      "bio": "Enthusiastic event planner and attendee.",
-      "imageURL": "https://www.w3schools.com/howto/img_avatar.png"
+      "id": "9",
+      "username": "isabella_taylor",
+      "email": "isabella@example.com",
+      "firstName": "Isabella",
+      "lastName": "Taylor",
+      "bio": "Beach sports enthusiast and organizer.",
+      "imageURL": "https://www.w3schools.com/w3images/avatar6.png"
+    },
+    {
+      "id": "10",
+      "username": "jack_brown",
+      "email": "jack@example.com",
+      "firstName": "Jack",
+      "lastName": "Brown",
+      "bio": "Football player and event coordinator.",
+      "imageURL": "https://www.w3schools.com/howto/img_avatar2.png"
     }
   ],
   "locals": [
@@ -85,44 +103,121 @@
       "imageURL": "https://mpce.mp.br/wp-content/uploads/2020/12/21.12.20-Praça-Gentilândia.jpg"
     },
     {
-      "title": "Praça Raquel de Queiroz",
-      "imageURL": "https://sportsjob.com.br/wp-content/uploads/2020/11/futebol.jpg",
-      "id": "v2VZDwF"
+      "id": "3",
+      "title": "Ginásio Aécio de Borba",
+      "imageURL": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Aeciodeborba.JPG"
+    },
+    {
+      "id": "4",
+      "title": "Praça Frei Galvão",
+      "imageURL": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Praça_Frei_Galvão_02.jpg"
+    },
+    {
+      "id": "5",
+      "title": "Areninha do Tigrão",
+      "imageURL": "https://pbs.twimg.com/media/EjMVqO5XYAIC8BM?format=jpg&name=large"
     }
   ],
   "events": [
     {
-      "id": "101",
-      "creatorId": "1",
-      "title": "Tech Meetup",
-      "imageURL": "https://sportsjob.com.br/wp-content/uploads/2020/11/futebol.jpg",
-      "description": "Meetup for tech enthusiasts to share knowledge and network.",
-      "startDate": "2024-06-11T09:00:00",
-      "endDate": "2024-06-11T12:00:00",
-      "localID": "2",
-      "subscribers": ["4", "5", "6", "7", "2"]
-    },
-    {
       "id": "102",
-      "creatorId": "2",
-      "title": "Tech Meetup teste",
-      "imageURL": "https://sportsjob.com.br/wp-content/uploads/2020/11/futebol.jpg",
-      "description": "Meetup for tech enthusiasts to share knowledge and network.",
-      "startDate": "2024-06-15T09:00:00",
-      "endDate": "2024-06-15T12:00:00",
-      "localID": "v2VZDwF",
-      "subscribers": ["3", "4", "6", "7"]
+      "creatorId": "5",
+      "title": "Torneio de Futebol",
+      "imageURL": "https://www.fortaleza.ce.gov.br/images/Areninha/areninha.netto.jpg",
+      "description": "Um emocionante torneio de futebol aberto a todos.",
+      "startDate": "2024-06-20T15:00:00",
+      "endDate": "2024-06-20T18:00:00",
+      "localID": "5",
+      "subscribers": [
+        "3",
+        "1"
+      ]
     },
     {
+      "id": "103",
       "creatorId": "3",
-      "title": "Futebol",
-      "imageURL": "https://sportsjob.com.br/wp-content/uploads/2020/11/futebol.jpg",
-      "description": "Meetup for tech enthusiasts to share knowledge and network.",
-      "startDate": "2024-06-15T09:00:00",
-      "endDate": "2024-06-15T12:00:00",
+      "title": "Campeonato de Vôlei",
+      "imageURL": "https://blog.totalpass.com.br/wp-content/uploads/2023/06/voleibol-regras.jpg",
+      "description": "Junte-se a nós para um emocionante campeonato de vôlei.",
+      "startDate": "2024-06-25T10:00:00",
+      "endDate": "2024-06-25T14:00:00",
+      "localID": "3",
+      "subscribers": [
+        "2",
+        "5"
+      ]
+    },
+    {
+      "id": "104",
+      "creatorId": "1",
+      "title": "Aulão de Yoga",
+      "imageURL": "https://www.academiaatlantis.com.br/aula-de-natacao/imagens/aula-de-yoga-academia-preco.jpg",
+      "description": "Relaxe e pratique yoga na praia com a gente.",
+      "startDate": "2024-06-30T07:00:00",
+      "endDate": "2024-06-30T08:00:00",
       "localID": "1",
-      "subscribers": ["2"],
-      "id": "14JmhWY"
+      "subscribers": [
+        "3",
+        "4"
+      ]
+    },
+    {
+      "id": "105",
+      "creatorId": "1",
+      "title": "Aulão de Zumba",
+      "imageURL": "https://blog.totalpass.com.br/wp-content/uploads/2023/03/zumba-aula.jpg",
+      "description": "Venha dançar e se divertir com a gente.",
+      "startDate": "2024-07-05T18:00:00",
+      "endDate": "2024-07-05T19:00:00",
+      "localID": "5",
+      "subscribers": [
+        "7",
+        "8",
+        "5"
+      ]
+    },
+    {
+      "id": "107",
+      "creatorId": "1",
+      "title": "Corrida",
+      "imageURL": "https://runnersbrasil.com/wp-content/uploads/2023/09/Maratona-06-1000x600.jpg",
+      "description": "Participe de uma corrida emocionante.",
+      "startDate": "2024-07-15T07:00:00",
+      "endDate": "2024-07-15T10:00:00",
+      "localID": "2",
+      "subscribers": [
+        "2",
+        "4",
+        "7"
+      ]
+    },
+    {
+      "id": "108",
+      "creatorId": "3",
+      "title": "Pedalada",
+      "imageURL": "https://bikeitau.com.br/wp-content/uploads/2022/02/ciclismo-urbano-itau-interna.jpg",
+      "description": "Junte-se a nós para uma pedalada e aproveite a vista.",
+      "startDate": "2024-07-20T08:00:00",
+      "endDate": "2024-07-20T11:00:00",
+      "localID": "3",
+      "subscribers": [
+        "4",
+        "6",
+        "2"
+      ]
+    },
+    {
+      "id": "109",
+      "creatorId": "3",
+      "title": "Amistoso de futsal",
+      "imageURL": "https://i1.wp.com/blog.londrina.pr.gov.br/wp-content/uploads/2023/05-maio/25.05.23/Londrina-futsal-feminino-x-Leoas-da-Serra-foto-Ana-Lugli_Londrina-Futsal-1.jpg?resize=1170%2C610&ssl=1",
+      "description": "Participe de um amistoso de futsal e divirta-se com amigos.",
+      "startDate": "2024-07-25T16:00:00",
+      "endDate": "2024-07-25T18:00:00",
+      "localID": "4",
+      "subscribers": [
+        "6"
+      ]
     }
   ]
 }
