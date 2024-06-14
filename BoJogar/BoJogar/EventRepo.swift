@@ -144,8 +144,9 @@ extension EventRepo {
                 do {
                     let updatedSubscribers = try decoder.decode([String].self, from: data)
                     self.event.subscribers = updatedSubscribers
-                    saveEventToLocalStorage() // Save to local storage
                     await self.getSubscribersDetails()
+                    saveEventToLocalStorage() // Save to local storage
+
                 } catch {
                     print("Error decoding response data: \(error)")
                 }

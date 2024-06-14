@@ -14,6 +14,10 @@
 		2222508A2BEEAB2D0037C15A /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222250892BEEAB2D0037C15A /* EventView.swift */; };
 		2239763D2BEEBA8700E66847 /* PerfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2239763C2BEEBA8700E66847 /* PerfilView.swift */; };
 		22412E392BFD0BA900B269CC /* EventSelected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22412E382BFD0BA900B269CC /* EventSelected.swift */; };
+		226887CF2C18C05600739DFC /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226887CE2C18C05600739DFC /* LocationManager.swift */; };
+		226887D72C18CC8800739DFC /* PlaceLookUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226887D62C18CC8800739DFC /* PlaceLookUpView.swift */; };
+		226887DB2C18CE1300739DFC /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226887DA2C18CE1300739DFC /* Place.swift */; };
+		226887DE2C18D18A00739DFC /* PlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226887DD2C18D18A00739DFC /* PlaceViewModel.swift */; };
 		226C76B32C064C8C00EE21CD /* consts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226C76B22C064C8C00EE21CD /* consts.swift */; };
 		226C76B82C06675A00EE21CD /* EventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226C76B72C06675A00EE21CD /* EventCard.swift */; };
 		226C76BA2C06678D00EE21CD /* NearbyEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226C76B92C06678D00EE21CD /* NearbyEventsView.swift */; };
@@ -43,6 +47,10 @@
 		222250892BEEAB2D0037C15A /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		2239763C2BEEBA8700E66847 /* PerfilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilView.swift; sourceTree = "<group>"; };
 		22412E382BFD0BA900B269CC /* EventSelected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSelected.swift; sourceTree = "<group>"; };
+		226887CE2C18C05600739DFC /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		226887D62C18CC8800739DFC /* PlaceLookUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceLookUpView.swift; sourceTree = "<group>"; };
+		226887DA2C18CE1300739DFC /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		226887DD2C18D18A00739DFC /* PlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewModel.swift; sourceTree = "<group>"; };
 		226C76B22C064C8C00EE21CD /* consts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = consts.swift; sourceTree = "<group>"; };
 		226C76B72C06675A00EE21CD /* EventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCard.swift; sourceTree = "<group>"; };
 		226C76B92C06678D00EE21CD /* NearbyEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyEventsView.swift; sourceTree = "<group>"; };
@@ -86,6 +94,14 @@
 			name = repository;
 			sourceTree = "<group>";
 		};
+		226887CD2C18C03A00739DFC /* permissions */ = {
+			isa = PBXGroup;
+			children = (
+				226887CE2C18C05600739DFC /* LocationManager.swift */,
+			);
+			path = permissions;
+			sourceTree = "<group>";
+		};
 		22926CCE2BE15AEB007AA20B = {
 			isa = PBXGroup;
 			children = (
@@ -105,14 +121,17 @@
 		22926CD92BE15AEB007AA20B /* BoJogar */ = {
 			isa = PBXGroup;
 			children = (
+				226887CD2C18C03A00739DFC /* permissions */,
 				221BC0C92BE57990001CAAF4 /* repository */,
 				22926CEB2BE15C05007AA20B /* models */,
 				22926CE82BE15B2F007AA20B /* components */,
 				22926CDA2BE15AEB007AA20B /* BoJogarApp.swift */,
 				22926CDC2BE15AEB007AA20B /* UserView.swift */,
+				226887DD2C18D18A00739DFC /* PlaceViewModel.swift */,
 				2221F8F52BF3D9D20038D5EB /* EventsPerLocal.swift */,
 				226C76B92C06678D00EE21CD /* NearbyEventsView.swift */,
 				227AE5CF2BEAA7C0002403AC /* ContentView.swift */,
+				226887D62C18CC8800739DFC /* PlaceLookUpView.swift */,
 				226C76B22C064C8C00EE21CD /* consts.swift */,
 				226C76BC2C06727400EE21CD /* utils.swift */,
 				222250892BEEAB2D0037C15A /* EventView.swift */,
@@ -150,6 +169,7 @@
 		22926CEB2BE15C05007AA20B /* models */ = {
 			isa = PBXGroup;
 			children = (
+				226887DA2C18CE1300739DFC /* Place.swift */,
 				22926CFB2BE1881E007AA20B /* LocalCardModel.swift */,
 				22926CF92BE187B0007AA20B /* EventCardModel.swift */,
 				22708B622BFFBE160015004C /* UserModel.swift */,
@@ -233,6 +253,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				22926CDD2BE15AEB007AA20B /* UserView.swift in Sources */,
+				226887DE2C18D18A00739DFC /* PlaceViewModel.swift in Sources */,
+				226887DB2C18CE1300739DFC /* Place.swift in Sources */,
 				227AE5D02BEAA7C0002403AC /* ContentView.swift in Sources */,
 				226C76BA2C06678D00EE21CD /* NearbyEventsView.swift in Sources */,
 				22926CF42BE18094007AA20B /* EventUserCard.swift in Sources */,
@@ -241,6 +263,7 @@
 				221BC0C42BE57063001CAAF4 /* Skeleton.swift in Sources */,
 				22926CDB2BE15AEB007AA20B /* BoJogarApp.swift in Sources */,
 				2222508A2BEEAB2D0037C15A /* EventView.swift in Sources */,
+				226887D72C18CC8800739DFC /* PlaceLookUpView.swift in Sources */,
 				22708B602BFFBD860015004C /* AvatarEventUser.swift in Sources */,
 				22DDB8A02BEA9B0D00262E1E /* 	.swift in Sources */,
 				22412E392BFD0BA900B269CC /* EventSelected.swift in Sources */,
@@ -252,6 +275,7 @@
 				226C76B82C06675A00EE21CD /* EventCard.swift in Sources */,
 				22926CEF2BE16C3A007AA20B /* ImageURL.swift in Sources */,
 				226C76BD2C06727400EE21CD /* utils.swift in Sources */,
+				226887CF2C18C05600739DFC /* LocationManager.swift in Sources */,
 				226C76B32C064C8C00EE21CD /* consts.swift in Sources */,
 				22708B632BFFBE160015004C /* UserModel.swift in Sources */,
 				22926CF12BE175D9007AA20B /* Badge.swift in Sources */,
@@ -399,6 +423,8 @@
 				DEVELOPMENT_TEAM = 7K7H6UNSH5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Para uma melhor experiencia esse app precisa da sua localizaçao para entregar os melhores eventos.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Para uma melhor experiencia esse app precisa da sua localizaçao para entregar os melhores eventos.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -429,6 +455,8 @@
 				DEVELOPMENT_TEAM = 7K7H6UNSH5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Para uma melhor experiencia esse app precisa da sua localizaçao para entregar os melhores eventos.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Para uma melhor experiencia esse app precisa da sua localizaçao para entregar os melhores eventos.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

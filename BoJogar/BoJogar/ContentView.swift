@@ -9,17 +9,23 @@ import Foundation
 import SwiftUI
 
 struct ContentView: View {
-
+    @EnvironmentObject var locationManager: LocationManager
+    
     var body: some View {
-        
+       
         TabView {
             Group {
                 NavigationStack {
-                    UserView()
+                    VStack{
+                        Text("\(locationManager.location?.coordinate.latitude ?? 0.0)")
+                        UserView()
+                    }
+                    
                 }
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
+                
                 NavigationStack {
                     NearbyEventsView()
                 }
@@ -27,7 +33,8 @@ struct ContentView: View {
                     Label("Eventos", systemImage: "sportscourt")
                         
                 }
-                Text("Tab Content 2")
+                PlaceLookUpView()
+                    .environmentObject(locationManager)
                     .tabItem {
                         Label("Read", systemImage: "house")
                     }
@@ -44,4 +51,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environmentObject(LocationManager())
 }

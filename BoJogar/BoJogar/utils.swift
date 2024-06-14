@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 extension String {
     
@@ -18,10 +19,20 @@ extension String {
             return "Invalid date"
         }
         
-        formatter.timeZone = TimeZone(identifier: "America/Sao_Paulo")
-        formatter.dateFormat = "yyyy-MM-dd 'às' HH:mm"
+        let calendar = Calendar.current
         
-        return formatter.string(from: date)
+        formatter.timeZone = TimeZone(identifier: "America/Sao_Paulo")
+        formatter.dateFormat = "HH:mm"
+        let timeString = formatter.string(from: date)
+        
+        if calendar.isDateInToday(date) {
+            return "hoje às \(timeString)"
+        } else if calendar.isDateInTomorrow(date) {
+            return "amanhã às \(timeString)"
+        } else {
+            formatter.dateFormat = "dd/MM/yyyy 'às' HH:mm"
+            return formatter.string(from: date)
+        }
     }
-    
 }
+

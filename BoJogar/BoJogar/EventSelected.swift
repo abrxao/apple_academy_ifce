@@ -7,13 +7,11 @@ struct EventSelected: View {
     let event: EventCardModel
     @State private var eventRepo: EventRepo
     @State private var selectedUser: UserModel?
-    @State private var isCurrentUserSub: Bool
     @State private var userToRemove: UserModel?
 
     init(event: EventCardModel) {
         self.event = event
         _eventRepo = State(initialValue: EventRepo(event: event))
-        _isCurrentUserSub = State(initialValue: event.subscribers.contains(USER_ID_TESTE))
         
     }
     
@@ -77,11 +75,11 @@ struct EventSelected: View {
                         HStack{
                             Spacer()
                                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-                            Button(isCurrentUserSub ? "Cancelar Inscrição" : "Inscrever-se") {
+                            Button(eventRepo.event.subscribers.contains(USER_ID_TESTE) ? "Cancelar Inscrição" : "Inscrever-se") {
                                 Task {
                                     do {
                                         try await eventRepo.toggleSubscribe(userID: USER_ID_TESTE)
-                                        isCurrentUserSub = eventRepo.event.subscribers.contains(USER_ID_TESTE)
+                                        await eventRepo.getSubscribersDetails()
                                     } catch {
                                         print("Error: \(error)")
                                     }

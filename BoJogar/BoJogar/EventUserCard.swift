@@ -50,12 +50,14 @@ struct EventUserCardView: View {
 struct EventUserCard: View {
     let event: EventCardModel
     
+    
+    
     var body: some View {
         ZStack(alignment:.bottomTrailing){
             HStack {
                 ImageURL(url: URL(string: event.imageURL)!)
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 124, height: 124)
+                    .aspectRatio(1,contentMode: .fill)
+                    .frame(maxWidth: 130)
                     .clipped()
                 
                 VStack(alignment: .leading) {
@@ -68,15 +70,20 @@ struct EventUserCard: View {
                         .frame(height: 6)
                     Text(event.description)
                         .multilineTextAlignment(.leading)
-                        .lineLimit(3, reservesSpace: true)
-                        .font(.caption)
+                        .lineLimit(2, reservesSpace: true)
                         .foregroundStyle(.gray200)
+                    
+                    Text(event.startDate.extractDateFormatted)
+                        .fontWeight(.semibold)
+                        .multilineTextAlignment(.leading)
+                        .foregroundStyle(.gray200)
+                        .padding(.top,4)
                     Spacer()
+                        .frame(maxHeight: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                    
                 }
-                .padding(12)
+                .padding(8)
                 
-                
-                Spacer() 
             }
             .background(.redSecondary)
             .cornerRadius(12)
