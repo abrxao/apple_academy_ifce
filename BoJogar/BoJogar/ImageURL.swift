@@ -2,8 +2,9 @@ import SwiftUI
 
 struct ImageURL: View {
     var url: URL
-    var width: Float32?
-    var height: Float32?
+    // Variaveis para atribuir valores ao skeleton loader
+    var skeletonWidth: CGFloat?
+    var skeletonHeight: CGFloat?
 
     var body: some View {
         AsyncImage(url: url) { phase in
@@ -11,14 +12,15 @@ struct ImageURL: View {
                 // Display the loaded image
                 image
                     .resizable()
+                    .scaledToFill()
             } else if phase.error != nil {
                 // Display a placeholder when loading failed
                 Image(systemName: "questionmark.diamond")
                     .imageScale(.large)
             } else {
                 // Display a placeholder while loading
-                SkeletonView(width: CGFloat(width ?? 174),height: CGFloat(height ?? 174))
-                    .frame(maxWidth: CGFloat(width ?? /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/))
+                SkeletonView(width: skeletonWidth ?? 0,height: skeletonHeight ?? 0)
+                    .frame(maxWidth: skeletonWidth ?? .infinity)
             }
         }
     }

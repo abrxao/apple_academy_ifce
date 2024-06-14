@@ -13,7 +13,7 @@ import SwiftUI
 struct EventsPerLocal: View {
     
     @State private var localRepo: LocalRepo
-    
+    @State private var selectedEvent: EventCardModel?
     init(localID: String) {
         self._localRepo = State(initialValue: LocalRepo(localID: localID))
     }
@@ -22,9 +22,11 @@ struct EventsPerLocal: View {
         
         ScrollView(showsIndicators: false) {
             if (localRepo.localData != nil){
-                ImageURL(url: URL(string: localRepo.localData?.imageURL ?? "")!, width: CFloat(UIScreen.main.bounds.width))
+                ImageURL(url: URL(string: localRepo.localData?.imageURL ?? "")!,
+                         skeletonWidth: .infinity,
+                         skeletonHeight: .infinity)
                     .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-                    .aspectRatio(16/9,contentMode: .fit)
+                    .aspectRatio(16/9,contentMode: .fill)
                     .clipped()
                 VStack(alignment:.leading){
                     Text(localRepo.localData?.title ?? "Evento")
@@ -59,20 +61,59 @@ struct EventsPerLocal: View {
                 
                 Spacer()
                     .frame(height: 36)
-                
-                Badge(text:"Eventos cadastrados")
-                VStack(spacing: 12) {
-                    ForEach(localRepo.events, id: \.id) { event in // Iterate over items
-                        EventCard(event: event) // Render each item using ListItemView
+                if(localRepo.events.isEmpty){
+                    
+                    Badge(text:"Sem eventos ainda")
+                }else {
+                    Badge(text:"Eventos cadastrados")
+                    VStack(spacing: 12) {
+                        ForEach(localRepo.events, id: \.id) { event in // Iterate over items
+                            Button {
+                               selectedEvent = event
+                            } label: {
+                                EventUserCard(event: event)
+                            }
+                        }
                     }
+                    .padding()
                 }
-                .padding()
+                
                
             } else {
-                ProgressView()
+                SkeletonView(width: .infinity, height: .infinity)
+                    .aspectRatio(16/9, contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+                    .cornerRadius(8)
+                VStack{
+                    SkeletonView(width: .infinity, height: .infinity)
+                        .frame(height: 64)
+                        .cornerRadius(4)
+                        .padding(.top,16)
+                    
+                    SkeletonView(width: .infinity, height: .infinity)
+                        .frame(height: 24)
+                        .cornerRadius(4)
+                    SkeletonView(width: .infinity, height: .infinity)
+                        .frame(height: 24)
+                        .cornerRadius(4)
+                    SkeletonView(width: .infinity, height: .infinity)
+                        .frame(height: 24)
+                        .cornerRadius(4)
+                    SkeletonView(width: .infinity, height: .infinity)
+                        .frame(height: 24)
+                        .cornerRadius(4)
+                    SkeletonView(width: .infinity, height: .infinity)
+                        .frame(height: 24)
+                        .cornerRadius(4)
+                }
+                .padding(.horizontal, 8)
+                
             }
             
         }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationDestination(item: $selectedEvent, destination: { event in
+            EventSelected(event: event)
+        })
         .task {
             await localRepo.getLocal()
             await localRepo.getLocalEvents()

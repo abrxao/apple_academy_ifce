@@ -4,12 +4,73 @@
       "id": "1",
       "username": "john_doe",
       "email": "john@example.com",
-      "profile": {
-        "userId": "1",
-        "firstName": "John",
-        "lastName": "Doe",
-        "bio": "Enthusiastic event planner and attendee."
-      }
+      "firstName": "John",
+      "lastName": "Doe",
+      "bio": "Enthusiastic event planner and attendee.",
+      "imageURL": "https://cdn.icon-icons.com/icons2/2643/PNG/512/male_man_people_person_avatar_white_tone_icon_159363.png"
+    },
+    {
+      "id": "2",
+      "username": "john_doe",
+      "email": "john@example.com",
+      "firstName": "John",
+      "lastName": "Doe",
+      "bio": "Enthusiastic event planner and attendee.",
+      "imageURL": "https://www.w3schools.com/howto/img_avatar.png"
+    },
+    {
+      "id": "3",
+      "username": "john_doe",
+      "email": "john@example.com",
+      "firstName": "John",
+      "lastName": "Doe",
+      "bio": "Enthusiastic event planner and attendee.",
+      "imageURL": "https://cdn.icon-icons.com/icons2/2643/PNG/512/male_man_people_person_avatar_white_tone_icon_159363.png"
+    },
+    {
+      "id": "4",
+      "username": "john_doe",
+      "email": "john@example.com",
+      "firstName": "John",
+      "lastName": "Doe",
+      "bio": "Enthusiastic event planner and attendee.",
+      "imageURL": "https://www.w3schools.com/howto/img_avatar.png"
+    },
+    {
+      "id": "5",
+      "username": "john_doe",
+      "email": "john@example.com",
+      "firstName": "John",
+      "lastName": "Doe",
+      "bio": "Enthusiastic event planner and attendee.",
+      "imageURL": "https://www.w3schools.com/howto/img_avatar.png"
+    },
+    {
+      "id": "6",
+      "username": "john_doe",
+      "email": "john@example.com",
+      "firstName": "John",
+      "lastName": "Doe",
+      "bio": "Enthusiastic event planner and attendee.",
+      "imageURL": "https://www.w3schools.com/howto/img_avatar.png"
+    },
+    {
+      "id": "7",
+      "username": "john_doe",
+      "email": "john@example.com",
+      "firstName": "John",
+      "lastName": "Doe",
+      "bio": "Enthusiastic event planner and attendee.",
+      "imageURL": "https://www.w3schools.com/howto/img_avatar.png"
+    },
+    {
+      "id": "8",
+      "username": "john_doe",
+      "email": "john@example.com",
+      "firstName": "John",
+      "lastName": "Doe",
+      "bio": "Enthusiastic event planner and attendee.",
+      "imageURL": "https://www.w3schools.com/howto/img_avatar.png"
     }
   ],
   "locals": [
@@ -20,8 +81,8 @@
     },
     {
       "id": "2",
-      "title": "Praça Raquel de Queiroz",
-      "imageURL": "https://images.adsttc.com/media/images/62d5/5386/2467/e401/65b8/80a3/slideshow/parque-rachel-de-queiroz-architectus-s-s_8.jpg?1658147766"
+      "title": "Praça da Gentilândia",
+      "imageURL": "https://mpce.mp.br/wp-content/uploads/2020/12/21.12.20-Praça-Gentilândia.jpg"
     },
     {
       "title": "Praça Raquel de Queiroz",
@@ -32,17 +93,14 @@
   "events": [
     {
       "id": "101",
-      "creatorId": "2",
+      "creatorId": "1",
       "title": "Tech Meetup",
       "imageURL": "https://sportsjob.com.br/wp-content/uploads/2020/11/futebol.jpg",
       "description": "Meetup for tech enthusiasts to share knowledge and network.",
-      "startDate": "2024-06-15T09:00:00",
-      "endDate": "2024-06-15T12:00:00",
-      "localID": "v2VZDwF",
-      "subscribers": [
-        "2",
-        "3"
-      ]
+      "startDate": "2024-06-11T09:00:00",
+      "endDate": "2024-06-11T12:00:00",
+      "localID": "2",
+      "subscribers": ["4", "5", "6", "7", "2"]
     },
     {
       "id": "102",
@@ -53,9 +111,7 @@
       "startDate": "2024-06-15T09:00:00",
       "endDate": "2024-06-15T12:00:00",
       "localID": "v2VZDwF",
-      "subscribers": [
-        "3"
-      ]
+      "subscribers": ["3", "4", "6", "7"]
     },
     {
       "creatorId": "3",
@@ -64,10 +120,8 @@
       "description": "Meetup for tech enthusiasts to share knowledge and network.",
       "startDate": "2024-06-15T09:00:00",
       "endDate": "2024-06-15T12:00:00",
-      "localID": "v2VZDwF",
-      "subscribers": [
-        "2"
-      ],
+      "localID": "1",
+      "subscribers": ["2"],
       "id": "14JmhWY"
     }
   ]

@@ -20,3 +20,5 @@ struct LocalCardModel: Codable, Identifiable, Hashable {
         hasher.combine(imageURL)
     }
 }
+
+// criando branch toma 

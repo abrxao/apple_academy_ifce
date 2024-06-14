@@ -11,7 +11,7 @@ import SwiftUI
 
 // ListView.swift
 struct LocalCardView: View {
-    @State private var locals: [LocalCardModel] = []
+    let locals: [LocalCardModel] 
     //@State private var selectedLocal: Bool = false
     @State private var selectedLocal: LocalCardModel?
     var body: some View {
@@ -38,26 +38,9 @@ struct LocalCardView: View {
         .navigationBarHidden(true)
 //        .navigationDestination(isPresented: $selectedLocal) {
 //        } // cmd option { } sobe e desce linhas
-        .task {
-            await getLocals()
-        }
+        
     }
-    // Função async para pegar os dados dos locais do banco de dados
-    func getLocals() async {
-        guard let url = URL(string: "http://localhost:3001/locals") else {
-            print("Invalid URL")
-            return
-        }
-        do {
-            let (data, _) = try await URLSession.shared.data(from: url)
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            let decodedData = try decoder.decode([LocalCardModel].self, from: data)
-            self.locals = decodedData
-        } catch {
-            print(error)
-        }
-    }
+    
 }
 
 struct LocalCard: View {
@@ -65,11 +48,13 @@ struct LocalCard: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            ImageURL(url: URL(string: local.imageURL)!)
+            ImageURL(url: URL(string: local.imageURL)!, skeletonHeight: 164)
                 .aspectRatio(51/58, contentMode: .fit)
                 // Clip the image to the frame
             
             Text(local.title)
+                .multilineTextAlignment(.leading)
+                .lineLimit(2, reservesSpace: true)
                 .foregroundStyle(.white)
                 .padding(.horizontal, 8)
                 .padding(.vertical, 6)

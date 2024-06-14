@@ -12,7 +12,7 @@ import SwiftUI
 struct EventView: View{
     
     var body: some View{
-        HStack(){
+        HStack {
             Text("View do Luiz")
             Text("View do Luiz")
         }

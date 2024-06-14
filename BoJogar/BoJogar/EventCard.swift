@@ -10,30 +10,57 @@ import SwiftUI
 
 
 struct EventCardView: View {
-    @State private var userEventsRepo = UserEventsRepo(userId: "1")
+    @State private var events:[EventCardModel] = []
+    @State private var selectedEvent: EventCardModel?
     var body: some View {
-        
-        
-        VStack(spacing: 12) {
-            if(userEventsRepo.events.isEmpty){
+        VStack{
+            if(events.isEmpty){
                 Badge(text: "Sem eventos ainda")
             }else{
-                Badge(text: "Eventos Confirmados")
+                Badge(text: "Eventos próximos de você")
+                    .padding(.bottom,24)
                 
                 Spacer()
                     .frame(height: 12)
-                
-                ForEach(userEventsRepo.events, id: \.id) { event in // Iterate over items
-                    EventCard(event: event) // Render each item using ListItemView
+                VStack(spacing:16){
+                    ForEach(events, id: \.id) { event in // Iterate over items
+                        Button {
+                            selectedEvent = event
+                        } label: {
+                            EventCard(event: event)
+                        }
+                    }
                 }
+                .padding(.horizontal,16)
+                Spacer()
+                    .frame(maxHeight: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
             }
         }
-        .padding()
-        .task {
-            await userEventsRepo.getUserEvents()
+        .navigationDestination(item: $selectedEvent, destination: { event in
+            EventSelected(event: event)
+        })
+        .navigationTitle("Eventos")
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarHidden(true)        .task {
+            await getEvents()
         }
         
-        
+    }
+    
+    func getEvents() async {
+        guard let url = URL(string: "\(API_BASE_URL)/events") else {
+            print("Invalid URL")
+            return
+        }
+        do {
+            let (data, _) = try await URLSession.shared.data(from: url)
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            let decodedData = try decoder.decode([EventCardModel].self, from: data)
+            self.events = decodedData
+        } catch {
+            print(error)
+        }
     }
 
 }
@@ -42,30 +69,28 @@ struct EventCard: View {
     let event: EventCardModel
     
     var body: some View {
-        HStack {
+        VStack(alignment: .leading) {
             ImageURL(url: URL(string: event.imageURL)!)
+                .frame( maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/,maxHeight: 170)
                 .aspectRatio(contentMode: .fill)
-                .frame(width: 124, height: 124)
                 .clipped()
             
-            VStack(alignment: .leading) {
-                Text(event.title)
-                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                    .foregroundStyle(.white)
-                Spacer()
-                    .frame(height: 6)
-                Text(event.description)
-                    .font(.caption)
-                    .foregroundStyle(.gray200)
-                Spacer()
-            }
-            .padding(12)
+            Text(event.title)
+                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                .foregroundStyle(.white)
+                .padding(.horizontal,16)
             
-            
-            Spacer()
+            Text(event.description)
+                .font(.caption)
+                .foregroundStyle(.gray200)
+                .padding(.horizontal,16)
+                .padding(.bottom,32)
+                .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
+                
         }
         .background(.redSecondary)
         .cornerRadius(12)
         .shadow(radius: 2, y: 3.0)
+        
     }
 }
