@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct BoJogarApp: App {
-    @StateObject var locationManager = LocationManager()
+    @StateObject private var locationManager = LocationManager()
     var body: some Scene {
         WindowGroup {
             ContentView()

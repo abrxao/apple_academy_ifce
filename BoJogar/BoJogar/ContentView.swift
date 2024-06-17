@@ -9,18 +9,13 @@ import Foundation
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var locationManager: LocationManager
     
     var body: some View {
        
         TabView {
             Group {
                 NavigationStack {
-                    VStack{
-                        Text("\(locationManager.location?.coordinate.latitude ?? 0.0)")
-                        UserView()
-                    }
-                    
+                    UserView()
                 }
                 .tabItem {
                     Label("Home", systemImage: "house")
@@ -34,15 +29,14 @@ struct ContentView: View {
                         
                 }
                 PlaceLookUpView()
-                    .environmentObject(locationManager)
                     .tabItem {
                         Label("Read", systemImage: "house")
                     }
             }
-            .toolbarBackground(.gray950, for: .tabBar)
+            .toolbarBackground(.white, for: .tabBar)
             .toolbarBackground(.visible, for: .tabBar)
         }
-        .accentColor(.redSecondary)
+        .accentColor(.primaryOrange)
         
         
     }

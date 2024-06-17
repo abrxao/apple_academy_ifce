@@ -93,29 +93,53 @@
   ],
   "locals": [
     {
-      "id": "1",
-      "title": "Praça Raquel de Queiroz",
-      "imageURL": "https://images.adsttc.com/media/images/62d5/5386/2467/e401/65b8/80a3/slideshow/parque-rachel-de-queiroz-architectus-s-s_8.jpg?1658147766"
+      "latitude": -3.7332892,
+      "longitude": -38.5700166,
+      "name": "Parque Rachel de Queiroz",
+      "address": "Fortaleza, CE",
+      "id": "m2md9md"
     },
     {
-      "id": "2",
-      "title": "Praça da Gentilândia",
-      "imageURL": "https://mpce.mp.br/wp-content/uploads/2020/12/21.12.20-Praça-Gentilândia.jpg"
+      "address": "Rua Santo Antônio 14 Fortaleza, CE",
+      "latitude": -3.7433885,
+      "name": "Skatepark da Gentilândia",
+      "longitude": -38.5370846,
+      "id": "mQolIJP"
     },
     {
-      "id": "3",
-      "title": "Ginásio Aécio de Borba",
-      "imageURL": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Aeciodeborba.JPG"
+      "address": "Avenida Beira Mar 4040 Fortaleza, CE",
+      "latitude": -3.7239132,
+      "name": "Pista de Skate da Beira Mar",
+      "longitude": -38.4896457,
+      "id": "IXq7ymY"
     },
     {
-      "id": "4",
-      "title": "Praça Frei Galvão",
-      "imageURL": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Praça_Frei_Galvão_02.jpg"
+      "name": "Areninha Campo do Tigrão",
+      "address": "Rua Cândido Jucá 419 Fortaleza, CE",
+      "longitude": -38.546141,
+      "latitude": -3.7419236,
+      "id": "uQGwxcq"
     },
     {
-      "id": "5",
-      "title": "Areninha do Tigrão",
-      "imageURL": "https://pbs.twimg.com/media/EjMVqO5XYAIC8BM?format=jpg&name=large"
+      "longitude": -3.7391319,
+      "address": "Avenida Carapinima 2200 Fortaleza, CE",
+      "latitude": -38.5401464,
+      "name": "Shopping Benfica",
+      "id": "yb6gacH"
+    },
+    {
+      "longitude": -3.7391319,
+      "name": "Shopping Benfica",
+      "address": "Avenida Carapinima 2200 Fortaleza, CE",
+      "latitude": -38.5401464,
+      "id": "UWKev64"
+    },
+    {
+      "address": "Rua Rio Grande do Sul 1249 Fortaleza, CE",
+      "longitude": -3.7596295,
+      "name": "Rua Rio Grande do Sul, 1249",
+      "latitude": -38.5679316,
+      "id": "xdnjumO"
     }
   ],
   "events": [
@@ -125,26 +149,24 @@
       "title": "Torneio de Futebol",
       "imageURL": "https://www.fortaleza.ce.gov.br/images/Areninha/areninha.netto.jpg",
       "description": "Um emocionante torneio de futebol aberto a todos.",
-      "startDate": "2024-06-20T15:00:00",
-      "endDate": "2024-06-20T18:00:00",
-      "localID": "5",
+      "startDate": "2024-06-18T15:00:00",
+      "endDate": "2024-06-18T18:00:00",
+      "localID": "m2md9md",
       "subscribers": [
-        "3",
         "1"
       ]
     },
     {
       "id": "103",
-      "creatorId": "3",
+      "creatorId": "2",
       "title": "Campeonato de Vôlei",
       "imageURL": "https://blog.totalpass.com.br/wp-content/uploads/2023/06/voleibol-regras.jpg",
       "description": "Junte-se a nós para um emocionante campeonato de vôlei.",
       "startDate": "2024-06-25T10:00:00",
       "endDate": "2024-06-25T14:00:00",
-      "localID": "3",
+      "localID": "mQolIJP",
       "subscribers": [
-        "2",
-        "5"
+        "1"
       ]
     },
     {
@@ -155,7 +177,7 @@
       "description": "Relaxe e pratique yoga na praia com a gente.",
       "startDate": "2024-06-30T07:00:00",
       "endDate": "2024-06-30T08:00:00",
-      "localID": "1",
+      "localID": "IXq7ymY",
       "subscribers": [
         "3",
         "4"
@@ -169,7 +191,7 @@
       "description": "Venha dançar e se divertir com a gente.",
       "startDate": "2024-07-05T18:00:00",
       "endDate": "2024-07-05T19:00:00",
-      "localID": "5",
+      "localID": "m2md9md",
       "subscribers": [
         "7",
         "8",
@@ -178,13 +200,13 @@
     },
     {
       "id": "107",
-      "creatorId": "1",
+      "creatorId": "2",
       "title": "Corrida",
       "imageURL": "https://runnersbrasil.com/wp-content/uploads/2023/09/Maratona-06-1000x600.jpg",
       "description": "Participe de uma corrida emocionante.",
       "startDate": "2024-07-15T07:00:00",
       "endDate": "2024-07-15T10:00:00",
-      "localID": "2",
+      "localID": "IXq7ymY",
       "subscribers": [
         "2",
         "4",
@@ -199,7 +221,7 @@
       "description": "Junte-se a nós para uma pedalada e aproveite a vista.",
       "startDate": "2024-07-20T08:00:00",
       "endDate": "2024-07-20T11:00:00",
-      "localID": "3",
+      "localID": "mQolIJP",
       "subscribers": [
         "4",
         "6",
@@ -216,7 +238,8 @@
       "endDate": "2024-07-25T18:00:00",
       "localID": "4",
       "subscribers": [
-        "6"
+        "6",
+        "2"
       ]
     }
   ]

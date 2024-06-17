@@ -7,29 +7,43 @@
 
 import Foundation
 import SwiftUI
-
- 
+import MapKit
 
 struct EventsPerLocal: View {
-    
+    struct Annotation: Identifiable{
+        let id = UUID().uuidString
+        var name : String
+        var address : String
+        var coordinate : CLLocationCoordinate2D
+    }
     @State private var localRepo: LocalRepo
     @State private var selectedEvent: EventCardModel?
-    init(localID: String) {
-        self._localRepo = State(initialValue: LocalRepo(localID: localID))
+    @State private var mapRegion = MKCoordinateRegion()
+    @EnvironmentObject var locationManager: LocationManager
+    @State private var annotations: [Annotation] = []
+   
+    var local: LocalCardModel
+    
+    let regionSize = 250.0
+    
+    init(local_: LocalCardModel) {
+        self._localRepo = State(initialValue: LocalRepo(local_: local_))
+        self.local = local_
     }
     
     var body: some View{
         
         ScrollView(showsIndicators: false) {
-            if (localRepo.localData != nil){
-                ImageURL(url: URL(string: localRepo.localData?.imageURL ?? "")!,
-                         skeletonWidth: .infinity,
-                         skeletonHeight: .infinity)
-                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-                    .aspectRatio(16/9,contentMode: .fill)
-                    .clipped()
+            
+                Map(coordinateRegion: $mapRegion,
+                    annotationItems: annotations){annotation in
+                    MapMarker(coordinate: annotation.coordinate)
+                }
+                .frame(maxWidth: .infinity)
+                .frame(height: 180)
                 VStack(alignment:.leading){
-                    Text(localRepo.localData?.title ?? "Evento")
+                    
+                    Text(local.name)
                         .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                         .foregroundStyle(.red900)
@@ -45,7 +59,7 @@ struct EventsPerLocal: View {
                     HStack(alignment:.center){
                         Image(systemName: "location.fill")
                             .foregroundStyle(.redSecondary)
-                        Text("Av. Senador Fernandes Távora, 1441 - Jóquei Clube, Fortaleza - CE, 60510-111")
+                        Text(local.address)
                             
                     }
                     Spacer()
@@ -53,20 +67,19 @@ struct EventsPerLocal: View {
                     HStack(alignment:.center){
                         Image(systemName: "map.fill")
                             .foregroundStyle(.redSecondary)
-                        Text("5 Km de você")
+                        if(locationManager.location != nil){
+                            let distance = " \(locationManager.location?.distance(from: CLLocation(latitude: local.latitude, longitude: local.longitude)) ?? 0.0)"
+                                                                              
+                            Text(distance.extractDistanceFormatted)}
                             
                     }
-                    
-                }.padding(.horizontal,16)
-                
-                Spacer()
-                    .frame(height: 36)
-                if(localRepo.events.isEmpty){
-                    
-                    Badge(text:"Sem eventos ainda")
-                }else {
-                    Badge(text:"Eventos cadastrados")
-                    VStack(spacing: 12) {
+                    if (!localRepo.events.isEmpty){
+                        
+                        SectionTitle(text: "Eventos Confirmados")
+                        
+                        Spacer()
+                            .frame(height: 12)
+                        
                         ForEach(localRepo.events, id: \.id) { event in // Iterate over items
                             Button {
                                selectedEvent = event
@@ -75,15 +88,15 @@ struct EventsPerLocal: View {
                             }
                         }
                     }
-                    .padding()
-                }
+                    
+                }.padding(.horizontal,16)
                 
+                Spacer()
+                    .frame(height: 36)
                
-            } else {
-                SkeletonView(width: .infinity, height: .infinity)
-                    .aspectRatio(16/9, contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
-                    .cornerRadius(8)
-                VStack{
+            
+                
+                /*VStack{
                     SkeletonView(width: .infinity, height: .infinity)
                         .frame(height: 64)
                         .cornerRadius(4)
@@ -105,9 +118,9 @@ struct EventsPerLocal: View {
                         .frame(height: 24)
                         .cornerRadius(4)
                 }
-                .padding(.horizontal, 8)
+                .padding(.horizontal, 8)*/
                 
-            }
+            
             
         }
         .navigationBarTitleDisplayMode(.inline)
@@ -115,7 +128,9 @@ struct EventsPerLocal: View {
             EventSelected(event: event)
         })
         .task {
-            await localRepo.getLocal()
+            mapRegion = MKCoordinateRegion(center: local.coordinate, latitudinalMeters: regionSize, longitudinalMeters: regionSize)
+            annotations = [Annotation(name: local.name, address: local.address, coordinate: local.coordinate)]
+            
             await localRepo.getLocalEvents()
         }
         

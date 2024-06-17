@@ -1,14 +1,22 @@
+//
+//  UserRepo.swift
+//  BoJogar
+//
+//  Created by found on 14/06/24.
+//
+
 import Foundation
 
 struct UserEventsRepo {
     var events: [EventCardModel]
     var userId: String
     private let localFileName: String
+    var numOfUserEvents: Int = 0
     
     init(userId: String) {
         self.events = []
         self.userId = userId
-        self.localFileName = "events_\(userId).json"
+        self.localFileName = "user_events_\(userId).json"
         loadEventsFromLocalStorage()
     }
     
@@ -58,6 +66,8 @@ extension UserEventsRepo {
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             let decodedData = try decoder.decode([EventCardModel].self, from: data)
             self.events = decodedData // Using 'self' with 'mutating' method
+            let userEvents = decodedData.filter{$0.creatorId == USER_ID_TESTE}
+            self.numOfUserEvents = userEvents.count
             saveEventsToLocalStorage() // Save to local storage
         } catch {
             print(error.localizedDescription)

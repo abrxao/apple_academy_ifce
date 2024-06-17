@@ -1,10 +1,3 @@
-//
-//  Teste.swift
-//  BoJogar
-//
-//  Created by found on 02/05/24.
-//
-
 import Foundation
 import SwiftUI
 
@@ -13,20 +6,55 @@ struct EventUserCardView: View {
     @State private var userEventsRepo = UserEventsRepo(userId: USER_ID_TESTE)
     @State private var selectedEvent: EventCardModel?
     var body: some View {
-        VStack(spacing: 12) {
-            if(userEventsRepo.events.isEmpty){
-                Badge(text: "Sem eventos ainda")
-            }else{
-                Badge(text: "Eventos Confirmados")
-                
-                Spacer()
-                    .frame(height: 12)
-                
-                ForEach(userEventsRepo.events, id: \.id) { event in // Iterate over items
-                    Button {
-                       selectedEvent = event
-                    } label: {
-                        EventUserCard(event: event)
+        ZStack(alignment:.topTrailing){
+            Button{
+                print("teste")
+            }
+            label:{
+                Text("Novo Evento")
+                    .font(.system(size: 14))
+                    .padding(.top,12)
+            }
+            VStack(alignment: .leading,spacing: 8) {
+                if(userEventsRepo.events.isEmpty){
+                    SectionTitle(text: "Sem eventos ainda")
+                        .multilineTextAlignment(.center)
+                }else{
+                    if(userEventsRepo.numOfUserEvents != 0){
+                        SectionTitle(text: "Seus Eventos")
+                            .multilineTextAlignment(.leading)
+                        Spacer()
+                            .frame(height: 1)
+                        
+                        ForEach(userEventsRepo.events, id: \.id) { event in // Iterate over items
+                            if (event.creatorId == USER_ID_TESTE){
+                                Button {
+                                    selectedEvent = event
+                                } label: {
+                                    EventUserCard(event: event)
+                                }
+                            }
+                        }
+                    }
+                    
+                    
+                    
+                    if( userEventsRepo.events.count - userEventsRepo.numOfUserEvents != 0){
+                        SectionTitle(text: "Eventos Inscritos")
+                            .multilineTextAlignment(.leading)
+                            .padding(.top, 24)
+                        Spacer()
+                            .frame(height: 1)
+                        
+                        ForEach(userEventsRepo.events, id: \.id) { event in // Iterate over items
+                            if (event.creatorId != USER_ID_TESTE){
+                                Button {
+                                    selectedEvent = event
+                                } label: {
+                                    EventUserCard(event: event)
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -37,11 +65,10 @@ struct EventUserCardView: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Voltar")
         .navigationBarHidden(true)
-        .padding()
+        .frame(maxWidth: .infinity)
         .task {
             await userEventsRepo.getUserEvents()
         }
-        
         
     }
 
@@ -51,48 +78,39 @@ struct EventUserCard: View {
     let event: EventCardModel
     
     
-    
     var body: some View {
-        ZStack(alignment:.bottomTrailing){
             HStack {
                 ImageURL(url: URL(string: event.imageURL)!)
-                    .aspectRatio(1,contentMode: .fill)
-                    .frame(maxWidth: 130)
+                    .frame(maxWidth: 96, maxHeight:96)
                     .clipped()
                 
                 VStack(alignment: .leading) {
                     Text(event.title)
                         .multilineTextAlignment(.leading)
                         .lineLimit(1)
-                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                        .foregroundStyle(.white)
+                        .fontWeight(.bold)
+                        .foregroundStyle(.gray800)
                     Spacer()
                         .frame(height: 6)
                     Text(event.description)
+                        .font(.system(size:14))
                         .multilineTextAlignment(.leading)
                         .lineLimit(2, reservesSpace: true)
-                        .foregroundStyle(.gray200)
+                        .foregroundStyle(.gray)
                     
                     Text(event.startDate.extractDateFormatted)
-                        .fontWeight(.semibold)
+                        .font(.system(size:14))
                         .multilineTextAlignment(.leading)
-                        .foregroundStyle(.gray200)
+                        .foregroundStyle(.gray)
                         .padding(.top,4)
                     Spacer()
-                        .frame(maxHeight: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                        .frame(maxHeight:.infinity)
                     
                 }
-                .padding(8)
+                .padding(.horizontal,4)
                 
             }
-            .background(.redSecondary)
-            .cornerRadius(12)
-            .shadow(radius: 2, y: 3.0)
-            if event.creatorId == USER_ID_TESTE {
-                Badge(text: "Seu Evento")
-                    .font(.caption)
-                    .padding(4)
-            }
+            .cornerRadius(16)
+            
         }
-    }
 }

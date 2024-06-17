@@ -1,23 +1,23 @@
 import Foundation
 import SwiftUI
 
-struct LocalRepo {
-    var events: [EventCardModel]
+class LocalRepo {
+    var events: [EventCardModel] = []
     var localData: LocalCardModel?
-    var localID: String
+    var local: LocalCardModel
     private let eventsFileName: String
     private let localDataFileName: String
     
-    init(localID: String) {
+    init(local_: LocalCardModel) {
         self.events = []
-        self.localID = localID
-        self.eventsFileName = "events_\(localID).json"
-        self.localDataFileName = "localData_\(localID).json"
+        self.local = local_
+        self.eventsFileName = "local_events_\(local_.id ?? "1").json"
+        self.localDataFileName = "localData_\(local_.id ?? "1").json"
         loadEventsFromLocalStorage()
         loadLocalDataFromLocalStorage()
     }
     
-    mutating func deleteEventLocal(withId id: String) {
+    func deleteEventLocal(withId id: String) {
         events.removeAll { $0.id == id }
         saveEventsToLocalStorage()
     }
@@ -37,7 +37,7 @@ struct LocalRepo {
         }
     }
     
-    private mutating func loadEventsFromLocalStorage() {
+    private func loadEventsFromLocalStorage() {
         let path = localFilePath(for: eventsFileName)
         guard FileManager.default.fileExists(atPath: path.path) else { return }
         
@@ -60,7 +60,7 @@ struct LocalRepo {
         }
     }
     
-    private mutating func loadLocalDataFromLocalStorage() {
+    private func loadLocalDataFromLocalStorage() {
         let path = localFilePath(for: localDataFileName)
         guard FileManager.default.fileExists(atPath: path.path) else { return }
         
@@ -75,25 +75,9 @@ struct LocalRepo {
 }
 
 extension LocalRepo {
-    mutating func getLocal() async {
-        let url = URL(string: "\(API_BASE_URL)/locals/\(self.localID)")!
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        request.setValue("true", forHTTPHeaderField: "ngrok-skip-browser-warning")
-        do {
-            let (data, _) = try await URLSession.shared.data(for: request)
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            let decodedData = try decoder.decode(LocalCardModel.self, from: data)
-            self.localData = decodedData
-            saveLocalDataToLocalStorage() // Save to local storage
-        } catch {
-            print(error)
-        }
-    }
-    
-    mutating func getLocalEvents() async {
-        let url = URL(string: "\(API_BASE_URL)/locals/\(self.localID)/events_details")!
+   
+    func getLocalEvents() async {
+        let url = URL(string: "\(API_BASE_URL)/locals/\(self.local.id ?? "")/events_details")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("true", forHTTPHeaderField: "ngrok-skip-browser-warning")
