@@ -11,5 +11,6 @@ struct SectionTitle: View {
             .font(.system(size:24))
             .padding(.vertical, 4)
             .foregroundStyle(.gray800)
+        
     }
 }
