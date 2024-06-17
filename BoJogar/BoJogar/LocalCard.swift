@@ -14,6 +14,7 @@ struct LocalCardView: View {
     let locals: [LocalCardModel] 
     //@State private var selectedLocal: Bool = false
     @State private var selectedLocal: LocalCardModel?
+    
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             // Use ScrollView with horizontal orientation
@@ -30,8 +31,8 @@ struct LocalCardView: View {
                 .padding(.vertical, 5)
 //            }
         }
-        .navigationDestination(item: $selectedLocal, destination: { item in
-            EventsPerLocal(localID: item.id)
+        .navigationDestination(item: $selectedLocal, destination: { local in
+            EventsPerLocal(local_: local)
         })
         .navigationTitle("Início")
         .navigationBarTitleDisplayMode(.inline)
@@ -48,11 +49,8 @@ struct LocalCard: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            ImageURL(url: URL(string: local.imageURL)!, skeletonHeight: 164)
-                .aspectRatio(51/58, contentMode: .fit)
-                // Clip the image to the frame
             
-            Text(local.title)
+            Text(local.name)
                 .multilineTextAlignment(.leading)
                 .lineLimit(2, reservesSpace: true)
                 .foregroundStyle(.white)
@@ -61,7 +59,6 @@ struct LocalCard: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 // Align text to the left
                 
-            
             Spacer()
                 .frame(height: 12)
         }

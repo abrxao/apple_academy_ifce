@@ -17,12 +17,23 @@ struct PlaceLookUpView: View {
     var body: some View {
         NavigationStack{
             List(placeVM.places, id:\.id){ place in
-                VStack(alignment:.leading){
-                    Text(place.name)
-                        .font(.title2)
-                    Text(place.address)
-                        .font(.callout)
-                    
+                Button{
+                    Task{
+                        do{
+                            try await place.openInMaps()
+                        }catch{
+                            print("nao removeu user")
+                        }
+                    }
+                }
+                label :{
+                    VStack(alignment:.leading){
+                        Text(place.name)
+                            .font(.title2)
+                        Text(place.address)
+                            .font(.callout)
+                        
+                    }
                 }
             }
             .listStyle(.plain)

@@ -32,11 +32,11 @@
 		22926CE22BE15AEC007AA20B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22926CE12BE15AEC007AA20B /* Preview Assets.xcassets */; };
 		22926CEA2BE15B7E007AA20B /* LocalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926CE92BE15B7E007AA20B /* LocalCard.swift */; };
 		22926CEF2BE16C3A007AA20B /* ImageURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926CEE2BE16C3A007AA20B /* ImageURL.swift */; };
-		22926CF12BE175D9007AA20B /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926CF02BE175D9007AA20B /* Badge.swift */; };
+		22926CF12BE175D9007AA20B /* SectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926CF02BE175D9007AA20B /* SectionTitle.swift */; };
 		22926CF42BE18094007AA20B /* EventUserCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926CF32BE18094007AA20B /* EventUserCard.swift */; };
 		22926CFA2BE187B0007AA20B /* EventCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926CF92BE187B0007AA20B /* EventCardModel.swift */; };
 		22926CFC2BE1881E007AA20B /* LocalCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926CFB2BE1881E007AA20B /* LocalCardModel.swift */; };
-		22DDB8A02BEA9B0D00262E1E /* 	.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DDB89F2BEA9B0D00262E1E /* 	.swift */; };
+		22A017CC2C1CD06D0089524B /* UserRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A017CB2C1CD06D0089524B /* UserRepo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,11 +66,11 @@
 		22926CE12BE15AEC007AA20B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		22926CE92BE15B7E007AA20B /* LocalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCard.swift; sourceTree = "<group>"; };
 		22926CEE2BE16C3A007AA20B /* ImageURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageURL.swift; sourceTree = "<group>"; };
-		22926CF02BE175D9007AA20B /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
+		22926CF02BE175D9007AA20B /* SectionTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitle.swift; sourceTree = "<group>"; };
 		22926CF32BE18094007AA20B /* EventUserCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventUserCard.swift; sourceTree = "<group>"; };
 		22926CF92BE187B0007AA20B /* EventCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCardModel.swift; sourceTree = "<group>"; };
 		22926CFB2BE1881E007AA20B /* LocalCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCardModel.swift; sourceTree = "<group>"; };
-		22DDB89F2BEA9B0D00262E1E /* 	.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "\t.swift"; sourceTree = "<group>"; };
+		22A017CB2C1CD06D0089524B /* UserRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,9 +87,9 @@
 		221BC0C92BE57990001CAAF4 /* repository */ = {
 			isa = PBXGroup;
 			children = (
-				22DDB89F2BEA9B0D00262E1E /* 	.swift */,
 				2221F8F92BF3DC630038D5EB /* LocalRepo.swift */,
 				22708B652BFFC3E00015004C /* EventRepo.swift */,
+				22A017CB2C1CD06D0089524B /* UserRepo.swift */,
 			);
 			name = repository;
 			sourceTree = "<group>";
@@ -127,7 +127,6 @@
 				22926CE82BE15B2F007AA20B /* components */,
 				22926CDA2BE15AEB007AA20B /* BoJogarApp.swift */,
 				22926CDC2BE15AEB007AA20B /* UserView.swift */,
-				226887DD2C18D18A00739DFC /* PlaceViewModel.swift */,
 				2221F8F52BF3D9D20038D5EB /* EventsPerLocal.swift */,
 				226C76B92C06678D00EE21CD /* NearbyEventsView.swift */,
 				227AE5CF2BEAA7C0002403AC /* ContentView.swift */,
@@ -158,7 +157,7 @@
 				22926CE92BE15B7E007AA20B /* LocalCard.swift */,
 				22926CEE2BE16C3A007AA20B /* ImageURL.swift */,
 				22708B5F2BFFBD860015004C /* AvatarEventUser.swift */,
-				22926CF02BE175D9007AA20B /* Badge.swift */,
+				22926CF02BE175D9007AA20B /* SectionTitle.swift */,
 				226C76B72C06675A00EE21CD /* EventCard.swift */,
 				22926CF32BE18094007AA20B /* EventUserCard.swift */,
 				221BC0C32BE57063001CAAF4 /* Skeleton.swift */,
@@ -169,6 +168,7 @@
 		22926CEB2BE15C05007AA20B /* models */ = {
 			isa = PBXGroup;
 			children = (
+				226887DD2C18D18A00739DFC /* PlaceViewModel.swift */,
 				226887DA2C18CE1300739DFC /* Place.swift */,
 				22926CFB2BE1881E007AA20B /* LocalCardModel.swift */,
 				22926CF92BE187B0007AA20B /* EventCardModel.swift */,
@@ -263,9 +263,9 @@
 				221BC0C42BE57063001CAAF4 /* Skeleton.swift in Sources */,
 				22926CDB2BE15AEB007AA20B /* BoJogarApp.swift in Sources */,
 				2222508A2BEEAB2D0037C15A /* EventView.swift in Sources */,
+				22A017CC2C1CD06D0089524B /* UserRepo.swift in Sources */,
 				226887D72C18CC8800739DFC /* PlaceLookUpView.swift in Sources */,
 				22708B602BFFBD860015004C /* AvatarEventUser.swift in Sources */,
-				22DDB8A02BEA9B0D00262E1E /* 	.swift in Sources */,
 				22412E392BFD0BA900B269CC /* EventSelected.swift in Sources */,
 				22926CFA2BE187B0007AA20B /* EventCardModel.swift in Sources */,
 				2221F8F62BF3D9D20038D5EB /* EventsPerLocal.swift in Sources */,
@@ -278,7 +278,7 @@
 				226887CF2C18C05600739DFC /* LocationManager.swift in Sources */,
 				226C76B32C064C8C00EE21CD /* consts.swift in Sources */,
 				22708B632BFFBE160015004C /* UserModel.swift in Sources */,
-				22926CF12BE175D9007AA20B /* Badge.swift in Sources */,
+				22926CF12BE175D9007AA20B /* SectionTitle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

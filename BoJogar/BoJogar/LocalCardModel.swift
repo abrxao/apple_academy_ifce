@@ -7,17 +7,23 @@
 
 import Foundation
 import SwiftUI
+import CoreLocation
 
 struct LocalCardModel: Codable, Identifiable, Hashable {
-    let id: String
-    var title: String // Change to var to allow mutation
-    var imageURL: String
+    let id: String?
+    var name: String // Change to var to allow mutation
+    var latitude: Double
+    var longitude: Double
+    var address: String
+    var coordinate: CLLocationCoordinate2D {
+        CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }
     //var mapsURL: Optional<String>
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
-        hasher.combine(title)
-        hasher.combine(imageURL)
+        hasher.combine(name)
+        hasher.combine(longitude)
     }
 }
 

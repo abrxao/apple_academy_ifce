@@ -34,5 +34,18 @@ extension String {
             return formatter.string(from: date)
         }
     }
+    var extractDistanceFormatted: String {
+        let meters = (self as NSString).doubleValue
+        
+        if meters < 500 {
+            return "A \(Int(meters)) metros de você"
+        }
+        if meters < 1000 {
+            return "Menos de 1 Km de você"
+        }
+        let formatedKm = String(format: "%.1f", meters/1000)
+        return "A \(formatedKm) Km de você"
+        
+    }
 }
 

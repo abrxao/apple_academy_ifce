@@ -27,7 +27,7 @@ struct EventSelected: View {
                         .frame(maxWidth: .infinity)
                         .aspectRatio(16/9, contentMode: .fit)
                         .clipped()
-                    Badge(text:event.title,variation: "gray")
+                    SectionTitle(text:event.title,variation: "gray")
                         .padding()
                 }
                 .padding(.bottom)

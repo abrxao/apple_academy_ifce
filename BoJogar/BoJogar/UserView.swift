@@ -9,43 +9,60 @@ import SwiftUI
 
 // ContentView.swif
 struct UserView: View {
-    @State private var locals:[LocalCardModel] = []
-    var body: some View {
-        ScrollView(showsIndicators: false) {
-            Spacer()
-                .frame(height: 4)
-            
-            Badge(text: "Locais Proximos")
-            
-            LocalCardView(locals:locals)
-                .padding()
-                .scrollClipDisabled(true)
-            
-            Spacer()
-                .frame(height: 40)
-            
-            EventUserCardView()
-        }
-        .task{
-            await getLocals()
-        }
-    }
     
-    // Função async para pegar os dados dos locais do banco de dados
-    func getLocals() async {
-        guard let url = URL(string: "\(API_BASE_URL)/locals") else {
-            print("Invalid URL")
-            return
+    var body: some View {
+        ZStack(alignment: .topLeading){
+            Image("courtBg")
+                .resizable()
+                .frame(maxWidth: .infinity)
+                .scaledToFit()
+            
+            ScrollView(showsIndicators: false) {
+                VStack(alignment: .leading) {
+                    Spacer()
+                        .frame(height: 40)
+                        .frame(maxWidth: .infinity)
+                    Text("Olá,")
+                        .font(.largeTitle)
+                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                        .foregroundStyle(.white)
+                        .shadow(radius: 4, y:4)
+                        .shadow(color:.gray700, radius: 1)
+                        .multilineTextAlignment(.leading)
+                        
+                    
+                    Text("John Doe!")
+                        .font(.largeTitle)
+                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                        .foregroundStyle(.white)
+                        .shadow(radius: 4, y:4)
+                        .shadow(color:.gray700, radius: 1)
+                        .multilineTextAlignment(.leading)
+                    
+                    Text("Que atividade você deseja praticar hoje?")
+                        .shadow(radius: 4, y:4)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(.white)
+
+                    
+                }
+                .padding(.horizontal,20)
+                
+                Spacer()
+                    .frame(height: 22)
+                
+                EventUserCardView()
+                    .padding(.horizontal,20)
+                    .padding(.vertical,32)
+                    .background(.white)
+                    .clipShape(UnevenRoundedRectangle(topLeadingRadius: 32, bottomLeadingRadius: 0, bottomTrailingRadius: 0, topTrailingRadius: 32, style: .continuous))
+                    
+                
+            }
+            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
         }
-        do {
-            let (data, _) = try await URLSession.shared.data(from: url)
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            let decodedData = try decoder.decode([LocalCardModel].self, from: data)
-            self.locals = decodedData
-        } catch {
-            print(error)
-        }
+        .frame(maxWidth: .infinity)
+        .background(.primaryBlue)
     }
 }
 

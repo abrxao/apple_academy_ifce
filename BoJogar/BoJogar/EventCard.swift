@@ -15,9 +15,9 @@ struct EventCardView: View {
     var body: some View {
         VStack{
             if(events.isEmpty){
-                Badge(text: "Sem eventos ainda")
+                SectionTitle(text: "Sem eventos ainda")
             }else{
-                Badge(text: "Eventos próximos de você")
+                SectionTitle(text: "Eventos próximos de você")
                     .padding(.bottom,24)
                 
                 Spacer()
@@ -31,7 +31,6 @@ struct EventCardView: View {
                         }
                     }
                 }
-                .padding(.horizontal,16)
                 Spacer()
                     .frame(maxHeight: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
             }
@@ -41,7 +40,8 @@ struct EventCardView: View {
         })
         .navigationTitle("Eventos")
         .navigationBarTitleDisplayMode(.inline)
-        .navigationBarHidden(true)        .task {
+        .navigationBarHidden(true)        
+        .task {
             await getEvents()
         }
         

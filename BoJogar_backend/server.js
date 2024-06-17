@@ -51,6 +51,18 @@ server.get("/locals/:id/events_details", (req, res) => {
   res.status(200).json(localEvents);
 });
 
+server.get("/locals_with_events", (req, res) => {
+  // Parse the ID as an integer
+  const locals = router.db.get("locals").value();
+  const events = router.db.get("events").value();
+  const eventsID = events.map((event) => event.localID)
+  // Assuming the resource name is 'events'
+  // Filter the data based on the array of IDs
+  const localFiltered = locals.filter((local) => eventsID.includes(local.id));
+
+  res.status(200).json(localFiltered);
+});
+
 server.post("/events/:id/toggleSubscription", (req, res) => {
   const eventId = req.params.id;
   const userId = req.body.userId;
