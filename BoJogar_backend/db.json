@@ -89,93 +89,7 @@
       "lastName": "Brown",
       "bio": "Football player and event coordinator.",
       "imageURL": "https://www.w3schools.com/howto/img_avatar2.png"
-      "username": "alice_smith",
-      "email": "alice@example.com",
-      "firstName": "Alice",
-      "lastName": "Smith",
-      "bio": "Avid traveler and beach sports enthusiast.",
-      "imageURL": "https://www.w3schools.com/w3images/avatar6.png"
-    },
-    {
-      "id": "2",
-      "username": "bob_jones",
-      "email": "bob@example.com",
-      "firstName": "Bob",
-      "lastName": "Jones",
-      "bio": "Tech meetup organizer and sports lover.",
-      "imageURL": "https://www.w3schools.com/howto/img_avatar.png"
-    },
-    {
-      "id": "3",
-      "username": "carol_lee",
-      "email": "carol@example.com",
-      "firstName": "Carol",
-      "lastName": "Lee",
-      "bio": "Beach volleyball player and surf instructor.",
-      "imageURL": "https://www.w3schools.com/w3images/avatar2.png"
-    },
-    {
-      "id": "4",
-      "username": "david_martin",
-      "email": "david@example.com",
-      "firstName": "David",
-      "lastName": "Martin",
-      "bio": "Stand-up paddle enthusiast and event organizer.",
-      "imageURL": "https://www.w3schools.com/howto/img_avatar2.png"
-    },
-    {
-      "id": "5",
-      "username": "emily_clark",
-      "email": "emily@example.com",
-      "firstName": "Emily",
-      "lastName": "Clark",
-      "bio": "Runner and beach tennis player.",
-      "imageURL": "https://www.w3schools.com/w3images/avatar5.png"
-    },
-    {
-      "id": "6",
-      "username": "frank_thomas",
-      "email": "frank@example.com",
-      "firstName": "Frank",
-      "lastName": "Thomas",
-      "bio": "Cyclist and football fan.",
-      "imageURL": "https://www.w3schools.com/howto/img_avatar.png"
-    },
-    {
-      "id": "7",
-      "username": "grace_harris",
-      "email": "grace@example.com",
-      "firstName": "Grace",
-      "lastName": "Harris",
-      "bio": "Event planner and beach sports lover.",
-      "imageURL": "https://www.w3schools.com/w3images/avatar2.png"
-    },
-    {
-      "id": "8",
-      "username": "henry_wilson",
-      "email": "henry@example.com",
-      "firstName": "Henry",
-      "lastName": "Wilson",
-      "bio": "Enthusiastic event planner and attendee.",
-      "imageURL": "https://www.w3schools.com/howto/img_avatar.png"
-    },
-    {
-      "id": "9",
-      "username": "isabella_taylor",
-      "email": "isabella@example.com",
-      "firstName": "Isabella",
-      "lastName": "Taylor",
-      "bio": "Beach sports enthusiast and organizer.",
-      "imageURL": "https://www.w3schools.com/w3images/avatar6.png"
-    },
-    {
-      "id": "10",
-      "username": "jack_brown",
-      "email": "jack@example.com",
-      "firstName": "Jack",
-      "lastName": "Brown",
-      "bio": "Football player and event coordinator.",
-      "imageURL": "https://www.w3schools.com/howto/img_avatar2.png"
+    
     }
   ],
   "locals": [
@@ -317,7 +231,6 @@
     },
     {
       "id": "109",
-      "id": "108",
       "creatorId": "3",
       "title": "Amistoso de futsal",
       "imageURL": "https://i1.wp.com/blog.londrina.pr.gov.br/wp-content/uploads/2023/05-maio/25.05.23/Londrina-futsal-feminino-x-Leoas-da-Serra-foto-Ana-Lugli_Londrina-Futsal-1.jpg?resize=1170%2C610&ssl=1",
