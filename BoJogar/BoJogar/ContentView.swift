@@ -25,7 +25,7 @@ struct ContentView: View {
                         Label("Eventos", systemImage: "sportscourt")
                     }
                 
-                PlaceLookUpView()
+                LocationsView()
                     .tabItem {
                         Label("Read", systemImage: "house")
                     }

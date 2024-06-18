@@ -4,8 +4,8 @@ import SwiftUI
 
 
 // ListView.swift
-struct LocalCardView: View {
-    let locations: [LocationModel]
+struct LocationsView: View {
+    @State private var locations:[LocationModel] = []
     @State private var selectedLocal: LocationModel?
     
     var body: some View {
@@ -28,8 +28,28 @@ struct LocalCardView: View {
             .navigationTitle("Início")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarHidden(true)
+            .task{
+                await getLocations()
+            }
             
         }
     }
     
+    
+    func getLocations() async{
+        let url = URL(string: "\(API_BASE_URL)/locals_with_events")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("true", forHTTPHeaderField: "ngrok-skip-browser-warning")
+        do {
+            let (data, _) = try await URLSession.shared.data(for:request)
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            let decodedData = try decoder.decode([LocationModel].self, from: data)
+            self.locations = decodedData
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+    }
 }
