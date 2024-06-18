@@ -8,45 +8,9 @@
 import Foundation
 import SwiftUI
 
-
-// ListView.swift
-struct LocalCardView: View {
-    let locals: [LocalCardModel] 
-    //@State private var selectedLocal: Bool = false
-    @State private var selectedLocal: LocalCardModel?
-    
-    var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            // Use ScrollView with horizontal orientation
-//            NavigationStack{
-                HStack(spacing: 10) { // Use LazyHStack for efficiency
-                    ForEach(locals) { local in // Iterate over items
-                        Button {
-                            selectedLocal = local
-                        } label: {
-                            LocalCard(local: local)
-                        }
-                    }
-                }
-                .padding(.vertical, 5)
-//            }
-        }
-        .navigationDestination(item: $selectedLocal, destination: { local in
-            EventsPerLocal(local_: local)
-        })
-        .navigationTitle("Início")
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationBarHidden(true)
-//        .navigationDestination(isPresented: $selectedLocal) {
-//        } // cmd option { } sobe e desce linhas
-        
-    }
-    
-}
-
 struct LocalCard: View {
-    let local: LocalCardModel
-
+    let local: LocationModel
+    
     var body: some View {
         VStack(alignment: .leading) {
             
@@ -57,8 +21,8 @@ struct LocalCard: View {
                 .padding(.horizontal, 8)
                 .padding(.vertical, 6)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                // Align text to the left
-                
+            // Align text to the left
+            
             Spacer()
                 .frame(height: 12)
         }

@@ -9,7 +9,6 @@ struct SectionTitle: View {
         Text(text)
             .fontWeight(.bold)
             .font(.system(size:24))
-            .padding(.vertical, 4)
             .foregroundStyle(.gray800)
         
     }

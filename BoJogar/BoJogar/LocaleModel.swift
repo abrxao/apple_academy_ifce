@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import CoreLocation
 
-struct LocalCardModel: Codable, Identifiable, Hashable {
+struct LocationModel: Codable, Identifiable, Hashable {
     let id: String?
     var name: String // Change to var to allow mutation
     var latitude: Double

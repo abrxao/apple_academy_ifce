@@ -10,10 +10,12 @@ import SwiftUI
 @main
 struct BoJogarApp: App {
     @StateObject private var locationManager = LocationManager()
+    @StateObject private var userRepo = UserRepo(userId: USER_ID_TESTE)
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(locationManager)
+                .environmentObject(userRepo)
         }
     }
 }

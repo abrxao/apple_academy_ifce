@@ -4,12 +4,12 @@ import SwiftUI
 
 struct EventSelected: View {
     
-    let event: EventCardModel
+    let event: EventModel
     @State private var eventRepo: EventRepo
     @State private var selectedUser: UserModel?
     @State private var userToRemove: UserModel?
 
-    init(event: EventCardModel) {
+    init(event: EventModel) {
         self.event = event
         _eventRepo = State(initialValue: EventRepo(event: event))
         
@@ -18,7 +18,6 @@ struct EventSelected: View {
     var body: some View {
         ScrollView {
             VStack {
-                //COMPONENTE DE IMAGE
                 ZStack(alignment:.topLeading){
                     ImageURL(url: URL(string: event.imageURL)!,
                              skeletonWidth: .infinity,

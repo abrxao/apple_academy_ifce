@@ -96,7 +96,7 @@ struct PerfilView: View{
                     .padding(.horizontal)
                 Spacer()
                     .frame(height: 30)
-                EventCardView()
+                SearchEventsView()
             }
         }
         .sheet(isPresented: $isPresented) {

@@ -2,11 +2,11 @@ import Foundation
 
 struct EventRepo {
     var subscriberDetails: [UserModel]
-    var event: EventCardModel
+    var event: EventModel
     private let subscriberDetailsFileName: String
     private let eventFileName: String
     
-    init(event: EventCardModel) {
+    init(event: EventModel) {
         self.event = event
         self.subscriberDetails = []
         self.subscriberDetailsFileName = "subscribers_\(event.id).json"
@@ -60,13 +60,14 @@ struct EventRepo {
         let decoder = JSONDecoder()
         do {
             let data = try Data(contentsOf: path)
-            event = try decoder.decode(EventCardModel.self, from: data)
+            event = try decoder.decode(EventModel.self, from: data)
         } catch {
             print("Failed to load event from local storage: \(error)")
         }
     }
 }
 
+//Extension for async functions
 extension EventRepo {
     mutating func getSubscribersDetails() async {
         let url = URL(string: "\(API_BASE_URL)/events/\(event.id)/subscribers_details")!

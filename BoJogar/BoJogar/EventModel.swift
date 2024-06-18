@@ -7,7 +7,7 @@
 import Foundation
 import SwiftUI
 
-struct EventCardModel:  Codable, Identifiable, Hashable  {
+struct EventModel: Codable, Identifiable, Hashable  {
     var id: String
     var creatorId: String
     var title: String

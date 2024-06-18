@@ -20,6 +20,10 @@ struct UserModel:  Codable, Identifiable, Hashable  {
         hasher.combine(id)
         hasher.combine(email)
     }
+    
+    var fullName: String {
+        return "\(self.firstName) \(self.lastName) "
+    }
 }
 
 

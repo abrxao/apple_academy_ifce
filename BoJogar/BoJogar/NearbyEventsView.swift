@@ -7,16 +7,3 @@
 
 import Foundation
 import SwiftUI
-
-struct NearbyEventsView: View {
-    
-    var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            Spacer()
-                .frame(maxWidth: 32)
-            EventCardView()
-            
-            
-        }
-    }
-}

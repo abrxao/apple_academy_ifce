@@ -1,20 +1,21 @@
 import Foundation
 import SwiftUI
+import Observation
 
-class LocalRepo {
-    var events: [EventCardModel] = []
-    var localData: LocalCardModel?
-    var local: LocalCardModel
+@Observable
+class LocationRepo {
+    var events: [EventModel] = []
+    var location: LocationModel
     private let eventsFileName: String
     private let localDataFileName: String
     
-    init(local_: LocalCardModel) {
+    init(location: LocationModel) {
         self.events = []
-        self.local = local_
-        self.eventsFileName = "local_events_\(local_.id ?? "1").json"
-        self.localDataFileName = "localData_\(local_.id ?? "1").json"
+        self.location = location
+        self.eventsFileName = "local_events_\(location.id ?? "1").json"
+        self.localDataFileName = "localData_\(location.id ?? "1").json"
         loadEventsFromLocalStorage()
-        loadLocalDataFromLocalStorage()
+        loadLocationDataFromLocalStorage()
     }
     
     func deleteEventLocal(withId id: String) {
@@ -44,40 +45,42 @@ class LocalRepo {
         let decoder = JSONDecoder()
         do {
             let data = try Data(contentsOf: path)
-            events = try decoder.decode([EventCardModel].self, from: data)
+            events = try decoder.decode([EventModel].self, from: data)
         } catch {
             print("Failed to load events from local storage: \(error)")
         }
     }
     
-    private func saveLocalDataToLocalStorage() {
+    private func saveLocationDataToLocalStorage() {
         let encoder = JSONEncoder()
         do {
-            let data = try encoder.encode(localData)
+            let data = try encoder.encode(location)
             try data.write(to: localFilePath(for: localDataFileName))
         } catch {
             print("Failed to save local data to local storage: \(error)")
         }
     }
     
-    private func loadLocalDataFromLocalStorage() {
+    private func loadLocationDataFromLocalStorage() {
         let path = localFilePath(for: localDataFileName)
         guard FileManager.default.fileExists(atPath: path.path) else { return }
         
         let decoder = JSONDecoder()
         do {
             let data = try Data(contentsOf: path)
-            localData = try decoder.decode(LocalCardModel.self, from: data)
+            location = try decoder.decode(LocationModel.self, from: data)
         } catch {
             print("Failed to load local data from local storage: \(error)")
         }
     }
 }
 
-extension LocalRepo {
+//Extesion for async functions
+
+extension LocationRepo {
    
     func getLocalEvents() async {
-        let url = URL(string: "\(API_BASE_URL)/locals/\(self.local.id ?? "")/events_details")!
+        let url = URL(string: "\(API_BASE_URL)/locals/\(self.location.id ?? "")/events_details")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("true", forHTTPHeaderField: "ngrok-skip-browser-warning")
@@ -85,7 +88,7 @@ extension LocalRepo {
             let (data, _) = try await URLSession.shared.data(for: request)
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
-            let decodedData = try decoder.decode([EventCardModel].self, from: data)
+            let decodedData = try decoder.decode([EventModel].self, from: data)
             self.events = decodedData // Using 'self' with 'mutating' method
             saveEventsToLocalStorage() // Save to local storage
         } catch {

@@ -5,7 +5,6 @@ struct ImageURL: View {
     // Variaveis para atribuir valores ao skeleton loader
     var skeletonWidth: CGFloat?
     var skeletonHeight: CGFloat?
-
     var body: some View {
         AsyncImage(url: url) { phase in
             if let image = phase.image {

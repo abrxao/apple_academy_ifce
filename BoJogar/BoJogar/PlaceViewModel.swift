@@ -10,7 +10,7 @@ import MapKit
 
 @MainActor
 class PlaceViewModel: ObservableObject{
-    @Published var places:[Place] = []
+    @Published var places:[PlaceModel] = []
     
     func search(text:String,region:MKCoordinateRegion){
         let searchRequest = MKLocalSearch.Request()
@@ -23,7 +23,7 @@ class PlaceViewModel: ObservableObject{
                 print("ERROR: \(error?.localizedDescription ?? "Unknown Error")")
                 return
             }
-            self.places = response.mapItems.map(Place.init)
+            self.places = response.mapItems.map(PlaceModel.init)
             
         }
     }

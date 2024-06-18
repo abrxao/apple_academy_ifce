@@ -6,10 +6,13 @@
 //
 
 import Foundation
+import Observation
 
-struct UserEventsRepo {
-    var events: [EventCardModel]
+@Observable
+class UserRepo: ObservableObject {
+    var events: [EventModel]
     var userId: String
+    var userData: UserModel?
     private let localFileName: String
     var numOfUserEvents: Int = 0
     
@@ -20,7 +23,7 @@ struct UserEventsRepo {
         loadEventsFromLocalStorage()
     }
     
-    mutating func deleteEventLocal(withId id: String) {
+    func deleteEventLocal(withId id: String) {
         events.removeAll { $0.id == id }
         saveEventsToLocalStorage()
     }
@@ -40,22 +43,22 @@ struct UserEventsRepo {
         }
     }
     
-    private mutating func loadEventsFromLocalStorage() {
+    private  func loadEventsFromLocalStorage() {
         let path = localFilePath()
         guard FileManager.default.fileExists(atPath: path.path) else { return }
         
         let decoder = JSONDecoder()
         do {
             let data = try Data(contentsOf: path)
-            events = try decoder.decode([EventCardModel].self, from: data)
+            events = try decoder.decode([EventModel].self, from: data)
         } catch {
             print("Failed to load events from local storage: \(error)")
         }
     }
 }
 
-extension UserEventsRepo {
-    mutating func getUserEvents() async {
+extension UserRepo {
+    func getUserEvents() async {
         let url = URL(string: "\(API_BASE_URL)/users/\(self.userId)/events_details")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -64,8 +67,8 @@ extension UserEventsRepo {
             let (data, _) = try await URLSession.shared.data(for:request)
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
-            let decodedData = try decoder.decode([EventCardModel].self, from: data)
-            self.events = decodedData // Using 'self' with 'mutating' method
+            let decodedData = try decoder.decode([EventModel].self, from: data)
+            self.events = decodedData // Using 'self' with '' method
             let userEvents = decodedData.filter{$0.creatorId == USER_ID_TESTE}
             self.numOfUserEvents = userEvents.count
             saveEventsToLocalStorage() // Save to local storage
@@ -74,7 +77,24 @@ extension UserEventsRepo {
         }
     }
     
-    mutating func deleteEvent(withId id: String) async {
+    func getUserData() async{
+        let url = URL(string: "\(API_BASE_URL)/users/\(self.userId)")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("true", forHTTPHeaderField: "ngrok-skip-browser-warning")
+        do {
+            let (data, _) = try await URLSession.shared.data(for:request)
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            let decodedData = try decoder.decode(UserModel.self, from: data)
+            self.userData = decodedData
+            saveEventsToLocalStorage() // Save to local storage
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func deleteEvent(withId id: String) async {
         let url = URL(string: "\(API_BASE_URL)/events/\(id)")!
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
@@ -91,7 +111,7 @@ extension UserEventsRepo {
         }
     }
     
-    mutating func addEvent(event: EventCardModel) async throws {
+    func addEvent(event: EventModel) async throws {
         let url = URL(string: "\(API_BASE_URL)/events")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -109,7 +129,7 @@ extension UserEventsRepo {
                 print("Event added successfully.")
                 let decoder = JSONDecoder()
                 do {
-                    let addedEvent = try decoder.decode(EventCardModel.self, from: data)
+                    let addedEvent = try decoder.decode(EventModel.self, from: data)
                     events.append(addedEvent)
                     saveEventsToLocalStorage() // Save to local storage
                 } catch {
