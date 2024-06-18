@@ -27,7 +27,7 @@ struct ContentView: View {
                 
                 LocationsView()
                     .tabItem {
-                        Label("Read", systemImage: "house")
+                        Label("Locais", systemImage: "house")
                     }
             }
             .toolbarBackground(.white, for: .tabBar)

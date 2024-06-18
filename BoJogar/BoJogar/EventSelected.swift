@@ -8,7 +8,7 @@ struct EventSelected: View {
     @State private var eventRepo: EventRepo
     @State private var selectedUser: UserModel?
     @State private var userToRemove: UserModel?
-
+    
     init(event: EventModel) {
         self.event = event
         _eventRepo = State(initialValue: EventRepo(event: event))
@@ -16,64 +16,50 @@ struct EventSelected: View {
     }
     
     var body: some View {
-        ScrollView {
-            VStack {
-                ZStack(alignment:.topLeading){
-                    ImageURL(url: URL(string: event.imageURL)!,
-                             skeletonWidth: .infinity,
-                             skeletonHeight: .infinity
-                    )
-                        .frame(maxWidth: .infinity)
-                        .aspectRatio(16/9, contentMode: .fit)
-                        .clipped()
-                    SectionTitle(text:event.title,variation: "gray")
-                        .padding()
-                }
-                .padding(.bottom)
+        ScrollView(showsIndicators: false) {
+            ZStack(alignment: .topLeading){
+                
+                Image("courtBg")
+                    .resizable()
+                    .frame(maxWidth: .infinity)
+                    .scaledToFit()
+                    .accessibilityHidden(true)
+                    .padding(.vertical, 64)
+                    .background(.primaryBlue)
+                    .offset(y:-108)
                 
                 //COMPONENTE DE QUANTIDADE DE PARTICIPANTES
-                VStack(alignment: .leading){
-                    Text(event.title)
-                        .font(.title)
-                        .foregroundStyle(.red900)
-                        .fontWeight(.semibold)
-                        .padding(.bottom, 4)
-                        
+                VStack{
                     Spacer()
-                        .frame(height: 1)
-                        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-                        .background(.gray950)
-                        .padding(.bottom)
-                    
-                    Text(event.description)
-                        .padding(.bottom)
-                    
-                    HStack{
-                        Text("\(Image(systemName: "location.fill"))")
-                            .foregroundStyle(.redSecondary)
-                            .font(.footnote)
-                            
-                        Text("Local: Quadra Aécio de Borba")
-                            .font(.footnote)
-                            .foregroundStyle(.gray700)
-                    }
-                    .padding(.bottom, 6)
-                    
-                    HStack{
-                        Text("\(Image(systemName: "alarm.fill"))")
-                            .foregroundStyle(.redSecondary)
-                            .font(.footnote)
+                        .frame(height:144)
+                    VStack(alignment: .leading){
+                        SectionTitle(text: event.title)
+                            .padding(.top, 24)
+                        Text(event.sport)
+                            .font(.system(size:15))
+                            .foregroundStyle(.primaryBlue)
                         
-                        Text("Data e Horário: \(event.startDate.extractDateFormatted)")
-                            .font(.footnote)
-                            .foregroundStyle(.gray700)
-                    }
-                    .padding(.bottom, 6)
-                    if USER_ID_TESTE != event.creatorId {
-                        //Botão de inscrição, caso o usuario que está na tela não seja o dono
-                        HStack{
-                            Spacer()
-                                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                        Text(event.description)
+                            .padding(.vertical,16)
+                            .foregroundStyle(.gray500)
+                        
+                        Spacer()
+                            .frame(height: 1)
+                            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                            .background(.gray200)
+                            .padding(.bottom)
+                        
+                        TextWithIcon(text: "Local: Quadra Aécio de Borba",
+                                     icon: "location.fill")
+                        .padding(.bottom, 6)
+                        
+                        TextWithIcon(text: event.startDate.extractDateFormatted,
+                                     icon: "alarm.fill")
+                        
+                        .padding(.bottom, 6)
+                        if USER_ID_TESTE != event.creatorId {
+                            //Botão de inscrição, caso o usuario que está na tela não seja o dono
+                            
                             Button(eventRepo.event.subscribers.contains(USER_ID_TESTE) ? "Cancelar Inscrição" : "Inscrever-se") {
                                 Task {
                                     do {
@@ -84,94 +70,107 @@ struct EventSelected: View {
                                     }
                                 }
                             }
-                            .padding(.horizontal,8)
-                            .padding(.vertical, 12)
-                            .background(.red900)
+                            .padding(.horizontal,32)
+                            .padding(.vertical,8)
+                            .fontWeight(.bold)
+                            .background(.primaryOrange)
                             .foregroundStyle(.white)
-                            .cornerRadius(8)
+                            .cornerRadius(.infinity)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical,32)
                         }
+                        
+                        /*Spacer()
+                         .frame(height: 1)
+                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                         .background(.gray700)
+                         .padding(.bottom,2)
+                         .padding(.top,8)
+                         if(eventRepo.subscriberDetails.count > 0 ){
+                         let numOfSubs = eventRepo.subscriberDetails.count
+                         Text("\(numOfSubs) participante\(numOfSubs > 1 ? "s":"")")
+                         .foregroundStyle(.red900)
+                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                         }else{
+                         Text("Sem participantes ainda")
+                         .foregroundStyle(.red900)
+                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                         }
+                         Spacer()
+                         .frame(height: 1)
+                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                         .background(.gray700)
+                         .padding(.bottom,8)
+                         .padding(.top,1)
+                         */
+                        //COMPONENTE DE AVATARES DE PARTICIPANTES
+                        SectionTitle(text: "Participantes")
+                        
                     }
-                    
-                    
-                    Spacer()
-                        .frame(height: 1)
-                        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-                        .background(.gray700)
-                        .padding(.bottom,2)
-                        .padding(.top,8)
-                    if(eventRepo.subscriberDetails.count > 0 ){
-                        let numOfSubs = eventRepo.subscriberDetails.count
-                        Text("\(numOfSubs) participante\(numOfSubs > 1 ? "s":"")")
-                            .foregroundStyle(.red900)
-                            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-                    }else{
-                        Text("Sem participantes ainda")
-                            .foregroundStyle(.red900)
-                            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-                    }
-                    Spacer()
-                        .frame(height: 1)
-                        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-                        .background(.gray700)
-                        .padding(.bottom,8)
-                        .padding(.top,1)
-                }
-                .padding(.horizontal, 16)
-                
-                //COMPONENTE DE AVATARES DE PARTICIPANTES
-                ScrollView(.horizontal, showsIndicators: false){
-                    HStack(spacing: 10) {
-                        ForEach(eventRepo.subscriberDetails) { user in
-                            ZStack(alignment:.topTrailing){
-                                
-                                Button {
-                                    selectedUser = user
-                                } label: {
-                                    AvatarEventUser(imageURL: user.imageURL)
-                                }
-                                .accessibilityLabel("Participante: \(user.firstName) \(user.lastName)")
-                                //Botão de remover usuario, caso o usuario que está na tela seja o dono do evento
-                                if USER_ID_TESTE == event.creatorId {
-                                    Button {
-                                        userToRemove = user
-                                    } label: {
-                                        Text("\(.init(systemName: "minus"))")
-                                            .padding(2)
-                                    }
-                                    .frame(width: 16,height: 16)
-                                    .background(.redSecondary)
-                                    .foregroundStyle(.white)
-                                    .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
-                                    .accessibilityLabel("Remover participante \(user.firstName) \(user.lastName)")
+                    .padding(.horizontal, 16)
+                    .background(.white)
+                    .clipShape(UnevenRoundedRectangle(
+                        topLeadingRadius: 16,
+                        bottomLeadingRadius: 0,
+                        bottomTrailingRadius: 0,
+                        topTrailingRadius: 16,
+                        style: .continuous))
+                    ScrollView(.horizontal, showsIndicators: false){
+                        HStack(spacing: 10) {
+                            ForEach(eventRepo.subscriberDetails) { user in
+                                ZStack(alignment:.topTrailing){
                                     
-                                }
-                            }
-                            
-                        }
-                    }
-                    .alert(item: $userToRemove, content: { user in
-                        Alert(
-                            title: Text("Confirmar remoção"),
-                            message: Text("Tem certeza que deseja remover \(user.firstName) \(user.lastName) do seu evento?"),
-                            primaryButton: .destructive(Text("Remover")) {
-                                // Perform the delete action here
-                                // example action
-                                Task{
-                                    do{
-                                        try await eventRepo.removeSubscriber(userID: user.id)
-                                    }catch{
-                                        print("nao removeu user")
+                                    Button {
+                                        selectedUser = user
+                                    } label: {
+                                        AvatarEventUser(imageURL: user.imageURL)
+                                    }
+                                    .accessibilityLabel("Participante: \(user.firstName) \(user.lastName)")
+                                    //Botão de remover usuario, caso o usuario que está na tela seja o dono do evento
+                                    if USER_ID_TESTE == event.creatorId {
+                                        Button {
+                                            userToRemove = user
+                                        } label: {
+                                            Text("\(.init(systemName: "minus"))")
+                                                .padding(2)
+                                        }
+                                        .frame(width: 16,height: 16)
+                                        .background(.redSecondary)
+                                        .foregroundStyle(.white)
+                                        .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                                        .accessibilityLabel("Remover participante \(user.firstName) \(user.lastName)")
+                                        
                                     }
                                 }
+                                
                             }
-                            ,
-                            secondaryButton: .cancel(Text("Cancelar"))
-                        )
-                    })
-                    .padding()
-                }  
+                        }
+                        .alert(item: $userToRemove, content: { user in
+                            Alert(
+                                title: Text("Confirmar remoção"),
+                                message: Text("Tem certeza que deseja remover \(user.firstName) \(user.lastName) do seu evento?"),
+                                primaryButton: .destructive(Text("Remover")) {
+                                    // Perform the delete action here
+                                    // example action
+                                    Task{
+                                        do{
+                                            try await eventRepo.removeSubscriber(userID: user.id)
+                                        }catch{
+                                            print("nao removeu user")
+                                        }
+                                    }
+                                }
+                                ,
+                                secondaryButton: .cancel(Text("Cancelar"))
+                            )
+                        })
+                        .padding(.vertical,4)
+                        .padding(.horizontal,16)
+                    }
+                }
             }
         }
+        
         .task {
             await refreshSubscribersPeriodically()
         }

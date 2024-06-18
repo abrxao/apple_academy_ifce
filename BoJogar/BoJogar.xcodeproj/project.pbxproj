@@ -40,6 +40,7 @@
 		22926CFA2BE187B0007AA20B /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926CF92BE187B0007AA20B /* EventModel.swift */; };
 		22926CFC2BE1881E007AA20B /* LocaleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926CFB2BE1881E007AA20B /* LocaleModel.swift */; };
 		22A017CC2C1CD06D0089524B /* UserRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A017CB2C1CD06D0089524B /* UserRepo.swift */; };
+		22A16FD22C220F240028D502 /* TextWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A16FD12C220F240028D502 /* TextWithIcon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +78,7 @@
 		22926CF92BE187B0007AA20B /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		22926CFB2BE1881E007AA20B /* LocaleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleModel.swift; sourceTree = "<group>"; };
 		22A017CB2C1CD06D0089524B /* UserRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepo.swift; sourceTree = "<group>"; };
+		22A16FD12C220F240028D502 /* TextWithIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextWithIcon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				22926CE92BE15B7E007AA20B /* LocalCard.swift */,
+				22A16FD12C220F240028D502 /* TextWithIcon.swift */,
 				22926CEE2BE16C3A007AA20B /* ImageURL.swift */,
 				22708B5F2BFFBD860015004C /* AvatarEventUser.swift */,
 				22926CF02BE175D9007AA20B /* SectionTitle.swift */,
@@ -289,6 +292,7 @@
 				2239763D2BEEBA8700E66847 /* PerfilView.swift in Sources */,
 				22926CEA2BE15B7E007AA20B /* LocalCard.swift in Sources */,
 				221BC0C42BE57063001CAAF4 /* Skeleton.swift in Sources */,
+				22A16FD22C220F240028D502 /* TextWithIcon.swift in Sources */,
 				22926CDB2BE15AEB007AA20B /* BoJogarApp.swift in Sources */,
 				22A017CC2C1CD06D0089524B /* UserRepo.swift in Sources */,
 				226887D72C18CC8800739DFC /* PlaceLookUpView.swift in Sources */,
