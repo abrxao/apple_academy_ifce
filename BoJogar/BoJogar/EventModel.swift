@@ -15,6 +15,7 @@ struct EventModel: Codable, Identifiable, Hashable  {
     var startDate: String
     var endDate: String
     var imageURL: String
+    var sport: String
     var localID: String
     var subscribers: [String]
     

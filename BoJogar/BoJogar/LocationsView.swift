@@ -12,7 +12,7 @@ struct LocationsView: View {
         NavigationStack{
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
-                    ForEach(locations) { local in
+                    ForEach(locations, id:\.id) { local in
                         Button {
                             selectedLocal = local
                         } label: {
@@ -42,13 +42,13 @@ struct LocationsView: View {
         request.httpMethod = "GET"
         request.setValue("true", forHTTPHeaderField: "ngrok-skip-browser-warning")
         do {
-            let (data, _) = try await URLSession.shared.data(for:request)
+            let (data, _) = try await URLSession.shared.data(for: request)
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             let decodedData = try decoder.decode([LocationModel].self, from: data)
             self.locations = decodedData
         } catch {
-            print(error.localizedDescription)
+            print(error)
         }
         
     }
