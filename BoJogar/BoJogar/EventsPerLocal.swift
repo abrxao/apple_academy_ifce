@@ -49,31 +49,21 @@ struct EventsPerLocal: View {
                 Spacer()
                     .frame(height: 20)
                 
-                
-                HStack(alignment:.center){
-                    
-                    Image(systemName: "location.fill")
-                        .foregroundStyle(.primaryOrange)
-                    Text(location.address)
-                        .font(.system(size: 15))
-                    
-                }
+                TextWithIcon(text: location.address, icon: "location.fill")
                 Spacer()
                     .frame(height: 12)
-                HStack(alignment:.center){
-                    Image(systemName: "map.fill")
-                        .foregroundStyle(.primaryOrange)
-                    if(locationManager.location != nil){
-                        let distance = " \(locationManager.location?.distance(from: CLLocation(latitude: location.latitude, longitude: location.longitude)) ?? 0.0)"
-                        
-                        Text(distance.extractDistanceFormatted)
-                            .font(.system(size: 15))
-                    }
+                
+                
+                if(locationManager.location != nil){
+                    let distance = " \(locationManager.location?.distance(from: CLLocation(latitude: location.latitude, longitude: location.longitude)) ?? 0.0)"
+                    
+                    TextWithIcon(text: distance.extractDistanceFormatted, icon: "map.fill")
+                    
                     
                 }
                 
                 Spacer()
-                    .frame(height: 24)
+                    .frame(height: 32)
                 if (!localRepo.events.isEmpty){
                     SectionTitle(text: "Eventos Cadastrados")
                     Spacer()
