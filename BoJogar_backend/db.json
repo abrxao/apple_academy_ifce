@@ -107,24 +107,11 @@
       "id": "mQolIJP"
     },
     {
-      "id": "2",
-      "title": "Praça da Gentilândia",
-      "imageURL": "https://mpce.mp.br/wp-content/uploads/2020/12/21.12.20-Praça-Gentilândia.jpg"
-    },
-    {
-      "id": "3",
-      "title": "Ginásio Aécio de Borba",
-      "imageURL": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Aeciodeborba.JPG"
-    },
-    {
-      "id": "4",
-      "title": "Praça Frei Galvão",
-      "imageURL": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Praça_Frei_Galvão_02.jpg"
-    },
-    {
-      "id": "5",
-      "title": "Areninha do Tigrão",
-      "imageURL": "https://pbs.twimg.com/media/EjMVqO5XYAIC8BM?format=jpg&name=large"
+      "address": "Rua Rio Grande 14 Fortaleza, CE",
+      "latitude": -3.7433883,
+      "name": "Skatepark da Gentilândia",
+      "longitude": -38.5370841,
+      "id": "mQolIJs"
     }
   ],
   "events": [
@@ -137,7 +124,7 @@
       "description": "Um emocionante torneio de futebol aberto a todos.",
       "startDate": "2024-06-20T15:00:00",
       "endDate": "2024-06-20T18:00:00",
-      "localID": "5",
+      "localID": "mQolIJP",
       "subscribers": [
         "3",
         "1"
@@ -152,7 +139,7 @@
       "description": "Junte-se a nós para um emocionante campeonato de vôlei.",
       "startDate": "2024-06-25T10:00:00",
       "endDate": "2024-06-25T14:00:00",
-      "localID": "3",
+      "localID": "mQolIJP",
       "subscribers": [
         "2",
         "5",
@@ -168,7 +155,7 @@
       "description": "Relaxe e pratique yoga na praia com a gente.",
       "startDate": "2024-06-30T07:00:00",
       "endDate": "2024-06-30T08:00:00",
-      "localID": "1",
+      "localID": "mQolIJP",
       "subscribers": [
         "3",
         "4"
@@ -183,7 +170,7 @@
       "description": "Venha dançar e se divertir com a gente.",
       "startDate": "2024-07-05T18:00:00",
       "endDate": "2024-07-05T19:00:00",
-      "localID": "5",
+      "localID": "mQolIJP",
       "subscribers": [
         "7",
         "8",
@@ -199,7 +186,7 @@
       "description": "Participe de uma corrida emocionante.",
       "startDate": "2024-07-15T07:00:00",
       "endDate": "2024-07-15T10:00:00",
-      "localID": "2",
+      "localID": "mQolIJP",
       "subscribers": [
         "2",
         "7"
@@ -214,7 +201,7 @@
       "description": "Junte-se a nós para uma pedalada e aproveite a vista.",
       "startDate": "2024-07-20T08:00:00",
       "endDate": "2024-07-20T11:00:00",
-      "localID": "3",
+      "localID": "mQolIJP",
       "subscribers": [
         "6",
         "2",
@@ -230,7 +217,7 @@
       "description": "Participe de um amistoso de futsal e divirta-se com amigos.",
       "startDate": "2024-07-25T16:00:00",
       "endDate": "2024-07-25T18:00:00",
-      "localID": "4",
+      "localID": "mQolIJP",
       "subscribers": [
         "6"
       ]
