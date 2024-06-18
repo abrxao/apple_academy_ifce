@@ -25,6 +25,7 @@
 		22708B602BFFBD860015004C /* AvatarEventUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22708B5F2BFFBD860015004C /* AvatarEventUser.swift */; };
 		22708B632BFFBE160015004C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22708B622BFFBE160015004C /* UserModel.swift */; };
 		22708B662BFFC3E00015004C /* EventRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22708B652BFFC3E00015004C /* EventRepo.swift */; };
+		227A8FCD2C21B36100AB0876 /* EditEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A8FCC2C21B36100AB0876 /* EditEventView.swift */; };
 		227AE5D02BEAA7C0002403AC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227AE5CF2BEAA7C0002403AC /* ContentView.swift */; };
 		22926CDB2BE15AEB007AA20B /* BoJogarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926CDA2BE15AEB007AA20B /* BoJogarApp.swift */; };
 		22926CDD2BE15AEB007AA20B /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926CDC2BE15AEB007AA20B /* UserView.swift */; };
@@ -58,6 +59,7 @@
 		22708B5F2BFFBD860015004C /* AvatarEventUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarEventUser.swift; sourceTree = "<group>"; };
 		22708B622BFFBE160015004C /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		22708B652BFFC3E00015004C /* EventRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRepo.swift; sourceTree = "<group>"; };
+		227A8FCC2C21B36100AB0876 /* EditEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventView.swift; sourceTree = "<group>"; };
 		227AE5CF2BEAA7C0002403AC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		22926CD72BE15AEB007AA20B /* BoJogar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoJogar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22926CDA2BE15AEB007AA20B /* BoJogarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoJogarApp.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				2221F8F52BF3D9D20038D5EB /* EventsPerLocal.swift */,
 				226C76B92C06678D00EE21CD /* NearbyEventsView.swift */,
 				227AE5CF2BEAA7C0002403AC /* ContentView.swift */,
+				227A8FCC2C21B36100AB0876 /* EditEventView.swift */,
 				226887D62C18CC8800739DFC /* PlaceLookUpView.swift */,
 				226C76B22C064C8C00EE21CD /* consts.swift */,
 				226C76BC2C06727400EE21CD /* utils.swift */,
@@ -265,6 +268,7 @@
 				2222508A2BEEAB2D0037C15A /* EventView.swift in Sources */,
 				22A017CC2C1CD06D0089524B /* UserRepo.swift in Sources */,
 				226887D72C18CC8800739DFC /* PlaceLookUpView.swift in Sources */,
+				227A8FCD2C21B36100AB0876 /* EditEventView.swift in Sources */,
 				22708B602BFFBD860015004C /* AvatarEventUser.swift in Sources */,
 				22412E392BFD0BA900B269CC /* EventSelected.swift in Sources */,
 				22926CFA2BE187B0007AA20B /* EventCardModel.swift in Sources */,

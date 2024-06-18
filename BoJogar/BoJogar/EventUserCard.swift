@@ -5,20 +5,36 @@ import SwiftUI
 struct EventUserCardView: View {
     @State private var userEventsRepo = UserEventsRepo(userId: USER_ID_TESTE)
     @State private var selectedEvent: EventCardModel?
+    @State private var isEditEventOpen = false
     var body: some View {
         ZStack(alignment:.topTrailing){
-            Button{
-                print("teste")
+            if (!userEventsRepo.events.isEmpty){
+                Button{
+                    isEditEventOpen = true
+                }
+                label:{
+                    Text("Novo Evento")
+                        .font(.system(size: 14))
+                        .padding(.top,12)
+                }
+                    
             }
-            label:{
-                Text("Novo Evento")
-                    .font(.system(size: 14))
-                    .padding(.top,12)
-            }
-            VStack(alignment: .leading,spacing: 8) {
+            VStack(alignment: .leading, spacing: 8) {
                 if(userEventsRepo.events.isEmpty){
                     SectionTitle(text: "Sem eventos ainda")
                         .multilineTextAlignment(.center)
+                        .frame(maxWidth: .infinity)
+                    Button{
+                        isEditEventOpen = true
+                    }
+                    label:{
+                        Text("Novo Evento")
+                            .font(.system(size: 14))
+                            .padding(.top,12)
+                            .multilineTextAlignment(.center)
+                            .frame(maxWidth: .infinity)    
+                    }
+                    
                 }else{
                     if(userEventsRepo.numOfUserEvents != 0){
                         SectionTitle(text: "Seus Eventos")
@@ -35,14 +51,14 @@ struct EventUserCardView: View {
                                 }
                             }
                         }
+                        Spacer()
+                            .frame(height: 24)
+
                     }
-                    
-                    
                     
                     if( userEventsRepo.events.count - userEventsRepo.numOfUserEvents != 0){
                         SectionTitle(text: "Eventos Inscritos")
                             .multilineTextAlignment(.leading)
-                            .padding(.top, 24)
                         Spacer()
                             .frame(height: 1)
                         
@@ -62,6 +78,9 @@ struct EventUserCardView: View {
         .navigationDestination(item: $selectedEvent, destination: { event in
             EventSelected(event: event)
         })
+        .navigationDestination(isPresented: $isEditEventOpen){
+            EditEventView()
+        }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Voltar")
         .navigationBarHidden(true)
