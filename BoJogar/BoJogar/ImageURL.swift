@@ -2,13 +2,11 @@ import SwiftUI
 
 struct ImageURL: View {
     var url: URL
-    // Variaveis para atribuir valores ao skeleton loader
     var skeletonWidth: CGFloat?
     var skeletonHeight: CGFloat?
     var body: some View {
         AsyncImage(url: url) { phase in
             if let image = phase.image {
-                // Display the loaded image
                 image
                     .resizable()
                     .scaledToFill()
