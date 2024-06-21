@@ -11,3 +11,5 @@ let API_BASE_URL = "http://localhost:3001" // "https://f357-2804-389-7111-bedf-a
 
 let USER_ID_TESTE = "4"
 
+let SPORTS = ["Badminton","Basquete","Boxe","Ciclismo","Corrida","Crossfit","Futebol", "Handball", 
+"Skate", "Tênis", "Vôlei"]

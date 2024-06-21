@@ -12,93 +12,91 @@ struct EditEventView: View {
     @Environment(\.dismiss) var dismiss
     @State private var titulo = ""
     @State private var localizacao = ""
-    @State private var esporte = ""
-    @State private var numPessoas = 10
+    @State private var esporte = "Badminton"
+    @State private var numPessoas = 0
     @State private var detalhes=false
+    @State private var dataInicio: Date = Date()
+    @State private var dataTermino: Date = Date()
+
     
     var body: some View {
         
-        //Text("oi")
-        VStack{
-            Rectangle()
-                .frame(height: 1)
-                .foregroundStyle(.gray)
-            Spacer()
+        NavigationStack{
             VStack{
-                Circle()
-                    .fill(Color.redSecondary)
-                    .frame(width: 140)
-                    .overlay(){
-                        Image(systemName: "photo")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width:80, height: 80)
-                            .foregroundStyle(.gray200)
-                    }
-                    .overlay(alignment: .topTrailing) {
-                        Circle()
-                            .frame(width: 40, height: 40)
-                            .offset(y: 15)
-                            .foregroundStyle(.red900)
-                    }
-                    .overlay(alignment:.topTrailing){
-                        Image(systemName: "camera.fill")
-                            .resizable()
-                            .aspectRatio(contentMode:.fit)
-                            .frame(width: 25,height: 25)
-                            .foregroundStyle(.white)
-                            .offset(x:-7,y:20)
-                    }
-                Form{
-                    TextField("Titulo:",text:$titulo)
-                        .autocorrectionDisabled(true)
-                        .padding(.bottom)
-                    TextField("Localizacão:",text:$localizacao)
-                        .autocorrectionDisabled(true)
-                        .padding(.bottom)
-                    TextField("Capacidade de Pessoas", value: $numPessoas, format: .number)
-                    
-                    Section{
-                        Picker("Esportes",selection: $esporte){
+                Rectangle()
+                    .frame(height: 1)
+                    .foregroundStyle(.gray)
+                Spacer()
+                VStack{
+                    Circle()
+                        .stroke()
+                        .frame(width: 160)
+                        .overlay(){
+                            Image(esporte)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width:120, height: 120)
+                                .foregroundStyle(.gray200)
+                                .accessibilityLabel("Desenho representando o esporte  \(esporte) ")
+                        }
+                    Form{
+                        TextField("Titulo:",text:$titulo)
+                            .autocorrectionDisabled(true)
+                            .padding(.bottom)
+                        TextField("Localizacão:",text:$localizacao)
+                            .autocorrectionDisabled(true)
+                            .padding(.bottom)
+                        
+                        Section{
+                            Picker("esporte", selection: $esporte){
+                            ForEach(SPORTS, id: \.self){
+                                        Text("\($0) ").tag("\($0)")
+                                    }
+                                }
+                            HStack{
+                                Text("Num. de Pessoas")
+                                TextField("", value: $numPessoas, formatter: NumberFormatter())
+                            }
+                        }
+                        Section{
+                            DatePicker("Data de Início ", selection: $dataInicio)
                             
-                            Text("Corrida").tag("Corrida")
-                            Text("Basquete").tag("Basquete")
-                            Text("Vôlei").tag("Vôlei")
+                            DatePicker("Data de Término ", selection: $dataTermino)
                         }
                         
-                        //Stepper("\(numPessoas) pessoas", value:$numPessoas)
-                        //.pickerStyle(.navigationLink)
+                        
                     }
                     
-                }
-                Button("enviar"){
-                    detalhes.toggle()
-                }
-                .foregroundStyle(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                if detalhes==true{
-                    Spacer()
-                    Text("Titulo: \(titulo)")
-                    Text("localizacao: \(localizacao)")
-                    Text("Capacidade de pessoas: \(numPessoas).")
-                    Text("Esporte escolhido: \(esporte)")
-                }
-                
-                
-                
-            }
-        }
-        .navigationTitle("Evento")
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .cancellationAction) {
-                Button("Cancel") {
-                    dismiss()
+                    /*
+                    Button("enviar"){
+                        detalhes.toggle()
+                        
+                    }
+                    .foregroundStyle(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                    if (detalhes){
+                        Spacer()
+                        Text("Titulo: \(titulo)")
+                        Text("localizacao: \(localizacao)")
+                        Text("Capacidade de pessoas: \(numPessoas).")
+                        Text("Esporte escolhido: \(esporte)")
+                        
+                    } */
                 }
             }
-            ToolbarItem(placement: .confirmationAction) {
-                Button("Save") {
-                    // Save...
-                    dismiss()
+            .navigationTitle("Evento")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") {
+                        dismiss()
+                    }
+                }
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Save") {
+                        // Save...
+                        dismiss()
+                      
+                    }
                 }
             }
         }
