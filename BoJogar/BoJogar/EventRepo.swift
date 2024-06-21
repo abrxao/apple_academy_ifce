@@ -83,6 +83,7 @@ extension EventRepo {
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             let decodedData = try decoder.decode([UserModel].self, from: data)
             self.subscriberDetails = decodedData // Using 'self' with 'mutating' method
+            self.event.subscribers  = decodedData.map{ $0.id }
             saveSubscriberDetailsToLocalStorage() // Save to local storage
             
         } catch {
