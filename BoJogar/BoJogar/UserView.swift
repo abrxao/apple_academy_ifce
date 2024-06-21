@@ -16,15 +16,7 @@ struct UserView: View {
         ScrollView(showsIndicators: false) {
             ZStack(alignment: .topLeading){
                 
-                Image("courtBg")
-                    .resizable()
-                    .frame(maxWidth: .infinity)
-                    .scaledToFit()
-                    .accessibilityHidden(true)
-                    .opacity(0.4)
-                    .padding(.vertical,64)
-                    .background(.primaryBlue)
-                    .offset(y:-64)
+                HeaderView()
                 
                 VStack{
                     if (userRepo.userData != nil){

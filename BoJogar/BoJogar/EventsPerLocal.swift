@@ -80,6 +80,7 @@ struct EventsPerLocal: View {
                 
             }
             .padding(.horizontal,16)
+            .frame(maxWidth: .infinity)
             .background(.white)
             .clipShape(UnevenRoundedRectangle(
                 topLeadingRadius: 16,
