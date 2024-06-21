@@ -46,6 +46,7 @@ struct EventsPerLocal: View {
                 }
                 .frame(maxWidth: .infinity)
                 .frame(height: 328)
+                
                 VStack(alignment:.leading){
                     
                     SectionTitle(text: location.name)
@@ -84,8 +85,8 @@ struct EventsPerLocal: View {
                     }
                     
                 }
-                .padding(.horizontal,16)
                 .frame(maxWidth: .infinity)
+                .padding(.horizontal,20)
                 .background(.white)
                 .clipShape(UnevenRoundedRectangle(
                     topLeadingRadius: 16,
@@ -94,9 +95,6 @@ struct EventsPerLocal: View {
                     topTrailingRadius: 16,
                     style: .continuous))
                 .offset(y:-24)
-                
-                Spacer()
-                    .frame(height: 36)
             }
             .offset(y:-124)
         }
@@ -104,7 +102,6 @@ struct EventsPerLocal: View {
         .navigationDestination(item: $selectedEvent, destination: { event in
             EventSelected(event: event)
         })
-        
         .task {
             let offsetForCenterMap = 0.0005
             

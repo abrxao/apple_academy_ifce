@@ -6,9 +6,12 @@ struct EventCard: View {
     
     var body: some View {
         HStack {
-            ImageURL(url: URL(string: event.imageURL)!)
+            Image(event.sport)
+                .resizable()
+                .padding(8)
                 .frame(maxWidth: 96, maxHeight:96)
-                .clipped()
+                .scaledToFit()
+                
             
             VStack(alignment: .leading) {
                 Text(event.title)
@@ -36,6 +39,7 @@ struct EventCard: View {
             .padding(.horizontal,4)
             
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
         .cornerRadius(16)
         
     }
