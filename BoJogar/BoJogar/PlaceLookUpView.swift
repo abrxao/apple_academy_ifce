@@ -17,7 +17,7 @@ struct PlaceLookUpView: View {
         NavigationStack{
             List(placeVM.places, id:\.id){ place in
                 Button{
-                    place.openInMaps()
+                    //place.openInMaps()
                 }
                 label :{
                     VStack(alignment:.leading){

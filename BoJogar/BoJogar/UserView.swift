@@ -17,6 +17,8 @@ struct UserView: View {
             ZStack(alignment: .topLeading){
                 
                 HeaderView()
+                    .opacity(0.4)
+                    .background(.primaryBlue)
                 
                 VStack{
                     if (userRepo.userData != nil){
@@ -63,9 +65,11 @@ struct UserView: View {
                             topTrailingRadius: 32,
                             style: .continuous))
                 }
+                .padding(.top,64)
             }
             .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
             .background(.white)
+            .offset(y:-64)
         }
         .frame(maxWidth: .infinity)
         .task{

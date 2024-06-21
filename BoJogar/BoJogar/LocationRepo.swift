@@ -83,12 +83,14 @@ extension LocationRepo {
         let url = URL(string: "\(API_BASE_URL)/locals/\(self.location.id ?? "")/events_details")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.setValue("true", forHTTPHeaderField: "ngrok-skip-browser-warning")
+        
         do {
             let (data, _) = try await URLSession.shared.data(for: request)
             let decoder = JSONDecoder()
+            
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             let decodedData = try decoder.decode([EventModel].self, from: data)
+            
             self.events = decodedData // Using 'self' with 'mutating' method
             saveEventsToLocalStorage() // Save to local storage
         } catch {

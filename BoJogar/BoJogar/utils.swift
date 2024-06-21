@@ -47,5 +47,18 @@ extension String {
         return "A \(formatedKm) Km de você"
         
     }
+    var extractDistance: String {
+        let meters = (self as NSString).doubleValue
+        
+        if meters < 500 {
+            return "\(Int(meters)) m"
+        }
+        if meters < 1000 {
+            return "menos de 1 Km"
+        }
+        let formatedKm = String(format: "%.1f", meters/1000)
+        return "\(formatedKm) Km"
+        
+    }
 }
 

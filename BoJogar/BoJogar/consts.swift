@@ -7,7 +7,7 @@
 
 import Foundation
 
-let API_BASE_URL = "http://api-backend-bojogar-production.up.railway.app"
+let API_BASE_URL = "http://localhost:3001"
 //"http://api-backend-bojogar-production.up.railway.app"
 
-let USER_ID_TESTE = "2"
+let USER_ID_TESTE = "3"

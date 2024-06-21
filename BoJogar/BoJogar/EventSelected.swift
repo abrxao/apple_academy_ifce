@@ -12,7 +12,6 @@ struct EventSelected: View {
     init(event: EventModel) {
         self.event = event
         _eventRepo = State(initialValue: EventRepo(event: event))
-        
     }
     
     var body: some View {
@@ -80,31 +79,8 @@ struct EventSelected: View {
                             .padding(.vertical,32)
                         }
                         
-                        /*Spacer()
-                         .frame(height: 1)
-                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-                         .background(.gray700)
-                         .padding(.bottom,2)
-                         .padding(.top,8)
-                         if(eventRepo.subscriberDetails.count > 0 ){
-                         let numOfSubs = eventRepo.subscriberDetails.count
-                         Text("\(numOfSubs) participante\(numOfSubs > 1 ? "s":"")")
-                         .foregroundStyle(.red900)
-                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-                         }else{
-                         Text("Sem participantes ainda")
-                         .foregroundStyle(.red900)
-                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-                         }
-                         Spacer()
-                         .frame(height: 1)
-                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-                         .background(.gray700)
-                         .padding(.bottom,8)
-                         .padding(.top,1)
-                         */
-                        //COMPONENTE DE AVATARES DE PARTICIPANTES
                         SectionTitle(text: "Participantes")
+                            .padding(.top,16)
                         
                     }
                     .padding(.horizontal, 16)

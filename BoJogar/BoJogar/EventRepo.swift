@@ -9,8 +9,8 @@ struct EventRepo {
     init(event: EventModel) {
         self.event = event
         self.subscriberDetails = []
-        self.subscriberDetailsFileName = "subscribers_\(event.id).json"
-        self.eventFileName = "event_\(event.id).json"
+        self.subscriberDetailsFileName = "subscribers_\(event.id ?? "1").json"
+        self.eventFileName = "event_\(event.id ?? "1").json"
         loadSubscriberDetailsFromLocalStorage()
         loadEventFromLocalStorage()
     }
@@ -70,7 +70,7 @@ struct EventRepo {
 //Extension for async functions
 extension EventRepo {
     mutating func getSubscribersDetails() async {
-        let url = URL(string: "\(API_BASE_URL)/events/\(event.id)/subscribers_details")!
+        let url = URL(string: "\(API_BASE_URL)/events/\(event.id ?? "1")/subscribers_details")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -92,7 +92,7 @@ extension EventRepo {
     }
     
     mutating func removeSubscriber(userID: String) async throws {
-        let url = URL(string: "\(API_BASE_URL)/events/\(event.id)/remove_sub")!
+        let url = URL(string: "\(API_BASE_URL)/events/\(event.id ?? "1")/remove_sub")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -127,7 +127,7 @@ extension EventRepo {
     }
     
     mutating func toggleSubscribe(userID: String) async throws {
-        let url = URL(string: "\(API_BASE_URL)/events/\(event.id)/toggleSubscription")!
+        let url = URL(string: "\(API_BASE_URL)/events/\(event.id ?? "1")/toggleSubscription")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

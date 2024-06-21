@@ -8,7 +8,7 @@ import Foundation
 import SwiftUI
 
 struct EventModel: Codable, Identifiable, Hashable  {
-    var id: String
+    var id: String?
     var creatorId: String
     var title: String
     var description: String
