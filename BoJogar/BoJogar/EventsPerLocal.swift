@@ -25,7 +25,7 @@ struct EventsPerLocal: View {
     
     var location: LocationModel
     
-    let regionSize = 250.0
+    let regionSize = 500.0
     
     init(location: LocationModel) {
         self._localRepo = State(initialValue: LocationRepo(location: location))
@@ -40,45 +40,34 @@ struct EventsPerLocal: View {
                 MapMarker(coordinate: annotation.coordinate)
             }
             .frame(maxWidth: .infinity)
-            .frame(height: 180)
+            .frame(height: 200)
             VStack(alignment:.leading){
                 
-                Text(location.name)
-                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                    .foregroundStyle(.red900)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                Spacer()
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 1)
-                    .background(.gray200)
+                SectionTitle(text: location.name)
+                    .padding(.top, 24)
+                
                 Spacer()
                     .frame(height: 20)
                 
-                
-                HStack(alignment:.center){
-                    Image(systemName: "location.fill")
-                        .foregroundStyle(.redSecondary)
-                    Text(location.address)
-                    
-                }
+                TextWithIcon(text: location.address, icon: "location.fill")
                 Spacer()
-                    .frame(height: 16)
-                HStack(alignment:.center){
-                    Image(systemName: "map.fill")
-                        .foregroundStyle(.redSecondary)
-                    if(locationManager.location != nil){
-                        let distance = " \(locationManager.location?.distance(from: CLLocation(latitude: location.latitude, longitude: location.longitude)) ?? 0.0)"
-                        
-                        Text(distance.extractDistanceFormatted)}
+                    .frame(height: 12)
+                
+                
+                if(locationManager.location != nil){
+                    let distance = " \(locationManager.location?.distance(from: CLLocation(latitude: location.latitude, longitude: location.longitude)) ?? 0.0)"
+                    
+                    TextWithIcon(text: distance.extractDistanceFormatted, icon: "map.fill")
+                    
                     
                 }
+                
+                Spacer()
+                    .frame(height: 32)
                 if (!localRepo.events.isEmpty){
-                    
-                    SectionTitle(text: "Eventos Confirmados")
-                    
+                    SectionTitle(text: "Eventos Cadastrados")
                     Spacer()
-                        .frame(height: 12)
+                        .frame(height: 24)
                     
                     ForEach(localRepo.events, id: \.id) { event in // Iterate over items
                         Button {
@@ -89,7 +78,16 @@ struct EventsPerLocal: View {
                     }
                 }
                 
-            }.padding(.horizontal,16)
+            }
+            .padding(.horizontal,16)
+            .background(.white)
+            .clipShape(UnevenRoundedRectangle(
+                topLeadingRadius: 16,
+                bottomLeadingRadius: 0,
+                bottomTrailingRadius: 0,
+                topTrailingRadius: 16,
+                style: .continuous))
+            .offset(y:-24)
             
             Spacer()
                 .frame(height: 36)

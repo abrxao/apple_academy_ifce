@@ -107,39 +107,11 @@
       "id": "mQolIJP"
     },
     {
-      "address": "Avenida Beira Mar 4040 Fortaleza, CE",
-      "latitude": -3.7239132,
-      "name": "Pista de Skate da Beira Mar",
-      "longitude": -38.4896457,
-      "id": "IXq7ymY"
-    },
-    {
-      "name": "Areninha Campo do Tigrão",
-      "address": "Rua Cândido Jucá 419 Fortaleza, CE",
-      "longitude": -38.546141,
-      "latitude": -3.7419236,
-      "id": "uQGwxcq"
-    },
-    {
-      "longitude": -3.7391319,
-      "address": "Avenida Carapinima 2200 Fortaleza, CE",
-      "latitude": -38.5401464,
-      "name": "Shopping Benfica",
-      "id": "yb6gacH"
-    },
-    {
-      "longitude": -3.7391319,
-      "name": "Shopping Benfica",
-      "address": "Avenida Carapinima 2200 Fortaleza, CE",
-      "latitude": -38.5401464,
-      "id": "UWKev64"
-    },
-    {
-      "address": "Rua Rio Grande do Sul 1249 Fortaleza, CE",
-      "longitude": -3.7596295,
-      "name": "Rua Rio Grande do Sul, 1249",
-      "latitude": -38.5679316,
-      "id": "xdnjumO"
+      "address": "Rua Rio Grande 14 Fortaleza, CE",
+      "latitude": -3.7433883,
+      "name": "Skatepark da Gentilândia",
+      "longitude": -38.5370841,
+      "id": "mQolIJs"
     }
   ],
   "events": [
@@ -148,25 +120,30 @@
       "creatorId": "5",
       "title": "Torneio de Futebol",
       "imageURL": "https://www.fortaleza.ce.gov.br/images/Areninha/areninha.netto.jpg",
+      "sport": "Futebol",
       "description": "Um emocionante torneio de futebol aberto a todos.",
-      "startDate": "2024-06-18T15:00:00",
-      "endDate": "2024-06-18T18:00:00",
-      "localID": "m2md9md",
+      "startDate": "2024-06-20T15:00:00",
+      "endDate": "2024-06-20T18:00:00",
+      "localID": "mQolIJP",
       "subscribers": [
+        "3",
         "1"
       ]
     },
     {
       "id": "103",
-      "creatorId": "2",
+      "creatorId": "3",
       "title": "Campeonato de Vôlei",
       "imageURL": "https://blog.totalpass.com.br/wp-content/uploads/2023/06/voleibol-regras.jpg",
+      "sport": "Vôlei",
       "description": "Junte-se a nós para um emocionante campeonato de vôlei.",
       "startDate": "2024-06-25T10:00:00",
       "endDate": "2024-06-25T14:00:00",
       "localID": "mQolIJP",
       "subscribers": [
-        "1"
+        "2",
+        "5",
+        "4"
       ]
     },
     {
@@ -174,10 +151,11 @@
       "creatorId": "1",
       "title": "Aulão de Yoga",
       "imageURL": "https://www.academiaatlantis.com.br/aula-de-natacao/imagens/aula-de-yoga-academia-preco.jpg",
+      "sport": "Yoga",
       "description": "Relaxe e pratique yoga na praia com a gente.",
       "startDate": "2024-06-30T07:00:00",
       "endDate": "2024-06-30T08:00:00",
-      "localID": "IXq7ymY",
+      "localID": "mQolIJP",
       "subscribers": [
         "3",
         "4"
@@ -188,10 +166,11 @@
       "creatorId": "1",
       "title": "Aulão de Zumba",
       "imageURL": "https://blog.totalpass.com.br/wp-content/uploads/2023/03/zumba-aula.jpg",
+      "sport": "Zumba",
       "description": "Venha dançar e se divertir com a gente.",
       "startDate": "2024-07-05T18:00:00",
       "endDate": "2024-07-05T19:00:00",
-      "localID": "m2md9md",
+      "localID": "mQolIJP",
       "subscribers": [
         "7",
         "8",
@@ -200,32 +179,33 @@
     },
     {
       "id": "107",
-      "creatorId": "2",
-      "title": "Corrida",
+      "creatorId": "1",
+      "title": "Corrida da madrugada",
       "imageURL": "https://runnersbrasil.com/wp-content/uploads/2023/09/Maratona-06-1000x600.jpg",
+      "sport": "Corrida",
       "description": "Participe de uma corrida emocionante.",
       "startDate": "2024-07-15T07:00:00",
       "endDate": "2024-07-15T10:00:00",
-      "localID": "IXq7ymY",
+      "localID": "mQolIJP",
       "subscribers": [
         "2",
-        "4",
         "7"
       ]
     },
     {
       "id": "108",
       "creatorId": "3",
-      "title": "Pedalada",
+      "title": "Pedalada da Carol",
       "imageURL": "https://bikeitau.com.br/wp-content/uploads/2022/02/ciclismo-urbano-itau-interna.jpg",
+      "sport": "Pedalada",
       "description": "Junte-se a nós para uma pedalada e aproveite a vista.",
       "startDate": "2024-07-20T08:00:00",
       "endDate": "2024-07-20T11:00:00",
       "localID": "mQolIJP",
       "subscribers": [
-        "4",
         "6",
-        "2"
+        "2",
+        "4"
       ]
     },
     {
@@ -233,13 +213,13 @@
       "creatorId": "3",
       "title": "Amistoso de futsal",
       "imageURL": "https://i1.wp.com/blog.londrina.pr.gov.br/wp-content/uploads/2023/05-maio/25.05.23/Londrina-futsal-feminino-x-Leoas-da-Serra-foto-Ana-Lugli_Londrina-Futsal-1.jpg?resize=1170%2C610&ssl=1",
+      "sport": "Futsal",
       "description": "Participe de um amistoso de futsal e divirta-se com amigos.",
       "startDate": "2024-07-25T16:00:00",
       "endDate": "2024-07-25T18:00:00",
-      "localID": "4",
+      "localID": "mQolIJP",
       "subscribers": [
-        "6",
-        "2"
+        "6"
       ]
     }
   ]
