@@ -18,7 +18,7 @@ struct EditPerfilView: View {
     @State private var gender = ""
     @State private var sports = ""
     @State private var description = ""
-    
+   
     
     var body: some View {
         
