@@ -42,7 +42,7 @@ struct UserView: View {
                                 .shadow(color:.gray700, radius: 1)
                                 .multilineTextAlignment(.leading)
                             
-                            Text("Que atividade você deseja praticar hoje?")
+                            Text("Veja aqui seus eventos!")
                                 .shadow(radius: 4, y:4)
                                 .shadow(color:.gray700,radius: 1)
                                 .fontWeight(.semibold)

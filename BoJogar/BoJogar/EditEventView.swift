@@ -13,15 +13,13 @@ struct EditEventView: View {
     @State private var title = ""
     @State private var sport = "Crossfit"
     @State private var description = ""
-    @State private var maxNumOfSubs: Int32 = 0
-    @State private var startDate: Date = Date.now
-    @State private var endDate: Date = Date.now
+    @State private var maxNumOfSubs: Int32?
+    @State private var startDate: Date = Date.now // Configurar data e hora usando o formato de String
+    @State private var endDate: Date = Date.now // Iso
     @State private var isLocationViewOpen = false
     @State var selectedPlace: PlaceModel?
     
     var body: some View {
-        
-        
         VStack{
             Rectangle()
                 .frame(height: 1)
@@ -32,26 +30,46 @@ struct EditEventView: View {
                     .stroke(.gray200)
                     .frame(width: 120)
                     .overlay(){
-                        VStack{
-                            if(sport != ""){
-                                Image(sport)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .padding(16)
-                                    .frame(maxWidth: .infinity)
-                                    .foregroundStyle(.gray200)
-                                    .accessibilityLabel("Desenho representando o esporte  \(sport) ")
-                            }
+                        if(sport != ""){
+                            Image(sport)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .padding(16)
+                                .frame(maxWidth: .infinity)
+                                .foregroundStyle(.gray200)
+                                .accessibilityLabel("Desenho representando o esporte  \(sport) ")
                         }
+                        
                     }
                 Form{
                     TextField("Titulo:",text:$title)
                         .autocorrectionDisabled(true)
                         .padding(.bottom)
+                        .listRowBackground(Color.graySystem)
                     
                     TextField("Descrição:",text:$description)
                         .autocorrectionDisabled(true)
                         .padding(.bottom)
+                        .listRowBackground(Color.graySystem)
+                    
+                    
+                    Section{
+                        Button{
+                            isLocationViewOpen = true
+                        }
+                    label:{
+                        
+                        Text(selectedPlace?.name ?? "Localização:")
+                            .frame(maxWidth: .infinity,alignment:.leading)
+                        
+                    }
+                    .foregroundStyle(.black)
+                    .listRowBackground(Color.graySystem)
+                    }
+                    Section{
+                            TextField("Num. de participantes:", value: $maxNumOfSubs, formatter: NumberFormatter())
+                                .listRowBackground(Color.graySystem)
+                    }
                     
                     Section{
                         Picker("Esporte", selection: $sport){
@@ -59,34 +77,20 @@ struct EditEventView: View {
                                 Text("\($0) ").tag("\($0)")
                             }
                         }
-                        
-                        Button{
-                            isLocationViewOpen = true
-                        }label:{
-                            VStack{
-                                Text("Localização")
-                                    .frame(maxWidth: .infinity,alignment:.leading)
-                                Text(selectedPlace?.name ?? "")
-                                    .frame(maxWidth: .infinity,alignment:.leading)
-                            }
-                        }
-                        .foregroundStyle(.black)
-                        HStack{
-                            Text("Num. de Pessoas")
-                                .frame(maxWidth: .infinity, alignment:.leading)
-                            TextField("", value: $maxNumOfSubs, formatter: NumberFormatter())
-                                .frame(maxWidth: 16, alignment:.trailing)
-                        }
+                        .listRowBackground(Color.graySystem)
                     }
                     Section{
                         DatePicker("Data de Início ", selection: $startDate)
+                            .listRowBackground(Color.graySystem)
+                        
                         
                         DatePicker("Data de Término ", selection: $endDate)
+                            .listRowBackground(Color.graySystem)
+                        
                     }
                     
-                    
                 }
-                
+                .scrollContentBackground(.hidden)
                 
                 Button("enviar"){
                     if (
@@ -98,24 +102,24 @@ struct EditEventView: View {
                         userRepo.userId != ""
                     ){
                         
-                        Task{
-                            
-                            try await userRepo.addEvent(
-                                event:
-                                    EventModelRequest(creatorId: userRepo.userId,
-                                                      title: title,
-                                                      description: description,
-                                                      startDate: startDate,
-                                                      endDate: endDate,
-                                                      sport: sport,
-                                                      maxAttendees: maxNumOfSubs,
-                                                      latitude: selectedPlace?.latitude ?? 0.0,
-                                                      longitude: selectedPlace?.longitude ?? 0.0,
-                                                      address: selectedPlace?.address ?? "",
-                                                      localName: selectedPlace?.name ?? ""
-                                                     ))
-                            dismiss.callAsFunction()
-                        }
+                        /*Task{
+                         
+                         try await userRepo.addEvent(
+                         event:
+                         EventModelRequest(creatorId: userRepo.userId,
+                         title: title,
+                         description: description,
+                         startDate: startDate,
+                         endDate: endDate,
+                         sport: sport,
+                         maxAttendees: maxNumOfSubs,
+                         latitude: selectedPlace?.latitude ?? 0.0,
+                         longitude: selectedPlace?.longitude ?? 0.0,
+                         address: selectedPlace?.address ?? "",
+                         localName: selectedPlace?.name ?? ""
+                         ))
+                         dismiss.callAsFunction()
+                         }*/
                     }
                     else{
                         

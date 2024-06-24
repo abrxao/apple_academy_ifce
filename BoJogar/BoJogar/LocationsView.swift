@@ -27,10 +27,8 @@ struct LocationsView: View {
     
     var body: some View {
         if (locationManager.location == nil){
-            Text("sem localizacao")
+            Text("Habilite a sua localização para ver esta página")
         }else{
-            
-            
             
             NavigationStack {
                 ScrollView(.vertical, showsIndicators: false) {
@@ -58,7 +56,8 @@ struct LocationsView: View {
                             }
                             
                         }
-                        .padding(20)
+                        .padding(.horizontal,20)
+                        .padding(.vertical,32)
                         .background(.white)
                         
                         .clipShape(UnevenRoundedRectangle(

@@ -5,13 +5,18 @@ struct EventCard: View {
     let event: EventModel
     
     var body: some View {
-        HStack {
+
+        HStack(alignment: .center, spacing: 16){
+            
             Image(event.sport)
                 .resizable()
                 .padding(8)
-                .frame(maxWidth: 96, maxHeight:96)
+                .frame(maxWidth: 80, maxHeight:80)
                 .scaledToFit()
-                
+                .accessibilityHidden(true)
+                .background(.gray50)
+                .cornerRadius(16)
+                .shadow(color:.primaryBlue.opacity(0.6),radius: 2,y:4)
             
             VStack(alignment: .leading) {
                 Text(event.title)
@@ -19,8 +24,7 @@ struct EventCard: View {
                     .lineLimit(1)
                     .fontWeight(.bold)
                     .foregroundStyle(.gray800)
-                Spacer()
-                    .frame(height: 6)
+                
                 Text(event.description)
                     .font(.system(size:14))
                     .multilineTextAlignment(.leading)
@@ -32,15 +36,14 @@ struct EventCard: View {
                     .multilineTextAlignment(.leading)
                     .foregroundStyle(.gray)
                     .padding(.top,4)
-                Spacer()
-                    .frame(maxHeight:.infinity)
                 
             }
             .padding(.horizontal,4)
             
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .cornerRadius(16)
+        .padding(.top,16)
+        
         
     }
 }
