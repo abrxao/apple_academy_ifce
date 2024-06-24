@@ -11,7 +11,7 @@ struct EditEventView: View {
     @EnvironmentObject var userRepo: UserRepo
     @Environment(\.dismiss) var dismiss
     @State private var title = ""
-    @State private var sport = ""
+    @State private var sport = "Crossfit"
     @State private var description = ""
     @State private var maxNumOfSubs: Int32 = 0
     @State private var startDate: Date = Date.now
@@ -97,6 +97,7 @@ struct EditEventView: View {
                         selectedPlace != nil ||
                         userRepo.userId != ""
                     ){
+                        
                         Task{
                             
                             try await userRepo.addEvent(
