@@ -74,16 +74,24 @@ extension EventRepo {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("true", forHTTPHeaderField: "ngrok-skip-browser-warning")
         
         do {
             let (data, _) = try await URLSession.shared.data(for: request)
             
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
-            let decodedData = try decoder.decode([UserModel].self, from: data)
-            self.subscriberDetails = decodedData // Using 'self' with 'mutating' method
-            self.event.subscribers  = decodedData.map{ $0.id }
+            let subscriberDetailsInDB = try decoder.decode([UserModelInDB].self, from: data)
+            let subscriberDetails = subscriberDetailsInDB.map{subscriber in
+                UserModel(id: subscriber._id,
+                          username: subscriber.username,
+                          email: subscriber.email,
+                          firstName: subscriber.firstName,
+                          lastName:subscriber.lastName,
+                          bio: subscriber.bio,
+                          imageURL: subscriber.imageURL)
+            }
+            self.subscriberDetails = subscriberDetails // Using 'self' with 'mutating' method
+            self.event.subscribers  = subscriberDetails.map{ $0.id }
             saveSubscriberDetailsToLocalStorage() // Save to local storage
             
         } catch {
@@ -131,7 +139,6 @@ extension EventRepo {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("true", forHTTPHeaderField: "ngrok-skip-browser-warning")
         
         let encoder = JSONEncoder()
         
@@ -144,6 +151,14 @@ extension EventRepo {
             if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
                 let decoder = JSONDecoder()
                 do {
+                    if (self.event.subscribers.contains(userID)){
+                        if let index = self.event.subscribers.firstIndex(of: userID) {
+                            self.event.subscribers.remove(at: index)
+                        }
+                    }else{
+                        self.event.subscribers.append(userID)
+                    }
+                    
                     let updatedSubscribers = try decoder.decode([String].self, from: data)
                     self.event.subscribers = updatedSubscribers
                     await self.getSubscribersDetails()

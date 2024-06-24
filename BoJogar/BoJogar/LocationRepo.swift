@@ -89,9 +89,21 @@ extension LocationRepo {
             let decoder = JSONDecoder()
             
             decoder.keyDecodingStrategy = .convertFromSnakeCase
-            let decodedData = try decoder.decode([EventModel].self, from: data)
+            let eventsInDB = try decoder.decode([EventModelInDB].self, from: data)
             
-            self.events = decodedData // Using 'self' with 'mutating' method
+            let events_ = eventsInDB.map{event in
+                EventModel(id: event._id,
+                           creatorId: event.creatorId,
+                           title: event.title,
+                           description: event.description,
+                           startDate: event.startDate,
+                           endDate: event.endDate,
+                           sport: event.sport,
+                           localID: event.localID,
+                           subscribers: event.subscribers)
+            }
+            
+            self.events = events_// Using 'self' with 'mutating' method
             saveEventsToLocalStorage() // Save to local storage
         } catch {
             print("erro2")

@@ -117,7 +117,7 @@ struct LocationsView: View {
             
             let locations = decodedData.map { locationInDB in
                 LocationModel(
-                    id: locationInDB.id,
+                    id: locationInDB._id,
                     name: locationInDB.name,
                     latitude: locationInDB.location.coordinates[1],
                     longitude: locationInDB.location.coordinates[0],

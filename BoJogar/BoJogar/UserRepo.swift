@@ -43,6 +43,16 @@ class UserRepo: ObservableObject {
         }
     }
     
+    private func saveUserToLocalStorage() {
+        let encoder = JSONEncoder()
+        do {
+            let data = try encoder.encode(userData)
+            try data.write(to: localFilePath())
+        } catch {
+            print("Failed to save events to local storage: \(error)")
+        }
+    }
+    
     private  func loadEventsFromLocalStorage() {
         let path = localFilePath()
         guard FileManager.default.fileExists(atPath: path.path) else { return }
@@ -62,15 +72,26 @@ extension UserRepo {
         let url = URL(string: "\(API_BASE_URL)/users/\(self.userId)/events_details")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.setValue("true", forHTTPHeaderField: "ngrok-skip-browser-warning")
+        
         do {
             let (data, _) = try await URLSession.shared.data(for:request)
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
-            let decodedData = try decoder.decode([EventModel].self, from: data)
-            self.events = decodedData // Using 'self' with '' method
-            let userEvents = decodedData.filter{$0.creatorId == USER_ID_TESTE}
-            self.numOfUserEvents = userEvents.count
+            let eventsInDb = try decoder.decode([EventModelInDB].self, from: data)
+            let userEvents = eventsInDb.map{event in
+                EventModel(id: event._id,
+                           creatorId: event.creatorId,
+                           title: event.title,
+                           description: event.description,
+                           startDate: event.startDate,
+                           endDate: event.endDate,
+                           sport: event.sport,
+                           localID: event.localID,
+                           subscribers: event.subscribers)
+            }
+            self.events = userEvents
+            let _userEvents = userEvents.filter{$0.creatorId == userId}
+            self.numOfUserEvents = _userEvents.count
             saveEventsToLocalStorage() // Save to local storage
         } catch {
             print(error.localizedDescription)
@@ -81,13 +102,21 @@ extension UserRepo {
         let url = URL(string: "\(API_BASE_URL)/users/\(self.userId)")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.setValue("true", forHTTPHeaderField: "ngrok-skip-browser-warning")
+        
         do {
-            let (data, _) = try await URLSession.shared.data(for:request)
+            let (data,_) = try await URLSession.shared.data(for:request)
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
-            let decodedData = try decoder.decode(UserModel.self, from: data)
-            self.userData = decodedData
+            let userDataInDb = try decoder.decode(UserModelInDB.self, from: data)
+            let userData_ =
+                UserModel(id: userDataInDb._id,
+                          username: userDataInDb.username,
+                          email: userDataInDb.email,
+                          firstName: userDataInDb.firstName,
+                          lastName:userDataInDb.lastName,
+                          bio: userDataInDb.bio,
+                          imageURL: userDataInDb.imageURL)
+            userData = userData_
             saveEventsToLocalStorage() // Save to local storage
         } catch {
             print(error.localizedDescription)
@@ -98,7 +127,7 @@ extension UserRepo {
         let url = URL(string: "\(API_BASE_URL)/events/\(id)")!
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
-        request.setValue("true", forHTTPHeaderField: "ngrok-skip-browser-warning")
+        
         do {
             let (_, response) = try await URLSession.shared.data(for: request)
             if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
@@ -116,7 +145,7 @@ extension UserRepo {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("true", forHTTPHeaderField: "ngrok-skip-browser-warning")
+        
         let encoder = JSONEncoder()
         
         do {

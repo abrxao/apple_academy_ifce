@@ -22,7 +22,6 @@
 		226887DB2C18CE1300739DFC /* PlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226887DA2C18CE1300739DFC /* PlaceModel.swift */; };
 		226887DE2C18D18A00739DFC /* PlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226887DD2C18D18A00739DFC /* PlaceViewModel.swift */; };
 		226C76B32C064C8C00EE21CD /* consts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226C76B22C064C8C00EE21CD /* consts.swift */; };
-		226C76BA2C06678D00EE21CD /* NearbyEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226C76B92C06678D00EE21CD /* NearbyEventsView.swift */; };
 		226C76BD2C06727400EE21CD /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226C76BC2C06727400EE21CD /* utils.swift */; };
 		22708B602BFFBD860015004C /* AvatarEventUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22708B5F2BFFBD860015004C /* AvatarEventUser.swift */; };
 		22708B632BFFBE160015004C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22708B622BFFBE160015004C /* UserModel.swift */; };
@@ -59,7 +58,6 @@
 		226887DA2C18CE1300739DFC /* PlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
 		226887DD2C18D18A00739DFC /* PlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewModel.swift; sourceTree = "<group>"; };
 		226C76B22C064C8C00EE21CD /* consts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = consts.swift; sourceTree = "<group>"; };
-		226C76B92C06678D00EE21CD /* NearbyEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyEventsView.swift; sourceTree = "<group>"; };
 		226C76BC2C06727400EE21CD /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
 		22708B5F2BFFBD860015004C /* AvatarEventUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarEventUser.swift; sourceTree = "<group>"; };
 		22708B622BFFBE160015004C /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -108,7 +106,6 @@
 				22412E382BFD0BA900B269CC /* EventSelected.swift */,
 				2239763C2BEEBA8700E66847 /* PerfilView.swift */,
 				2221F8F52BF3D9D20038D5EB /* EventsPerLocal.swift */,
-				226C76B92C06678D00EE21CD /* NearbyEventsView.swift */,
 				22926CDC2BE15AEB007AA20B /* UserView.swift */,
 				225D6A0D2C21BF5500A656A3 /* UserEventsView.swift */,
 				225D6A102C21C06200A656A3 /* SearchEventsView.swift */,
@@ -287,7 +284,6 @@
 				225D6A082C21BA9100A656A3 /* EditPerfilView.swift in Sources */,
 				225D6A132C21C10500A656A3 /* LocationsView.swift in Sources */,
 				225D6A112C21C06200A656A3 /* SearchEventsView.swift in Sources */,
-				226C76BA2C06678D00EE21CD /* NearbyEventsView.swift in Sources */,
 				22926CF42BE18094007AA20B /* EventCard.swift in Sources */,
 				2239763D2BEEBA8700E66847 /* PerfilView.swift in Sources */,
 				22926CEA2BE15B7E007AA20B /* LocalCard.swift in Sources */,

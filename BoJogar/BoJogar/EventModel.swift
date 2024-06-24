@@ -7,6 +7,18 @@
 import Foundation
 import SwiftUI
 
+struct EventModelInDB: Codable{
+    var _id: String
+    var creatorId: String
+    var title: String
+    var description: String
+    var startDate: String
+    var endDate: String
+    var sport: String
+    var localID: String
+    var subscribers: [String]
+}
+
 struct EventModel: Codable, Identifiable, Hashable  {
     var id: String?
     var creatorId: String
@@ -14,7 +26,6 @@ struct EventModel: Codable, Identifiable, Hashable  {
     var description: String
     var startDate: String
     var endDate: String
-    var imageURL: String
     var sport: String
     var localID: String
     var subscribers: [String]

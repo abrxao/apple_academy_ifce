@@ -7,6 +7,16 @@
 import Foundation
 import SwiftUI
 
+struct UserModelInDB: Codable  {
+    var _id: String
+    var username: String
+    var email: String
+    var firstName: String
+    var lastName: String
+    var bio: String
+    var imageURL: String
+}
+
 struct UserModel:  Codable, Identifiable, Hashable  {
     var id: String
     var username: String

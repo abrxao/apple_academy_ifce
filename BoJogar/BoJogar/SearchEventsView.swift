@@ -63,8 +63,21 @@ struct SearchEventsView: View {
             let (data, _) = try await URLSession.shared.data(from: url)
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
-            let decodedData = try decoder.decode([EventModel].self, from: data)
-            self.events = decodedData
+            let eventsInDB = try decoder.decode([EventModelInDB].self, from: data)
+            
+            let events_ = eventsInDB.map{event in
+                EventModel(id: event._id,
+                           creatorId: event.creatorId,
+                           title: event.title,
+                           description: event.description,
+                           startDate: event.startDate,
+                           endDate: event.endDate,
+                           sport: event.sport,
+                           localID: event.localID,
+                           subscribers: event.subscribers)
+            }
+            
+            self.events = events_
         } catch {
             print(error)
         }

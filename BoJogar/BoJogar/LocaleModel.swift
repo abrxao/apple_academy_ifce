@@ -10,14 +10,12 @@ import SwiftUI
 import CoreLocation
 
 struct coordinateDB: Codable {
-    let id: String?
     var type: String
     var coordinates:[Double]
 }
 
 struct LocationInDB: Codable{
-    
-    let id: String?
+    let _id: String?
     var name: String
     var address: String
     var location : coordinateDB
