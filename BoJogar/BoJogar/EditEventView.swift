@@ -11,7 +11,7 @@ struct EditEventView: View {
     @EnvironmentObject var userRepo: UserRepo
     @Environment(\.dismiss) var dismiss
     @State private var title = ""
-    @State private var sport = "Badminton"
+    @State private var sport = ""
     @State private var description = ""
     @State private var maxNumOfSubs: Int32 = 0
     @State private var startDate: Date = Date.now
@@ -32,13 +32,17 @@ struct EditEventView: View {
                     .stroke(.gray200)
                     .frame(width: 120)
                     .overlay(){
-                        Image(sport)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .padding(16)
-                            .frame(maxWidth: .infinity)
-                            .foregroundStyle(.gray200)
-                            .accessibilityLabel("Desenho representando o esporte  \(sport) ")
+                        VStack{
+                            if(sport != ""){
+                                Image(sport)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(16)
+                                    .frame(maxWidth: .infinity)
+                                    .foregroundStyle(.gray200)
+                                    .accessibilityLabel("Desenho representando o esporte  \(sport) ")
+                            }
+                        }
                     }
                 Form{
                     TextField("Titulo:",text:$title)
@@ -107,7 +111,8 @@ struct EditEventView: View {
                                                       latitude: selectedPlace?.latitude ?? 0.0,
                                                       longitude: selectedPlace?.longitude ?? 0.0,
                                                       address: selectedPlace?.address ?? "",
-                                                      localName: selectedPlace?.name ?? ""))
+                                                      localName: selectedPlace?.name ?? ""
+                                                     ))
                             dismiss.callAsFunction()
                         }
                     }

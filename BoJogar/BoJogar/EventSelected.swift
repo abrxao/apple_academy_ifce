@@ -8,6 +8,7 @@ struct EventSelected: View {
     @State private var eventRepo: EventRepo
     @State private var selectedUser: UserModel?
     @State private var userToRemove: UserModel?
+    @State private var locationData: LocationModel?
     
     init(event: EventModel) {
         self.event = event
@@ -48,7 +49,7 @@ struct EventSelected: View {
                             .background(.gray200)
                             .padding(.bottom)
                         
-                        TextWithIcon(text: "Local: Quadra Aécio de Borba",
+                        TextWithIcon(text: locationData?.address ?? "",
                                      icon: "location.fill")
                         .padding(.bottom, 6)
                         
@@ -148,10 +149,30 @@ struct EventSelected: View {
         }
         
         .task {
+            await getLocationData()
             await refreshSubscribersPeriodically()
         }
     }
+    private func getLocationData() async{
+        let url = URL(string: "\(API_BASE_URL)/locals/\(self.event.localID)")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        do {
+            let (data, _) = try await URLSession.shared.data(for:request)
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            let locationInDB = try decoder.decode(LocationInDB.self, from: data)
+            self.locationData = LocationModel(id: locationInDB._id,
+                                              name: locationInDB.name,
+                                              latitude: locationInDB.location.coordinates[1],
+                                              longitude: locationInDB.location.coordinates[0],
+                                              address: locationInDB.address)
+        } catch {
+            print(error.localizedDescription)
+        }
     
+    }
     private func refreshSubscribersPeriodically() async {
         while !Task.isCancelled {
             await eventRepo.getSubscribersDetails()

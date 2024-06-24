@@ -32,6 +32,7 @@ struct EventModelRequest: Codable{
     var longitude: Double
     var address: String
     var localName: String
+    var localID: String?
 }
 
 struct EventModel: Codable, Identifiable, Hashable  {

@@ -22,14 +22,13 @@ struct UserEventsView: View {
                     .frame(maxWidth: .infinity)
                 Button{
                     isEditEventOpen = true
+                }label:{
+                    Text("Novo Evento")
+                        .font(.system(size: 14))
+                        .padding(.top,12)
+                        .multilineTextAlignment(.center)
+                        .frame(maxWidth: .infinity)
                 }
-            label:{
-                Text("Novo Evento")
-                    .font(.system(size: 14))
-                    .padding(.top,12)
-                    .multilineTextAlignment(.center)
-                    .frame(maxWidth: .infinity)
-            }
                 
             }else{
                 let allEvents = userRepo.events.count
@@ -103,7 +102,7 @@ struct UserEventsView: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Voltar")
         .navigationBarHidden(true)
-        .frame(maxWidth: .infinity)
+        .frame(maxWidth: .infinity) 
         .task {
             await userRepo.getUserEvents()
         }
