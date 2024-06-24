@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 
 struct PlaceLookUpView: View {
+    @Environment(\.dismiss) var dismiss
+    @Binding var selectedPlace: PlaceModel?
     @EnvironmentObject var locationManager: LocationManager
     @StateObject private var placeVM = PlaceViewModel() // we can init as a @StateObject here if this is the first or only place we'll use this View Model
     @State private var searchText = ""
@@ -17,9 +19,9 @@ struct PlaceLookUpView: View {
         NavigationStack{
             List(placeVM.places, id:\.id){ place in
                 Button{
-                    //place.openInMaps()
-                }
-                label :{
+                    selectedPlace = place
+                    dismiss.callAsFunction()
+                }label:{
                     VStack(alignment:.leading){
                         Text(place.name)
                             .font(.title2)

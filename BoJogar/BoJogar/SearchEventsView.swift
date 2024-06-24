@@ -73,6 +73,7 @@ struct SearchEventsView: View {
                            startDate: event.startDate,
                            endDate: event.endDate,
                            sport: event.sport,
+                           maxAttendees: event.maxAttendees,
                            localID: event.localID,
                            subscribers: event.subscribers)
             }

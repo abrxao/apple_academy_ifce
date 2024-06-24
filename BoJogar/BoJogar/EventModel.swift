@@ -16,7 +16,22 @@ struct EventModelInDB: Codable{
     var endDate: String
     var sport: String
     var localID: String
+    var maxAttendees: Int32
     var subscribers: [String]
+}
+
+struct EventModelRequest: Codable{
+    var creatorId: String
+    var title: String
+    var description: String
+    var startDate: Date
+    var endDate: Date
+    var sport: String
+    var maxAttendees: Int32
+    var latitude: Double
+    var longitude: Double
+    var address: String
+    var localName: String
 }
 
 struct EventModel: Codable, Identifiable, Hashable  {
@@ -27,6 +42,7 @@ struct EventModel: Codable, Identifiable, Hashable  {
     var startDate: String
     var endDate: String
     var sport: String
+    var maxAttendees: Int32
     var localID: String
     var subscribers: [String]
     

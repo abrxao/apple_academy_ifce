@@ -8,98 +8,124 @@
 import SwiftUI
 
 struct EditEventView: View {
-    
+    @EnvironmentObject var userRepo: UserRepo
     @Environment(\.dismiss) var dismiss
-    @State private var titulo = ""
-    @State private var localizacao = ""
-    @State private var esporte = "Badminton"
-    @State private var numPessoas = 0
-    @State private var detalhes=false
-    @State private var dataInicio: Date = Date()
-    @State private var dataTermino: Date = Date()
-
+    @State private var title = ""
+    @State private var sport = "Badminton"
+    @State private var description = ""
+    @State private var maxNumOfSubs: Int32 = 0
+    @State private var startDate: Date = Date.now
+    @State private var endDate: Date = Date.now
+    @State private var isLocationViewOpen = false
+    @State var selectedPlace: PlaceModel?
     
     var body: some View {
         
-        NavigationStack{
+        
+        VStack{
+            Rectangle()
+                .frame(height: 1)
+                .foregroundStyle(.gray)
+            Spacer()
             VStack{
-                Rectangle()
-                    .frame(height: 1)
-                    .foregroundStyle(.gray)
-                Spacer()
-                VStack{
-                    Circle()
-                        .stroke()
-                        .frame(width: 160)
-                        .overlay(){
-                            Image(esporte)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width:120, height: 120)
-                                .foregroundStyle(.gray200)
-                                .accessibilityLabel("Desenho representando o esporte  \(esporte) ")
-                        }
-                    Form{
-                        TextField("Titulo:",text:$titulo)
-                            .autocorrectionDisabled(true)
-                            .padding(.bottom)
-                        TextField("Localizacão:",text:$localizacao)
-                            .autocorrectionDisabled(true)
-                            .padding(.bottom)
-                        
-                        Section{
-                            Picker("esporte", selection: $esporte){
+                Circle()
+                    .stroke(.gray200)
+                    .frame(width: 120)
+                    .overlay(){
+                        Image(sport)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .padding(16)
+                            .frame(maxWidth: .infinity)
+                            .foregroundStyle(.gray200)
+                            .accessibilityLabel("Desenho representando o esporte  \(sport) ")
+                    }
+                Form{
+                    TextField("Titulo:",text:$title)
+                        .autocorrectionDisabled(true)
+                        .padding(.bottom)
+                    
+                    TextField("Descrição:",text:$description)
+                        .autocorrectionDisabled(true)
+                        .padding(.bottom)
+                    
+                    Section{
+                        Picker("Esporte", selection: $sport){
                             ForEach(SPORTS, id: \.self){
-                                        Text("\($0) ").tag("\($0)")
-                                    }
-                                }
-                            HStack{
-                                Text("Num. de Pessoas")
-                                TextField("", value: $numPessoas, formatter: NumberFormatter())
+                                Text("\($0) ").tag("\($0)")
                             }
                         }
-                        Section{
-                            DatePicker("Data de Início ", selection: $dataInicio)
-                            
-                            DatePicker("Data de Término ", selection: $dataTermino)
+                        
+                        Button{
+                            isLocationViewOpen = true
+                        }label:{
+                            VStack{
+                                Text("Localização")
+                                    .frame(maxWidth: .infinity,alignment:.leading)
+                                Text(selectedPlace?.name ?? "")
+                                    .frame(maxWidth: .infinity,alignment:.leading)
+                            }
                         }
+                        .foregroundStyle(.black)
+                        HStack{
+                            Text("Num. de Pessoas")
+                                .frame(maxWidth: .infinity, alignment:.leading)
+                            TextField("", value: $maxNumOfSubs, formatter: NumberFormatter())
+                                .frame(maxWidth: 16, alignment:.trailing)
+                        }
+                    }
+                    Section{
+                        DatePicker("Data de Início ", selection: $startDate)
                         
-                        
+                        DatePicker("Data de Término ", selection: $endDate)
                     }
                     
-                    /*
-                    Button("enviar"){
-                        detalhes.toggle()
+                    
+                }
+                
+                
+                Button("enviar"){
+                    if (
+                        sport != "" ||
+                        title != "" ||
+                        description != "" ||
+                        startDate == endDate ||
+                        selectedPlace != nil ||
+                        userRepo.userId != ""
+                    ){
+                        Task{
+                            
+                            try await userRepo.addEvent(
+                                event:
+                                    EventModelRequest(creatorId: userRepo.userId,
+                                                      title: title,
+                                                      description: description,
+                                                      startDate: startDate,
+                                                      endDate: endDate,
+                                                      sport: sport,
+                                                      maxAttendees: maxNumOfSubs,
+                                                      latitude: selectedPlace?.latitude ?? 0.0,
+                                                      longitude: selectedPlace?.longitude ?? 0.0,
+                                                      address: selectedPlace?.address ?? "",
+                                                      localName: selectedPlace?.name ?? ""))
+                            dismiss.callAsFunction()
+                        }
+                    }
+                    else{
                         
                     }
-                    .foregroundStyle(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                    if (detalhes){
-                        Spacer()
-                        Text("Titulo: \(titulo)")
-                        Text("localizacao: \(localizacao)")
-                        Text("Capacidade de pessoas: \(numPessoas).")
-                        Text("Esporte escolhido: \(esporte)")
-                        
-                    } */
                 }
-            }
-            .navigationTitle("Evento")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") {
-                        dismiss()
-                    }
-                }
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Save") {
-                        // Save...
-                        dismiss()
-                      
-                    }
-                }
+                .foregroundStyle(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                .padding(.vertical,8)
             }
         }
+        .navigationTitle("Evento")
+        .navigationBarTitleDisplayMode(.inline)
+        .sheet(isPresented: $isLocationViewOpen){
+            PlaceLookUpView(selectedPlace:$selectedPlace)
+        }
+        
+        
     }
 }
 

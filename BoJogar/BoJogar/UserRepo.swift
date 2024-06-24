@@ -86,6 +86,7 @@ extension UserRepo {
                            startDate: event.startDate,
                            endDate: event.endDate,
                            sport: event.sport,
+                           maxAttendees: event.maxAttendees,
                            localID: event.localID,
                            subscribers: event.subscribers)
             }
@@ -140,7 +141,7 @@ extension UserRepo {
         }
     }
     
-    func addEvent(event: EventModel) async throws {
+    func addEvent(event: EventModelRequest) async throws {
         let url = URL(string: "\(API_BASE_URL)/events")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -151,7 +152,6 @@ extension UserRepo {
         do {
             let eventData = try encoder.encode(event)
             request.httpBody = eventData
-            
             let (data, response) = try await URLSession.shared.data(for: request)
             
             if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 201 {
