@@ -53,7 +53,8 @@ struct EventSelected: View {
                         }label:{
                             
                             TextWithIcon(text: locationData?.address ?? "",
-                                         icon: "location.fill")
+                                         icon: "location.fill",
+                                        variation: "underline")
                             .padding(.bottom, 6)
                         }
                         

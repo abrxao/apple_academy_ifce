@@ -59,7 +59,8 @@ struct EventsPerLocal: View {
                         openMapWith(location:location)
                     }label:{
                         TextWithIcon(text: location.address,
-                                     icon: "location.fill")
+                                     icon: "location.fill",
+                                     variation: "underline")
                         .padding(.bottom, 6)
                     }
                     
