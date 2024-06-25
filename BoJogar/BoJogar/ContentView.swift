@@ -30,7 +30,7 @@ struct ContentView: View {
                         Label("Locais", systemImage: "map")
                     }
             }
-            .toolbarBackground(.white, for: .tabBar)
+            .toolbarBackground(.gray50, for: .tabBar)
             .toolbarBackground(.visible, for: .tabBar)
         }
         .accentColor(.primaryOrange)

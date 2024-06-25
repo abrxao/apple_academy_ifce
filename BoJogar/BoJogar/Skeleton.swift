@@ -11,14 +11,11 @@ import SwiftUI
 import SwiftUI
 
 struct SkeletonView: View {
-    @State private var opacity: Double = 0.8
-    var width: CGFloat
-    var height: CGFloat
+    @State private var opacity: Double = 0.6
     
     var body: some View {
-        RoundedRectangle(cornerRadius: 0)
-            .fill(Color.gray)
-            .frame(maxWidth: width, maxHeight: height)
+        RoundedRectangle(cornerRadius: 4)
+            .fill(.gray500)
             .opacity(opacity)
             .onAppear {
                 animateOpacity()
@@ -26,7 +23,7 @@ struct SkeletonView: View {
     }
     
     private func animateOpacity() {
-        withAnimation(Animation.easeInOut(duration: 1.5).repeatForever(autoreverses: true)) {
+        withAnimation(Animation.easeInOut(duration: 1).repeatForever(autoreverses: true)) {
             self.opacity = 0.2
         }
     }
@@ -34,6 +31,6 @@ struct SkeletonView: View {
 
 struct SkeletonView_Previews: PreviewProvider {
     static var previews: some View {
-        SkeletonView(width: 100, height: 100)
+        SkeletonView()
     }
 } 

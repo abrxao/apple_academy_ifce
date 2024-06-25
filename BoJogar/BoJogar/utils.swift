@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreLocation
+import SwiftUI
 
 extension String {
     
@@ -62,3 +63,17 @@ extension String {
     }
 }
 
+
+func openMapWith(location: LocationModel) {
+    let latitude = location.latitude
+    let longitude = location.longitude
+    
+    let appleMapsURL = "http://maps.apple.com/?daddr=\(latitude),\(longitude)"
+    let googleMapsURL = "comgooglemaps://?daddr=\(latitude),\(longitude)&directionsmode=driving"
+    
+    if let googleMapsURL = URL(string: googleMapsURL), UIApplication.shared.canOpenURL(googleMapsURL) {
+        UIApplication.shared.open(googleMapsURL, options: [:], completionHandler: nil)
+    } else if let appleMapsURL = URL(string: appleMapsURL) {
+        UIApplication.shared.open(appleMapsURL, options: [:], completionHandler: nil)
+    }
+}

@@ -10,43 +10,48 @@ import SwiftUI
 
 
 struct SearchEventsView: View {
-    @State private var events:[EventModel] = []
+    @State private var events:[EventModel]=[]
     @State private var selectedEvent: EventModel?
+    @State private var isLoadingEvents = false
     
     var body: some View {
         
         NavigationStack {
             ScrollView(.vertical, showsIndicators: false) {
+                
                 VStack{
-                    
                     HeaderView()
                         .background(.primaryBlue)
                     
                     VStack{
-                        if(events.isEmpty){
-                            SectionTitle(text: "Sem eventos ainda")
-                        }else{
-                            SectionTitle(text: "Eventos próximos de você")
-                                .frame(maxWidth: .infinity,alignment:.leading)
-                            
-                            Spacer()
-                                .frame(height: 12)
-                            VStack(alignment:.leading){
-                                ForEach(events, id: \.id) { event in // Iterate over items
-                                    Button {
-                                        selectedEvent = event
-                                    } label: {
-                                        EventCard(event: event)
-                                        
+                        if(!isLoadingEvents){
+                            if(events.isEmpty){
+                                SectionTitle(text: "Sem eventos ainda")
+                            }else{
+                                SectionTitle(text: "Eventos próximos de você")
+                                    .frame(maxWidth: .infinity,alignment:.leading)
+                                
+                                Spacer()
+                                    .frame(height: 12)
+                                VStack(alignment:.leading){
+                                    ForEach(events, id: \.id) { event in // Iterate over items
+                                        Button {
+                                            selectedEvent = event
+                                        } label: {
+                                            EventCard(event: event)
+                                            
+                                        }
                                     }
                                 }
                             }
+                        }else{
+                            EventsSkeleton()
                         }
                     }
                     .padding(.horizontal,20)
                     .padding(.vertical,32)
                     .frame(maxWidth: .infinity)
-                    .background(.white)
+                    .background(.gray50)
                     .clipShape(UnevenRoundedRectangle(
                         topLeadingRadius: 32,
                         bottomLeadingRadius: 0,
@@ -66,10 +71,12 @@ struct SearchEventsView: View {
                 }
                 .offset(y:-64)
             }
+            .background(.gray50)
         }
     }
     
     func getEvents() async {
+        isLoadingEvents = true
         guard let url = URL(string: "\(API_BASE_URL)/events") else {
             print("Invalid URL")
             return
@@ -97,6 +104,7 @@ struct SearchEventsView: View {
         } catch {
             print(error)
         }
+        isLoadingEvents = false
     }
     
 }

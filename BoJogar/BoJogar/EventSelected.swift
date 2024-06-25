@@ -1,7 +1,6 @@
 import Foundation
 import SwiftUI
 
-
 struct EventSelected: View {
     
     let event: EventModel
@@ -49,14 +48,19 @@ struct EventSelected: View {
                             .background(.gray200)
                             .padding(.bottom)
                         
-                        TextWithIcon(text: locationData?.address ?? "",
-                                     icon: "location.fill")
-                        .padding(.bottom, 6)
+                        Button{
+                            openMapWith(location:locationData!)
+                        }label:{
+                            
+                            TextWithIcon(text: locationData?.address ?? "",
+                                         icon: "location.fill")
+                            .padding(.bottom, 6)
+                        }
                         
                         TextWithIcon(text: event.startDate.extractDateFormatted,
                                      icon: "alarm.fill")
-                        
                         .padding(.bottom, 6)
+                        
                         if USER_ID_TESTE != event.creatorId {
                             //Botão de inscrição, caso o usuario que está na tela não seja o dono
                             
@@ -74,18 +78,25 @@ struct EventSelected: View {
                             .padding(.vertical,8)
                             .fontWeight(.bold)
                             .background(.primaryOrange)
-                            .foregroundStyle(.white)
+                            .foregroundStyle(.gray50)
                             .cornerRadius(.infinity)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical,32)
                         }
-                        
-                        SectionTitle(text: "Participantes")
-                            .padding(.top,16)
+                        if(eventRepo.subscriberDetails.isEmpty){
+                            SectionTitle(text: "Sem Participantes Ainda")
+                                .padding(.top,16)
+                            Text("Convide seus amigos")
+                                .foregroundStyle(.gray700)
+                            
+                        } else{
+                            SectionTitle(text: "Participantes")
+                                .padding(.top,16)
+                        }
                         
                     }
                     .padding(.horizontal, 16)
-                    .background(.white)
+                    .background(.gray50)
                     .clipShape(UnevenRoundedRectangle(
                         topLeadingRadius: 16,
                         bottomLeadingRadius: 0,
@@ -113,7 +124,7 @@ struct EventSelected: View {
                                         }
                                         .frame(width: 16,height: 16)
                                         .background(.redSecondary)
-                                        .foregroundStyle(.white)
+                                        .foregroundStyle(.gray50)
                                         .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                                         .accessibilityLabel("Remover participante \(user.firstName) \(user.lastName)")
                                         
@@ -147,7 +158,7 @@ struct EventSelected: View {
                 }
             }
         }
-        
+        .background(.gray50)
         .task {
             await getLocationData()
             await refreshSubscribersPeriodically()
@@ -171,7 +182,7 @@ struct EventSelected: View {
         } catch {
             print(error.localizedDescription)
         }
-    
+        
     }
     private func refreshSubscribersPeriodically() async {
         while !Task.isCancelled {

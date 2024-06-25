@@ -16,8 +16,7 @@ struct ImageURL: View {
                     .imageScale(.large)
             } else {
                 // Display a placeholder while loading
-                SkeletonView(width: skeletonWidth ?? 0,height: skeletonHeight ?? 0)
-                    .frame(maxWidth: skeletonWidth ?? .infinity)
+                SkeletonView()
             }
         }
     }

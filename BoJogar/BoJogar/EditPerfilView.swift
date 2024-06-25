@@ -50,7 +50,7 @@ struct EditPerfilView: View {
                                 .resizable()
                                 .aspectRatio(contentMode:.fit)
                                 .frame(width: 25,height: 25)
-                                .foregroundStyle(.white)
+                                .foregroundStyle(.gray50)
                                 .offset(x:-7,y:20)
                         }
                     

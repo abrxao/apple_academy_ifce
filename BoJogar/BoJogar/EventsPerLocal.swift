@@ -55,16 +55,19 @@ struct EventsPerLocal: View {
                     Spacer()
                         .frame(height: 20)
                     
-                    TextWithIcon(text: location.address, icon: "location.fill")
-                    Spacer()
-                        .frame(height: 12)
+                    Button{
+                        openMapWith(location:location)
+                    }label:{
+                        TextWithIcon(text: location.address,
+                                     icon: "location.fill")
+                        .padding(.bottom, 6)
+                    }
                     
                     
                     if(locationManager.location != nil){
                         let distance = " \(locationManager.location?.distance(from: CLLocation(latitude: location.latitude, longitude: location.longitude)) ?? 0.0)"
                         
                         TextWithIcon(text: distance.extractDistanceFormatted, icon: "map.fill")
-                        
                         
                     }
                     
@@ -87,7 +90,8 @@ struct EventsPerLocal: View {
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.horizontal,20)
-                .background(.white)
+                .padding(.bottom,32)
+                .background(.gray50)
                 .clipShape(UnevenRoundedRectangle(
                     topLeadingRadius: 16,
                     bottomLeadingRadius: 0,
@@ -102,6 +106,7 @@ struct EventsPerLocal: View {
         .navigationDestination(item: $selectedEvent, destination: { event in
             EventSelected(event: event)
         })
+        .background(.gray50)
         .task {
             let offsetForCenterMap = 0.0005
             
@@ -118,8 +123,6 @@ struct EventsPerLocal: View {
                                       coordinate: location.coordinate)]
             await localRepo.getLocalEvents()
         }
-        
-        
         
     }
     

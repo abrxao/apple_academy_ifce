@@ -18,7 +18,7 @@ struct LocalCard: View {
             Text(local.name)
                 .multilineTextAlignment(.leading)
                 .lineLimit(2, reservesSpace: true)
-                .foregroundStyle(.white)
+                .foregroundStyle(.gray50)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .fontWeight(.semibold)
             // Align text to the left

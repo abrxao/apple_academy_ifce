@@ -20,7 +20,7 @@ struct UserView: View {
                     .opacity(0.4)
                     .background(.primaryBlue)
                 
-                VStack{
+                VStack{ 
                     if (userRepo.userData != nil){
                         VStack(alignment: .leading) {
                             Spacer()
@@ -29,7 +29,7 @@ struct UserView: View {
                             Text("Olá,")
                                 .font(.largeTitle)
                                 .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                                .foregroundStyle(.white)
+                                .foregroundStyle(.gray50)
                                 .shadow(radius: 4, y:4)
                                 .shadow(color:.gray700, radius: 1)
                                 .multilineTextAlignment(.leading)
@@ -37,7 +37,7 @@ struct UserView: View {
                             Text(userRepo.userData?.fullName ?? " ")
                                 .font(.largeTitle)
                                 .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                                .foregroundStyle(.white)
+                                .foregroundStyle(.gray50)
                                 .shadow(radius: 4, y:4)
                                 .shadow(color:.gray700, radius: 1)
                                 .multilineTextAlignment(.leading)
@@ -46,18 +46,20 @@ struct UserView: View {
                                 .shadow(radius: 4, y:4)
                                 .shadow(color:.gray700,radius: 1)
                                 .fontWeight(.semibold)
-                                .foregroundStyle(.white)
+                                .foregroundStyle(.gray50)
                         }
                         .padding(.horizontal,20)
                     }
-                    
+                    else{
+                        UserHeaderSkeleton()
+                    }
                     Spacer()
                         .frame(height: 22)
                     
                     UserEventsView()
                         .padding(.horizontal,20)
                         .padding(.vertical,32)
-                        .background(.white)
+                        .background(.gray50)
                         .clipShape(UnevenRoundedRectangle(
                             topLeadingRadius: 32,
                             bottomLeadingRadius: 0,
@@ -68,10 +70,11 @@ struct UserView: View {
                 .padding(.top,64)
             }
             .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-            .background(.white)
+            .background(.gray50)
             .offset(y:-64)
         }
         .frame(maxWidth: .infinity)
+        .background(.gray50)
         .task{
             await userRepo.getUserData()
         }

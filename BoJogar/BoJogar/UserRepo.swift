@@ -12,6 +12,7 @@ import Observation
 class UserRepo: ObservableObject {
     var events: [EventModel]
     var userId: String
+    var isLoadingEvents: Bool = false
     var userData: UserModel?
     private let localFileName: String
     var numOfUserEvents: Int = 0
@@ -69,6 +70,7 @@ class UserRepo: ObservableObject {
 
 extension UserRepo {
     func getUserEvents() async {
+        self.isLoadingEvents = true
         let url = URL(string: "\(API_BASE_URL)/users/\(self.userId)/events_details")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -97,6 +99,8 @@ extension UserRepo {
         } catch {
             print(error.localizedDescription)
         }
+        
+        self.isLoadingEvents = false
     }
     
     func getUserData() async{

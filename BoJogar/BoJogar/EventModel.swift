@@ -24,10 +24,10 @@ struct EventModelRequest: Codable{
     var creatorId: String
     var title: String
     var description: String
-    var startDate: Date
-    var endDate: Date
+    var startDate: String
+    var endDate: String
     var sport: String
-    var maxAttendees: Int32
+    var maxAttendees: Int
     var latitude: Double
     var longitude: Double
     var address: String

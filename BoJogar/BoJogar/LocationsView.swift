@@ -20,6 +20,7 @@ struct LocationsView: View {
     @EnvironmentObject var locationManager : LocationManager
     @State private var locations:[LocationModel] = []
     @State private var selectedLocal: LocationModel?
+    @State private var isLoadingLocations = false
     let columns = [
         GridItem(.flexible(minimum: 100, maximum: 240)),
         GridItem(.flexible(minimum: 100, maximum: 240))
@@ -33,33 +34,40 @@ struct LocationsView: View {
             NavigationStack {
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack{
-                        
                         HeaderView()
                             .background(.primaryBlue)
                         
                         VStack(alignment:.leading) {
-                            
-                            SectionTitle(text: "Locais")
-                            
-                            LazyVGrid(columns: columns, spacing: 20) {
-                                
-                                ForEach(locations, id:\.id) { location in
+                            if(!isLoadingLocations){
+                                if(!locations.isEmpty){
+                                    SectionTitle(text: "Locais")
                                     
-                                    let distance = "\(locationManager.location?.distance(from: CLLocation(latitude: location.latitude, longitude: location.longitude)) ?? 0.0)"
-                                    Button {
-                                        selectedLocal = location
-                                    } label: {
-                                        LocalCard(local: location, distance: distance.extractDistance)
+                                    LazyVGrid(columns: columns, spacing: 20) {
+                                        
+                                        ForEach(locations, id:\.id) { location in
+                                            
+                                            let distance = "\(locationManager.location?.distance(from: CLLocation(latitude: location.latitude, longitude: location.longitude)) ?? 0.0)"
+                                            Button {
+                                                selectedLocal = location
+                                            } label: {
+                                                LocalCard(local: location, distance: distance.extractDistance)
+                                            }
+                                            
+                                        }
                                     }
-                                    
                                 }
+                                else{
+                                    SectionTitle(text: "Ainda não tem locais com eventos próximos a você")
+                                }
+                                
+                            }else{
+                                LocationsSkeleton()
                             }
-                            
                         }
+                        .frame(maxWidth: .infinity)
                         .padding(.horizontal,20)
                         .padding(.vertical,32)
-                        .background(.white)
-                        
+                        .background(.gray50)
                         .clipShape(UnevenRoundedRectangle(
                             topLeadingRadius: 32,
                             bottomLeadingRadius: 0,
@@ -76,6 +84,7 @@ struct LocationsView: View {
                     }
                 }
                 .offset(y:-64)
+                .background(.gray50)
             }
             .task{
                 await getLocations()
@@ -84,6 +93,7 @@ struct LocationsView: View {
     }
     
     func getLocations() async {
+        isLoadingLocations = true
         guard let deviceLocation = locationManager.location else {
             print("Location is not available")
             return
@@ -129,6 +139,7 @@ struct LocationsView: View {
         } catch {
             print("Error: \(error.localizedDescription)")
         }
+        isLoadingLocations = false
     }
 }
 
