@@ -35,7 +35,7 @@ struct EventsPerLocal: View {
     }
     
     var body: some View{
-        
+         
         ScrollView(showsIndicators: false) {
             VStack{
                 Map(coordinateRegion: $mapRegion,

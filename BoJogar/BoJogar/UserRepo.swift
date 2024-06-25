@@ -177,4 +177,40 @@ extension UserRepo {
             throw error
         }
     }
+    
+    func editEvent(eventId: String, updatedEvent: EventModelRequest) async throws {
+            let url = URL(string: "\(API_BASE_URL)/events/\(eventId)")!
+            var request = URLRequest(url: url)
+            request.httpMethod = "PATCH"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        print(updatedEvent.subscribers)
+            let encoder = JSONEncoder()
+            
+            do {
+                let eventData = try encoder.encode(updatedEvent)
+                request.httpBody = eventData
+                let (data, response) = try await URLSession.shared.data(for: request)
+                print(response)
+                if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
+                    print("Event updated successfully.")
+                    let decoder = JSONDecoder()
+                    do {
+                        let updatedEvent = try decoder.decode(EventModel.self, from: data)
+                        if let index = events.firstIndex(where: { $0.id == eventId }) {
+                            events[index] = updatedEvent
+                            saveEventsToLocalStorage() // Save to local storage
+                        }
+                    } catch {
+                        print("Error decoding response data: \(error)")
+                    }
+                } else {
+
+                    print("Failed to update event.")
+                }
+            } catch {
+                print("Error updating event: \(error)")
+                throw error
+            }
+        }
+    
 }

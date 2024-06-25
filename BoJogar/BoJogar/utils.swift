@@ -35,6 +35,16 @@ extension String {
             return formatter.string(from: date)
         }
     }
+    var getDate: Date {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        formatter.timeZone = TimeZone(identifier: "UTC")
+        
+        guard let date = formatter.date(from: self) else {
+            return Date()
+        }
+        return date
+    }
     var extractDistanceFormatted: String {
         let meters = (self as NSString).doubleValue
         

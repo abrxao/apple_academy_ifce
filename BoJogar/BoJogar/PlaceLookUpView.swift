@@ -10,16 +10,20 @@ import SwiftUI
 
 struct PlaceLookUpView: View {
     @Environment(\.dismiss) var dismiss
-    @Binding var selectedPlace: PlaceModel?
+    @Binding var selectedPlace: LocationModel?
     @EnvironmentObject var locationManager: LocationManager
     @StateObject private var placeVM = PlaceViewModel() // we can init as a @StateObject here if this is the first or only place we'll use this View Model
-    @State private var searchText = ""
+    @State private var searchText: String = ""
     
     var body: some View {
         NavigationStack{
             List(placeVM.places, id:\.id){ place in
                 Button{
-                    selectedPlace = place
+                    selectedPlace = LocationModel(id: nil,
+                                                  name: place.name,
+                                                  latitude: place.latitude,
+                                                  longitude: place.longitude,
+                                                  address: place.address)
                     dismiss.callAsFunction()
                 }label:{
                     VStack(alignment:.leading){

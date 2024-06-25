@@ -10,7 +10,7 @@ struct TextWithIcon: View {
         HStack{
             Text("\(Image(systemName: icon))")
                 .foregroundStyle(.primaryOrange)
-                .font(.system(size:15)) 
+                .font(.system(size:15))
                 .foregroundStyle(.gray500)
             
             if (variation == "underline"){

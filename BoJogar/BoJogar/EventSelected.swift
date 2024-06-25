@@ -8,6 +8,7 @@ struct EventSelected: View {
     @State private var selectedUser: UserModel?
     @State private var userToRemove: UserModel?
     @State private var locationData: LocationModel?
+    @State private var isEditEventOpen = false
     
     init(event: EventModel) {
         self.event = event
@@ -32,8 +33,20 @@ struct EventSelected: View {
                     Spacer()
                         .frame(height:144)
                     VStack(alignment: .leading){
-                        SectionTitle(text: event.title)
-                            .padding(.top, 24)
+                        HStack(alignment: .center){
+                            SectionTitle(text: event.title)
+                                .frame(maxWidth: .infinity,alignment:.leading)
+                            if (USER_ID_TESTE == event.creatorId){
+                                Button{
+                                    isEditEventOpen = true
+                                }label:{
+                                    Text("\(Image(systemName: "pencil"))")
+                                        .foregroundStyle(.primaryOrange)
+                                        .font(.system(size:20))
+                                        .foregroundStyle(.gray500)
+                                }
+                            }
+                        }.padding(.top, 24)
                         Text(event.sport)
                             .font(.system(size:15))
                             .foregroundStyle(.primaryBlue)
@@ -52,9 +65,9 @@ struct EventSelected: View {
                             openMapWith(location:locationData!)
                         }label:{
                             
-                            TextWithIcon(text: locationData?.address ?? "",
+                            TextWithIcon(text: locationData?.name ?? "",
                                          icon: "location.fill",
-                                        variation: "underline")
+                                         variation: "underline")
                             .padding(.bottom, 6)
                         }
                         
@@ -112,7 +125,13 @@ struct EventSelected: View {
                                     Button {
                                         selectedUser = user
                                     } label: {
-                                        AvatarEventUser(imageURL: user.imageURL)
+                                        VStack{
+                                            AvatarEventUser(imageURL: user.imageURL)
+                                            Text(user.firstName)
+                                                .foregroundStyle(.gray700)
+                                                .lineLimit(1)
+                                                .frame(maxWidth: 64)
+                                        }
                                     }
                                     .accessibilityLabel("Participante: \(user.firstName) \(user.lastName)")
                                     //Botão de remover usuario, caso o usuario que está na tela seja o dono do evento
@@ -158,6 +177,9 @@ struct EventSelected: View {
                     }
                 }
             }
+        }
+        .navigationDestination(isPresented: $isEditEventOpen){
+            EditEventView(eventToEdit: event,selectedPlace: locationData)
         }
         .background(.gray50)
         .task {

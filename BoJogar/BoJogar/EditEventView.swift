@@ -7,19 +7,33 @@
 
 import SwiftUI
 
+let fiftheenMin = 60 * 15
+
 struct EditEventView: View {
     @EnvironmentObject var userRepo: UserRepo
     @Environment(\.dismiss) var dismiss
-    @State private var title = ""
-    @State private var sport = "Crossfit"
-    @State private var description = ""
-    @State private var maxNumOfSubs: Int = 0
-    @State private var startDate: Date = Date() // Configurar data e hora usando o formato de String
-    @State private var endDate: Date = Date() + 60 * 15 // Iso
+    @State private var title: String
+    @State private var sport: String
+    @State private var description: String
+    @State private var maxAttendees: Int
+    @State private var startDate: Date
+    @State private var endDate: Date // Adiciona 15 min na data incial
     @State private var isLocationViewOpen = false
-    @State var selectedPlace: PlaceModel?
+    @State private var selectedPlace: LocationModel?
     
+    let eventToEdit: EventModel?
     
+    init(eventToEdit: EventModel?, selectedPlace: LocationModel?){
+        self.eventToEdit = eventToEdit
+        _title = State(initialValue: eventToEdit?.title ?? "")
+        _sport =  State(initialValue: eventToEdit?.sport ?? "Ciclismo")
+        _description =  State(initialValue: eventToEdit?.description ?? "")
+        _maxAttendees = State(initialValue: Int(eventToEdit?.maxAttendees ?? 0))
+        _startDate = State(initialValue: eventToEdit?.startDate.getDate ?? Date())
+        _endDate = State(initialValue: eventToEdit?.endDate.getDate ?? Date())
+        _selectedPlace = State(initialValue: selectedPlace)
+    }
+
     var body: some View {
         VStack{
             Rectangle()
@@ -38,6 +52,7 @@ struct EditEventView: View {
                     .foregroundStyle(.primaryOrange)
                     .frame(width: 120)
                     .overlay(){
+                       
                         if(sport != ""){
                             Image(sport)
                                 .resizable()
@@ -71,11 +86,11 @@ struct EditEventView: View {
                         .frame(maxWidth: .infinity,alignment:.leading)
                     
                 }
-                .foregroundStyle(.black)
+                .foregroundStyle(.gray800)
                 .listRowBackground(Color.graySystem)
                 }
                 Section{
-                    Picker("Num. de participantes:", selection: $maxNumOfSubs){
+                    Picker("Num. de participantes:", selection: $maxAttendees){
                         ForEach(0..<100){
                             Text("\($0)")
                         }
@@ -112,29 +127,36 @@ struct EditEventView: View {
             
         }
         .toolbar{
-            var isCreateEventAble = (
+            let isCreateEventAble = (
                 title != "" &&
                 description != "" &&
                 selectedPlace != nil &&
-                maxNumOfSubs > 0
+                maxAttendees > 0
             )
-            Button("Criar evento"){
+            
+            Button(eventToEdit == nil ? "Criar evento": "Salvar Edição"){
                 if (isCreateEventAble){
+                    
+                    
+                    let eventToRequest = EventModelRequest(creatorId: userRepo.userId,
+                                                           title: title,
+                                                           description: description,
+                                                           startDate: startDate.ISO8601Format(),
+                                                           endDate: endDate.ISO8601Format(),
+                                                           sport: sport,
+                                                           maxAttendees: maxAttendees,
+                                                           latitude: selectedPlace?.latitude ?? 0.0,
+                                                           longitude: selectedPlace?.longitude ?? 0.0,
+                                                           subscribers: eventToEdit?.subscribers ?? [],
+                                                           address: selectedPlace?.address ?? "",
+                                                           localName: selectedPlace?.name ?? "")
+                    
                     Task{
-                        try await userRepo.addEvent(
-                            event:
-                                EventModelRequest(creatorId: userRepo.userId,
-                                                  title: title,
-                                                  description: description,
-                                                  startDate: startDate.ISO8601Format(),
-                                                  endDate: endDate.ISO8601Format(),
-                                                  sport: sport,
-                                                  maxAttendees: maxNumOfSubs,
-                                                  latitude: selectedPlace?.latitude ?? 0.0,
-                                                  longitude: selectedPlace?.longitude ?? 0.0,
-                                                  address: selectedPlace?.address ?? "",
-                                                  localName: selectedPlace?.name ?? ""
-                                                 ))
+                        if(eventToEdit != nil ){
+                            try await userRepo.editEvent(eventId: self.eventToEdit?.id ?? "", updatedEvent: eventToRequest)
+                        } else {
+                            try await userRepo.addEvent(event: eventToRequest)
+                        }
                         dismiss.callAsFunction()
                     }
                 }
@@ -167,6 +189,3 @@ struct EditEventView: View {
     }
 }
 
-#Preview {
-    EditEventView()
-}

@@ -30,6 +30,7 @@ struct EventModelRequest: Codable{
     var maxAttendees: Int
     var latitude: Double
     var longitude: Double
+    var subscribers: [String]
     var address: String
     var localName: String
     var localID: String?

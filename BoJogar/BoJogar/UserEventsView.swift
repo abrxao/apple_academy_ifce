@@ -102,7 +102,7 @@ struct UserEventsView: View {
             EventSelected(event: event)
         })
         .navigationDestination(isPresented: $isEditEventOpen){
-            EditEventView()
+            EditEventView(eventToEdit: nil,selectedPlace: nil)
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Voltar")
